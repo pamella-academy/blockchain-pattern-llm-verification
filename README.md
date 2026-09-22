@@ -1,170 +1,102 @@
-# Pipeline Gemini de verificação de blockchain design patterns
+# Pipeline de Classificação de Blockchain Patterns
 
-Pipeline em 2 estágios para identificar e verificar menções a blockchain design patterns em issues/PRs de projetos OSS.
+Classifica automaticamente GitHub issues/PRs para identificar 82 blockchain design patterns usando LLM com estratégia hierárquica.
 
-- Stage 1 (recall): lê a issue/PR e propõe candidatos de pattern.
-- Stage 2 (precisão): valida cada par `(issue, pattern)` com regras mais estritas.
-- Agregação final: consolida no nível da issue (`issue_results.csv`).
-
-## Visão rápida
-
-- Linguagem: Python
-- SDK de LLM: `google-genai`
-- Catálogo de patterns: `blockchain_patterns_keywords_v3.csv`
-- Entrypoint principal: `run_pipeline.py`
-
-Documentação técnica detalhada do projeto e dos arquivos está em `docs/PROJECT_DOCUMENTATION.md`.
-
-## 1. Clonar o projeto
-
-Opção SSH:
+## 🚀 Uso Rápido
 
 ```bash
-git clone git@github.com:IrlanBarros/blockchain-pattern-llm-verification.git
-cd blockchain-pattern-llm-verification
+# Classificar issues (sempre com verificação de precisão)
+python3 classify.py data/web3_all_issues.csv
+
+# Limitar a 30 issues
+python3 classify.py data/web3_all_issues.csv --limit 30
+
+# Usar modelo diferente
+python3 classify.py data/web3_all_issues.csv --model gemini-2.0-pro-flash
 ```
 
-Opção HTTPS:
+## 📋 Pré-requisitos
 
 ```bash
-git clone https://github.com/IrlanBarros/blockchain-pattern-llm-verification.git
-cd blockchain-pattern-llm-verification
+pip install google-generativeai pandas
+
+# Configurar API key
+echo "GEMINI_API_KEY=sua_chave_aqui" > .env
 ```
 
-## 2. Preparar ambiente Python
+## 📊 Como Funciona
+
+**Classificação hierárquica em 3 níveis + verificação:**
+
+1. **Call 1:** Filtra 6 categorias SLR
+2. **Call 2:** Filtra subcategorias das categorias relevantes
+3. **Call 3:** Identifica patterns das subcategorias relevantes
+4. **Stage 2:** Verifica precisão de cada candidato (sempre executado)
+
+**Early stopping:** 79% das issues param no Call 1 (economia de tokens!)
+
+## 📁 Saída
+
+```
+results/
+  <nome>_<timestamp>_stage1.csv       # Candidatos (Stage 1)
+  <nome>_<timestamp>_stage2.csv       # Verificados (Stage 2) ← Resultado final
+  <nome>_<timestamp>_stage1_raw.jsonl # Respostas brutas
+  <nome>_<timestamp>_stage2_raw.jsonl # Respostas brutas Stage 2
+```
+
+**Use sempre:** `*_stage2.csv` (resultado final com precisão 100%)
+
+## 📖 Argumentos Opcionais
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+--limit N              # Processar apenas N issues
+--model MODELO         # Modelo LLM (default: gemini-3.6-flash)
+--temperature T        # Temperatura 0-1 (default: 0.3)
+--output DIR           # Diretório de saída (default: results)
 ```
 
-## 3. Configurar chave da API Gemini
+## 💰 Custos
 
-Defina apenas uma variável (`GEMINI_API_KEY` ou `GOOGLE_API_KEY`).
+**200 issues:** ~$0.02 USD (Gemini Flash)
+
+Early stopping economiza ~80% em issues irrelevantes.
+
+## 📚 Documentação Técnica
+
+Ver `PIPELINE_DOCUMENTATION.md` para detalhes completos.
+
+## 🎯 Exemplo Completo
 
 ```bash
-export GEMINI_API_KEY="SUA_CHAVE_AQUI"
+# 1. Preparar ambiente
+pip install google-generativeai pandas
+echo "GEMINI_API_KEY=..." > .env
+
+# 2. Classificar
+python3 classify.py data/web3_all_issues.csv
+
+# 3. Ver resultados finais
+head results/*_stage2.csv
 ```
 
-Verificação rápida:
+## 📦 Estrutura do Projeto
 
-```bash
-python -c 'import os; print("OK" if os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") else "MISSING")'
+```
+classify.py                           # Pipeline principal
+utils.py                              # Funções auxiliares
+prompts.json                          # Instruções LLM
+blockchain_patterns_keywords_v3.csv   # Catálogo (82 patterns)
+data/taxonomy/                        # Taxonomia hierárquica
 ```
 
-## 4. Rodar testes
+## ✨ Características
 
-Neste repositório, prefira rodar com `PYTHONPATH=.` para evitar problemas de import.
+- ✅ **Simples:** 1 comando, sem configuração complexa
+- ✅ **Econômico:** Early stopping + gating hierárquico
+- ✅ **Robusto:** Checkpoint automático (retoma se interromper)
+- ✅ **Preciso:** Stage 2 sempre ativo (100% precision)
 
-```bash
-PYTHONPATH=. .venv/bin/pytest -q
-```
+---
 
-Teste de integração (usa API real):
-
-```bash
-PYTHONPATH=. .venv/bin/python run_integration_tests.py
-```
-
-## 5. Validar e normalizar um CSV de entrada
-
-```bash
-PYTHONPATH=. .venv/bin/python run_pipeline.py validate \
-  --input data/smoke/smoke_annotation_sample.csv \
-  --patterns blockchain_patterns_keywords_v3.csv \
-  --report-dir outputs/validation/smoke
-```
-
-Saídas dessa etapa vão para `outputs/validation/smoke/`.
-
-## 6. Rodar pipeline
-
-### 6.1 Dry-run (sem chamadas de API)
-
-```bash
-PYTHONPATH=. .venv/bin/python run_pipeline.py run \
-  --input data/smoke/smoke_annotation_sample.csv \
-  --patterns blockchain_patterns_keywords_v3.csv \
-  --mode dry-run \
-  --run-id smoke_dry_run
-```
-
-### 6.2 Execução real (sync)
-
-```bash
-PYTHONPATH=. .venv/bin/python run_pipeline.py run \
-  --input data/pilot/pilot_annotation_sample.csv \
-  --patterns blockchain_patterns_keywords_v3.csv \
-  --mode sync \
-  --limit 200 \
-  --output-dir outputs/runs/pilot_gemini_user \
-  --run-id pilot_sample_run
-```
-
-### 6.3 Execução real (batch)
-
-```bash
-PYTHONPATH=. .venv/bin/python run_pipeline.py run \
-  --input data/pilot/pilot_annotation_sample.csv \
-  --patterns blockchain_patterns_keywords_v3.csv \
-  --mode batch \
-  --output-dir outputs/runs \
-  --run-id pilot_batch_run
-```
-
-## 7. Avaliar contra anotações humanas
-
-```bash
-PYTHONPATH=. .venv/bin/python evaluate_pipeline.py \
-  --human-issues data/human/human_issues_adjudicated.csv \
-  --human-pairs data/human/human_pairs_adjudicated.csv \
-  --stage1 outputs/runs/pilot_gemini_user/pilot_sample_run/stage1_results.csv \
-  --stage2 outputs/runs/pilot_gemini_user/pilot_sample_run/stage2_results.csv \
-  --patterns blockchain_patterns_keywords_v3.csv \
-  --output-dir outputs/evaluation/smoke
-```
-
-## 8. Estrutura de saída por execução
-
-Cada run cria uma pasta `outputs/runs/<run_id>/` com artefatos como:
-
-- `input_raw_snapshot.csv`
-- `input_clean_snapshot.csv`
-- `normalization_report.json`
-- `normalization_changes.csv`
-- `request_manifest.json`
-- `run_metadata.json`
-- `stage1_raw.jsonl`
-- `stage1_results.csv`
-- `stage2_pair_manifest.json`
-- `stage2_raw.jsonl`
-- `stage2_results.csv`
-- `issue_results.csv`
-- `run_summary.json`
-
-## 9. Parâmetros úteis
-
-Ajuda completa:
-
-```bash
-PYTHONPATH=. .venv/bin/python run_pipeline.py run --help
-```
-
-Flags comuns:
-
-- `--limit`: limita número de registros
-- `--run-id`: nome da execução
-- `--output-dir`: diretório base dos resultados
-- `--overwrite`: permite reutilizar diretório já existente
-- `--stage1-model`, `--stage2-model`
-- `--temperature`, `--seed`
-- `--stage1-thinking-level`, `--stage2-thinking-level`
-
-## 10. Referências rápidas
-
-- Arquitetura: `docs/ARCHITECTURE.md`
-- Contratos Stage 1/2: `docs/PIPELINE_STAGE1_STAGE2.md`
-- Testes de integração: `INTEGRATION_TESTS_README.md`
-- Documentação completa do projeto: `docs/PROJECT_DOCUMENTATION.md`
+**Pronto para usar!** 🚀

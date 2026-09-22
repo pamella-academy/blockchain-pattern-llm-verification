@@ -115,4 +115,10 @@ build/
 .DS_Store
 Thumbs.db
 .vscode-server/
-.vscode-remote/
+.vscode-remote/node_modules/
+.venv/
+__pycache__/
+.DS_Store
+*.pyc
+dist/
+build/

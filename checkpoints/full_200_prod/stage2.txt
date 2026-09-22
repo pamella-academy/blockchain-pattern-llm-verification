@@ -1,0 +1,10 @@
+stage2_solana-labs_solana-program-library_2003_X-confirmation
+stage2_INFURA_infura_81_Off-chain data storage
+stage2_MoralisWeb3_react-moralis_142_Dual Resolution
+stage2_ProjectOpenSea_opensea-js_236_X-confirmation
+stage2_hyperledger_besu_671_Mortal
+stage2_ipfs_ipfs-companion_485_Off-chain data storage
+stage2_ipfs_kubo_1376_Delegated Transactions
+stage2_paritytech_polkadot-sdk_4745_State initialization
+stage2_solana-labs_solana_5681_Reverse Oracle
+stage2_matter-labs_zksync_215_X-confirmation

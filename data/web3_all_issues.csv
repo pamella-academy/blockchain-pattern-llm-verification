@@ -1,0 +1,3839 @@
+repo,number,type,title,body
+ethereum/pm,867,Issue,Execution Layer Meeting 171,"### Meeting Info
+* [Sept 28, 2023, 14:00-15:30 UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/sep-28-2023/2pm)
+* Youtube Stream: https://youtube.com/live/CPt3f3ughFM
+* Zoom: shared on `#allcoredevs` Discord channel shortly before the call 
+* [Ethereum Protocol Calls Calendar subscription](https://calendar.google.com/calendar/u/0?cid=Y191cGFvZm9uZzhtZ3JtcmtlZ243aWM3aGs1c0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
+
+### Agenda
+
+* Dencun Updates
+    * [devnet-9](https://notes.ethereum.org/@ethpandaops/dencun-devnet-9)
+    * 4788 audits review
+        * [Chainsecurity](https://chainsecurity.com/security-audit/eip-4788-contract/)
+        * [Trail of Bits](https://github.com/ethereum/pm/files/12749877/Ethereum.Foundation.EIP-4788.Smart.Contract.Summary.Report.pdf)
+        * Dedaub
+* Holesky launch 
+* [EIP-7503](https://eips.ethereum.org/EIPS/eip-7503) overview 
+* Post-Verkle SELFDESTRUCT behavior"
+solana-labs/solana-program-library,2003,Pull Request,we added a secondary oracle and functionality to deposit asset + ctoken in same instruction,cc. @jordansexton
+web3swift-team/web3swift,103,Issue,Support ST-20,"ST-20 token is an Ethereum-based token implemented on top of the ERC-20 protocol that adds the ability for tokens to control transfers based on specific rules. 
+Its description: https://github.com/PolymathNetwork/polymath-core.
+Look at how there are implemented ERC-20 and ERC-721 in https://github.com/matterinc/web3swift/tree/develop/web3swift/PrecompiledContracts."
+crytic/slither,117,Pull Request,Refactor reentrancy detector into three variants,"The reentrancy detector is split into three variants to facilitate the triage of results.
+- `reentrancy-eth`: theft of ether and read before writing (high severity)
+- `reentrancy-no-eth`: no theft of ether and read before writing (medium severity)
+- `reentrancy-benign`: no read before writing (low severity)
+
+The read before writing heuristic allows triaging benign reentrancies, where the exploitation would act as a double call."
+Uniswap/v3-sdk,141,Issue,"What is the significance of ""POOL_INIT_CODE_HASH"" ?","In the file ""v3-sdk/src/constants.ts"" and line number 5, what is the importance of ""POOL_INIT_CODE_HASH""?"
+ethereum/consensus-specs,44,Pull Request,Fix `recent_block_hashes`,"# Issue
+There has been a known bug in which `ActiveState.recent_block_hashes` would not hold the requisite block hashes to validate all potential attestations when it came time during a state recalc. This was due to the list of hashes always being truncated to fit the `2 * CYCLE_LENGTH` requirement even though an attestation could be from longer than that ago when considering large slot skips.
+
+# Proposed solution
+I propose that we only append to `recent_block_hashes` until the end of a state recalc, during which we remove CYCLE_LENGTH hashes. In the normal case, the length of `recent_block_hashes` will range between `2 * CYCLE_LENGTH` and `3 * CYCLE_LENGTH`. The length of `recent_block_hashes` might exceed `3 * CYCLE_LENGTH` temporarily during block processing/state recalc, but will always be trimmed down to size at the end.
+
+EDIT: this also allows the `get_block_hash` function/`active_state.recent_block_hashes` to be more usable for during reward calculations. The current spec required using extra DB/local support for tracking hashes."
+ipfs/public-gateway-checker,452,Issue,"Add opt-in ""online"" + latency check on the client side","Support to #442, we want to get rid of the ""red message of death"" that shows on a user's browser when the page starts calling gateways that might have been flagged with malicious content.
+
+We'll generate _most_ of the dashboard on the server side, but the liveness of a gateway and the latency with the client has to be computed locally. We'll make this feature opt-in.
+
+In the dashboard, we'll
+
+- [ ] add a button to let the user run a ""ping"" one or all gateways (opt-in, client-side)
+- [ ] render the liveness & delta time icon once they are computed"
+paritytech/substrate,900,Pull Request,Remove the packet ID system,"This removes the packet ID system from the networking, thereby removing one byte of data from every packet.
+
+This is a breaking change to the network, so validators should all be updated together."
+trustwallet/assets,17741,Pull Request,Add Pop (ERC20),"Adding info for ERC20 token 'Pop'.
+
+
+
+PR created by <a href=""https://assets.trustwallet.com"">TW Assets Management</a>"
+OpenZeppelin/openzeppelin-contracts,3735,Issue,EIP-4907 support,"**🧐 Motivation**
+<!-- Is your feature request related to a specific problem? Is it just a crazy idea? Tell us about it! -->
+
+There is a number of games with gene sequences mechanism like CryptoKitties, DeRace, and Axie. Imagine I have a Kitty with rare genes and I want to breed it with others for profit. There is no easy way of doing so because all games have different interfaces and thus It is difficult for exchanges to implement lend/borrow mechanics. ERC4907 will standardize the way how it is done without implementing a flash-borrower and magic tricks
+
+**📝 Details**
+<!-- Please describe your feature request in detail. -->
+Here is ready to use implementation
+https://thirdweb.com/doubledev.eth/ERC4907
+
+<!-- Make sure that you have reviewed the OpenZeppelin Contracts Contributor Guidelines. -->
+<!-- https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/CONTRIBUTING.md -->"
+foundry-rs/foundry,8015,Issue,expectCall started counting calls differently (and probably wrongly),"### Component
+
+Forge
+
+### Have you ensured that all of these are up to date?
+
+- [X] Foundry
+- [X] Foundryup
+
+### What version of Foundry are you on?
+
+forge 0.2.0 (5494c33 2024-05-30T00:18:25.357590022Z)
+
+### What command(s) is the bug in?
+
+_No response_
+
+### Operating System
+
+macOS (Apple Silicon)
+
+### Describe the bug
+
+On this commit: 299902e34d32c4ea77bf2c8b9b13c68f45113f13 expectCall changed behaviour and started showing more calls than before in some cases (and less calls than before in other cases).
+
+Here are a couple of cases:
+
+1. Expecting a call to MockContract::initialize - the call is done (see screenshot for trace), but expectCall shows 0 and fails the test:
+```
+        bytes memory data = abi.encodeCall(MockContract.initialize, (address(0xdeadbeef)));
+
+        vm.expectCall(address(hubAsProxy), abi.encodeCall(hubAsProxy.upgradeToAndCall, (hubImplV2, data)));
+        vm.expectCall(address(hubImplV2), data);
+        vm.prank(controllerContract);
+        proxyAdminContract.proxy_upgradeAndCall(hubImplV2, data);
+```
+<img width=""1164"" alt=""image"" src=""https://github.com/foundry-rs/foundry/assets/5636644/27e6fa72-29dd-40e3-b2e4-bef9b392fc3c"">
+
+
+
+
+
+2. Expecting a single call to LensHub::getContentURI - but it goes through the Proxy and then to the PublicationLib library - and counts all these as 3 calls for some reason
+```
+    function testTokenURI() public {
+        vm.expectCall(address(hub), abi.encodeCall(hub.getContentURI, (defaultAccount.profileId, defaultPubId)), 1);
+        collectNFT.tokenURI(firstCollectTokenId);
+    }
+```
+<img width=""1168"" alt=""image"" src=""https://github.com/foundry-rs/foundry/assets/5636644/f95f7340-0e22-4421-aa6f-cb4e9350abc8"">
+
+While (2) is unpleasant, but manageable by removing the count, (1) is a PITA and breaks the test in a way I cannot fix unless I remove the expectCall."
+graphprotocol/graph-node,3373,Pull Request,Ethereum Transaction Receipts in Event Handlers,"This PR allows Ethereum event handlers to access the receipt for the transaction which emitted it.
+
+To support this, we introduce:
+- a new type hierarchy to the runtime 
+- a new `specVersion: 0.0.6`
+- a new `apiVersion: 0.0.7`
+
+
+#### 1. Usage in Mappings
+
+An event handler will receive an `Event` containing a receipt whenever it is declared in the subgraph manifest with the new `receipt: true` key, which is optional and defaults to false.
+
+```
+eventHandlers:
+  - event: NewGravatar(uint256,address,string,string)
+    handler: handleNewGravatar
+    receipt: true
+```
+Inside the handler function, the receipt can be accessed in the `Event.receipt` field.
+When the `receipt` key is set to `false` or omitted in the manifest, a `null` value will be returned instead.
+
+#### 2. New runtime data types
+
+_|Type|Description
+--- | --- | ---
+A|`AscEthereumEventWithReceipt`| Contains all data for a `Event` plus a non-nullable `receipt` field, containing **[B]**
+B| `AscEthereumTransactionReceipt`| A receipt for the transaction that emitted this event, which contains a `logs` field with an array of **[C]**, containing all the logs for the associated transaction.
+C| `AscEthereumLog`| A log from an event emitted within the transaction.
+
+Depending on the subgraph manifest configuration, the runtime will receive either an `AscEthereumEvent` or an `AscEthereumEventWithReceipt`.
+
+#### 3. Receipt Ingestion
+
+Transaction receipts will be collected inside the `blocks_with_triggers` function (which is used by `PoolingBlockStream`) only when an `EthereumLogFilter` requires them.
+
+#### 4. Affected Structs and Enums
+
+The following items were updated with optional fields to accommodate data for receipt themselves and their requirement flags :
+ - `MappingEventHandler`got a new `receipt: bool` field which defaults to false when deserializing, to account for omissions in the subgraph manifest.
+ - `EthereumLogFilter`: its inner Graph data structure was updated so its edges represent the requirement of a receipt. The original `HashSet<EventSignature>` of wildcard events was also updated to a `HashMap<EventSignature, bool>` to reflect that same aspect.
+ - `EthereumTrigger::Log` variant got a second `Option<web3::TransactionReceipt>` field
+ - `MappingTrigger::Log` variant got a new `receipt: Option<web3::TransactionReceipt>` field
+
+#### Todo:
+
+- [X] validations for the new `apiVersion`
+- [X] tests for `EthereumLogFilter`
+- [X] add a retry strategy to the `get_transaction_receipts_for_transaction_hashes` function
+- [x] `graph-ts` and `graph-cli` released _(see ""Dependencies"" below)_
+- [ ] docs
+
+Resolves #3218 
+
+---
+#### Dependencies
+
+This PR depends on:
+- https://github.com/graphprotocol/graph-cli/pull/860
+- https://github.com/graphprotocol/graph-ts/pull/260"
+solana-labs/solana-program-library,3165,Issue,token-swap: Add Oracle or CLOB curve,"#### Problem
+
+On-chain CLOBs like Serum are great and showcase the power of Solana.  Oracles are also really useful.  People also like to trade with AMMs.
+
+#### Solution
+
+Add a hybrid token-swap curve that uses a CLOB or Oracle as a price guide when trading.  More detailed information at https://github.com/solana-labs/solana-program-library/blob/master/token-swap/proposals/DynamicMarketMaking.md"
+AztecProtocol/aztec-packages,2388,Pull Request,"feat: aztec-cli unbox ""really empty box""","provides a completely stripped down box with almost nothing, for full web developers who want control of their stack
+
+<img width=""177"" alt=""image"" src=""https://github.com/AztecProtocol/aztec-packages/assets/142251406/0ca82b26-64ad-40ae-a4cc-d6a27659755f"">
+
+# Checklist:
+Remove the checklist to signal you've completed it. Enable auto-merge if the PR is ready to merge.
+- [ ] If the pull request requires a cryptography review (e.g. cryptographic algorithm implementations) I have added the 'crypto' tag.
+- [ ] I have reviewed my diff in github, line by line and removed unexpected formatting changes, testing logs, or commented-out code.
+- [ ] Every change is related to the PR description.
+- [ ] I have [linked](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) this pull request to relevant issues (if any exist)."
+AztecProtocol/aztec-packages,5038,Issue,fail transaction if we revert in setup or teardown,"Presently, if during public execution of setup or teardown, if the transaction reverts we continue to try to process it. Instead, we need to explode and mark the transaction as failed (like we used to do in all cases before https://github.com/AztecProtocol/aztec-packages/issues/4971)"
+AztecProtocol/aztec-packages,5651,Pull Request,fix: watch less files.,"Some users are running into ""too many watched files"" errors.
+Mainframe has already had its watch limits raised to 1m.
+Think i've identified a few troublesome folders. This PR tells vscode to stop watching so many files.
+You can get an idea of how many files you're watching (on linux) using:
+```
+grep inotify /proc/*/fdinfo/* 2>/dev/null| wc -l 
+```
+
+This took me from 90k to about 10k after restarting vscode server (not sure if i needed to kill the server, but think i did).
+To kill server run in your sysbox (save and quit vscode first):
+```
+pkill -f '.vscode-server'
+```"
+AztecProtocol/aztec-packages,11391,Pull Request,Enhance Nightly Masternet Deploy Workflow: Improved Reliability and Flexibility,"**Description:**
+- Added `workflow_dispatch` to allow manual triggering of the workflow.
+- Changed `cancel-in-progress` to `true` to prevent parallel executions of the same workflow.
+- Set a timeout limit of 10 minutes for the `get-latest-commit` job.
+
+Improved the command for fetching the latest published commit:
+- Added error handling for failed requests to the Docker Registry.
+- Included the `--retry` flag in the curl command for increased reliability.
+- Updated `actions/checkout@v4` with `fetch-depth: 1` to speed up repository checkout.
+- Added a condition to ensure the `get-latest-commit` job completes successfully before deploying.
+
+These changes enhance the stability, reliability, and manageability of the nightly deployment pipeline."
+Consensys/gnark,388,Pull Request,feat: add lookup table,"Adds AS-Waksman permutation network (for internal use only for building gadgets).
+
+We implement a simple append-only lookup table using it. We could probably also to a full RW memory possibly.
+
+Thoughts:
+
+- [ ] right now we use simplified form of RAM, which requires switching also indices and prev-values. If the actual values are smaller (for example when switching the limbs of non-native elements), then we could pack everything into a single variable and use more efficient switching.
+- [ ] otherwise, if we would want to lookup from arrays, we can have more efficient switching if we consider the whole array at once.
+- [ ] it would be rally easy to extend this approach to proper RAM. Maybe should add now?
+- [ ] the entries do not have to be consecutively ordered. Right now we use curr_index-prev_index to indicate if we should compare against current or previous but could use IsZero(curr_index-prev_index). It is only one constraint more.
+
+Actually, all these things seem to be something which could be provided as initialisation options. Maybe makes sense to implement that way?"
+Consensys/gnark,1311,Pull Request,docs: add input packing example,"# Description
+
+Add an example on how to use a hash of the public inputs to optimize for calldata and proof recursion complexity.
+
+## Type of change
+
+
+- [x] This change requires a documentation update
+
+# How has this been tested?
+
+<!-- Please describe the tests that you ran or implemented to verify your changes. Provide instructions so we can reproduce. -->
+
+- [x] Example
+
+# Checklist:
+
+- [x] I have performed a self-review of my code
+- [x] I have commented my code, particularly in hard-to-understand areas
+- [x] I have made corresponding changes to the documentation
+- [x] I have added tests that prove my fix is effective or that my feature works
+- [x] I did not modify files generated from templates
+- [x] `golangci-lint` does not output errors locally
+- [x] New and existing unit tests pass locally with my changes
+- [x] Any dependent changes have been merged and published in downstream modules"
+Consensys/quorum,72,Issue,"Getting 'Failed to start Ledger hub, disabling: libusb: unknown error [code -99]' while running init.sh","#### System information
+
+Geth version: `1.5.9-stable`
+
+OS & Version: OSX
+
+Branch, Commit Hash or Release: `git status`
+
+#### Expected behaviour
+
+[*] Cleaning up temporary data directories
+[*] Configuring node 1
+[*] Configuring node 2 as block maker and voter
+[*] Configuring node 3
+[*] Configuring node 4 as voter
+[*] Configuring node 5 as voter
+[*] Configuring node 6
+[*] Configuring node 7
+
+#### Actual behaviour
+
+[*] Cleaning up temporary data directories
+[*] Configuring node 1
+I0308 12:40:47.339045 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:47.342796 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd1/geth/chaindata
+I0308 12:40:47.364423 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd1/geth/chaindata
+I0308 12:40:47.365311 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd1/geth/chaindata
+I0308 12:40:47.399633 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+[*] Configuring node 2 as block maker and voter
+I0308 12:40:47.467341 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:47.471886 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd2/geth/chaindata
+I0308 12:40:47.494898 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd2/geth/chaindata
+I0308 12:40:47.495900 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd2/geth/chaindata
+I0308 12:40:47.531871 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+[*] Configuring node 3
+I0308 12:40:47.588897 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:47.591326 cmd/utils/flags.go:613] WARNING: No etherbase set and no accounts found as default
+I0308 12:40:47.592437 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd3/geth/chaindata
+I0308 12:40:47.611397 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd3/geth/chaindata
+I0308 12:40:47.612307 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd3/geth/chaindata
+I0308 12:40:47.653402 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+[*] Configuring node 4 as voter
+I0308 12:40:47.718636 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:47.722003 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd4/geth/chaindata
+I0308 12:40:47.743173 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd4/geth/chaindata
+I0308 12:40:47.743996 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd4/geth/chaindata
+I0308 12:40:47.776097 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+[*] Configuring node 5 as voter
+I0308 12:40:47.842876 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:47.844185 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd5/geth/chaindata
+I0308 12:40:47.865765 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd5/geth/chaindata
+I0308 12:40:47.867094 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd5/geth/chaindata
+I0308 12:40:47.902816 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+[*] Configuring node 6
+I0308 12:40:47.961862 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:47.964061 cmd/utils/flags.go:613] WARNING: No etherbase set and no accounts found as default
+I0308 12:40:47.965102 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd6/geth/chaindata
+I0308 12:40:47.990171 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd6/geth/chaindata
+I0308 12:40:47.991111 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd6/geth/chaindata
+I0308 12:40:48.032121 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+[*] Configuring node 7
+I0308 12:40:48.088544 node/config.go:445] Failed to start Ledger hub, disabling: libusb: unknown error [code -99]
+I0308 12:40:48.090904 cmd/utils/flags.go:613] WARNING: No etherbase set and no accounts found as default
+I0308 12:40:48.092105 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd7/geth/chaindata
+I0308 12:40:48.112309 ethdb/database.go:176] closed db:/vagrant/examples/7nodes/qdata/dd7/geth/chaindata
+I0308 12:40:48.113170 ethdb/database.go:83] Allotted 128MB cache and 1024 file handles to /vagrant/examples/7nodes/qdata/dd7/geth/chaindata
+I0308 12:40:48.148037 cmd/geth/chaincmd.go:132] successfully wrote genesis block and/or chain rule set: 8bb911238205c6d5e9841335c9c5aff3dfae4c0f6b0df28100737c2660a15f8d
+
+#### Steps to reproduce the behaviour
+By running init.sh
+#### Backtrace
+
+````
+[backtrace]
+````"
+Consensys/quorum,387,Pull Request,Feature/fix_some_tests,"Fixed test with error `insufficient balance for transfer`.
+It happened because chain id was set to be 1 in config.go.
+Since `v` becomes `38` and tx is regarded as private, recovered address is not the one specified in genesis.
+
+Cherry-picked below commits because `make test` did not run with Go 1.10.
+`go vet` failed for minor issues.
+
+- https://github.com/ethereum/go-ethereum/pull/15783/commits/eaf59f5e5f0b47a363e1971a798886a781c935b7
+- https://github.com/jpmorganchase/quorum/commit/bae67281d67b3e1f57cff993a32e325ea45ccfa9"
+Consensys/quorum,1586,Issue,Cannot sync any new nodes after enabling istanbul fork,"#### System information
+
+Geth version: 1.10.3
+
+OS & Version: Windows/Linux/OSX
+linux kubernetes aws 
+
+#### Expected behaviour
+
+New nodes should successfully sync
+
+#### Actual behaviour
+
+
+This happens in an erc-20 contract creation using openzepplin code in a block before the istanbul fork was enabled.
+
+eg: bad block number `17568` istanbul block was enabled `305900 `
+
+#### Steps to reproduce the behaviour
+
+Start a network without istanbul fork
+Deploy erc-20 contract using latest openzepplin code
+Enabled istanbul fork in a later block
+Try to sync a new node
+
+#### Backtrace
+
+
+````
+########## BAD BLOCK #########
+Chain config: {ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 IsQuorum: true Constantinople: 0 TransactionSizeLimit: 64 MaxCodeSize: 0 Petersburg: 305800 Istanbul: 305900, Muir Glacier: , Berlin:   Catalyst:  YOLO v3:  PrivacyEnhancements:  PrivacyPrecompile:  EnableGasPriceBlock:  Engine: unknown}
+Number: 17568
+Hash: 0xdffeabe5fa9b89c4dc31726e6fc838001bf67523b1d5292a910cd41eaeae7163
+	 0: cumulative: 1816032 gas: 1816032 contract: 0xB93a85945D66FdFf5F925abE649a09f0103a9aC8 status: 1 tx: 0x7c1530a7949b30e9edea8d39f0c86699d2d22359f8f625d2f88a94cb6be8f798 logs: [0xc00629b200 0xc00629b2c0] bloom: 00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000008000000800001000000000000000000000000000000000000020000000000000080000800000000000000000000000010000000400000000000000000000000400000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001000 state: 
+Error: invalid gas used (remote: 1820832 local: 1816032)
+##############################
+````
+
+I should point out that this is on a production environment and the network is currently halted. So any help would be really appreciated!"
+Consensys/teku,8385,Issue,(SPIKE) Acceptance tests using Kurtosis + Assertoor,We want to investigate if we can leverage Kurtosis and Assertoor for our acceptance tests. This ticket is a spike to play around with that setup and see if it is feasible.
+FuelLabs/fuel-connectors,349,Pull Request,ci(changesets): versioning packages,"This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to main, this PR will be updated.
+
+
+# Releases
+## @fuels/react@0.31.3
+
+### Patch Changes
+
+-   [#348](https://github.com/FuelLabs/fuel-connectors/pull/348) [`1ffb4b5`](https://github.com/FuelLabs/fuel-connectors/commit/1ffb4b52191c04a3f94481928382522448518933) Thanks [@luizstacio](https://github.com/luizstacio)! - Fix queryKey to consider 0 as a value for changing cache
+
+## @fuels/connectors@0.31.3
+
+
+
+## @fuel-connectors/bako-safe@0.31.3
+
+
+
+## @fuel-connectors/burner-wallet-connector@0.31.3
+
+
+
+## @fuel-connectors/common@0.31.3
+
+
+
+## @fuel-connectors/evm-connector@0.31.3
+
+
+
+## @fuel-connectors/evm-predicates@0.31.3
+
+
+
+## @fuel-connectors/fuel-development-wallet@0.31.3
+
+
+
+## @fuel-connectors/fuel-wallet@0.31.3
+
+
+
+## @fuel-connectors/fuelet-wallet@0.31.3
+
+
+
+## @fuel-connectors/solana-connector@0.31.3
+
+
+
+## @fuel-connectors/walletconnect-connector@0.31.3"
+FuelLabs/fuel-core,2528,Pull Request,feat(gas_price_service): improve performance of SharedGasPriceAlgo by replacing underlying RwLock with SeqLock,"> [!WARNING]
+> Merging blocked by https://github.com/FuelLabs/fuel-core/pull/2524, please review that first :)
+
+## Linked Issues/PRs
+<!-- List of related issues/PRs -->
+- none
+
+## Description
+<!-- List of detailed changes -->
+
+The `SharedGasPriceAlgo` implementations, `SharedV1Algorithm`, `SharedV0Algorithm` make use of an `Arc<parking_lot::Mutex<A>>`, however, since the internal type used is relatively small, we can make use of `SeqLock` introduced in https://github.com/FuelLabs/fuel-core/pull/2524, as it meets the requirements of using it, i.e -
+1. Small type cheap to copy,
+2. Occasional writes, frequent reads
+
+you might wonder that we might have ""torn reads"" but as long as the data fits in a single cache line we are safe here, and since the size of `AlgorithmV1` is 40 bytes (padding incl), it fits in a 64-byte cache-line, and hence is safe to use with SeqLock
+
+fetching the gas price is a very frequent operation, and although it might be cached by higher layers, we benefit from the SeqLock, as presented in the following benchmark result:
+
+![image](https://github.com/user-attachments/assets/8644b112-68b0-43af-87ce-367ca7231a28)
+
+the baseline for the benchmark was generated using this branch: chore/baseline-shared-gas-price-algo-bench
+
+## Checklist
+- [x] Breaking changes are clearly marked as such in the PR description and changelog
+- [x] New behavior is reflected in tests
+- [x] [The specification](https://github.com/FuelLabs/fuel-specs/) matches the implemented behavior (link update PR if changes are needed)
+
+### Before requesting review
+- [x] I have reviewed the code myself
+- [x] I have created follow-up issues caused by this PR and linked them here
+
+### After merging, notify other teams
+
+[Add or remove entries as needed]
+
+- [ ] [Rust SDK](https://github.com/FuelLabs/fuels-rs/)
+- [ ] [Sway compiler](https://github.com/FuelLabs/sway/)
+- [ ] [Platform documentation](https://github.com/FuelLabs/devrel-requests/issues/new?assignees=&labels=new+request&projects=&template=NEW-REQUEST.yml&title=%5BRequest%5D%3A+) (for out-of-organization contributors, the person merging the PR will do this)
+- [ ] Someone else?"
+FuelLabs/sway,4516,Issue,Add a ci check for gas consumption,"Gas consumption as displayed with the `--verbose` flag is routinely used to detect performance regressions when run on our test suite.
+We should add a CI step to do this check automatically and warn us of those possible regressions"
+FuelLabs/sway,7228,Pull Request,Bump fuel deps,"## Description
+
+Bumps fuel-vm, fuel-core fuels-rs and forc-wallet to latest versions. Upgrades Rust to 2021 edition.
+
+## Checklist
+
+- [x] I have linked to any relevant issues.
+- [x] I have commented my code, particularly in hard-to-understand areas.
+- [x] I have updated the documentation where relevant (API docs, the reference, and the Sway book).
+   - [x] If my change requires substantial documentation changes, I have [requested support from the DevRel team](https://github.com/FuelLabs/devrel-requests/issues/new/choose)
+- [x] I have added tests that prove my fix is effective or that my feature works.
+- [ ] I have added (or requested a maintainer to add) the necessary `Breaking*` or `New Feature` labels where relevant.
+  - I believe this is non-breaking from user code perspective but I'm not too sure about that
+- [x] I have done my best to ensure that my PR adheres to [the Fuel Labs Code Review Standards](https://github.com/FuelLabs/rfcs/blob/master/text/code-standards/external-contributors.md).
+- [x] I have requested a review from the relevant team or maintainers."
+INFURA/infura,81,Issue,IPFS No 'Access-Control-Allow-Origin' header,"I'm getting error: Failed to load https://ipfs.infura.io:5001/api/v0/add?pin=true: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin
+
+This has been working fine in the past"
+MetaMask/contract-metadata,1125,Pull Request,Add Verse Token (ERC20),"Adding the Verse Token:
+
+Token Address: 0x249cA82617eC3DfB2589c4c17ab7EC9765350a18
+Token Name: Verse
+Token Decimals: 18
+Token Symbol: VERSE
+Etherscan: https://etherscan.io/token/0x249ca82617ec3dfb2589c4c17ab7ec9765350a18
+
+Website: https://verse.bitcoin.com/
+Whitepaper: https://www.getverse.com/verse-whitepaper.pdf
+
+Thank you"
+MetaMask/core,309,Pull Request,Add default type and timestamps to approval controller,"1. Replace the internal `NO_TYPE` with a user-specified default type.
+2. Allow `ApprovalController.has` lookups by `type` only, not just `origin` and `type`.
+3. Add `Date.now()` timestamps to approvals.
+4. Rename `ApprovalInfo` interface to `Approval`
+5. Fix a bug in `_validateAddParams` (origin type check too loose)
+
+(**1**) The internal `NO_TYPE` added complexity to the implementation and API for virtually no benefit. This PR replaces this internal type with a user-specified default type. All stored approvals will now have a string `type` associated with them. In addition, (**2**) this PR fixes an oversight with the `ApprovalController.has` method, namely that there was no way to look up pending approvals by `type` only. These changes are breaking.
+
+**3** is because it may be useful to know when requests were created, e.g. for sorting. **4** is because why not, **1** and **2** are already breaking. **5** is because, we're already here."
+MetaMask/core,691,Pull Request,Add NotificationControllerV2,"<!--
+Thanks for your contribution!
+
+Please ensure that any applicable requirements below are satisfied before submitting this pull request. This will help ensure a quick and efficient review cycle.
+-->
+
+**Description**
+
+Added `NotificationControllerV2 `. A new controller for handling _actual_ notifications. The previous version should not be deprecated, but should instead be renamed when this is taken in to use (as it handles another use case).
+
+- ADDED:
+  - Added `NotificationControllerV2
+    - Initial implementation only supports native extensions
+    - Supports rate-limiting by origin
+
+**Checklist**
+
+- [x] Tests are included if applicable
+- [x] Any added code is fully documented
+
+<!--
+**Issue**
+
+Resolves #???
+-->"
+MetaMask/core,1981,Issue,Post-migration cleanup for `@metamask/json-rpc-engine`,"### Tasks
+
+- [x] Update README to reflect new status as a non-root package in core monorepo.
+  - [x] https://github.com/MetaMask/core/pull/1990
+- [x] Add migration target to README dependency graph using the `generate-dependency-graph` build script.
+  - [x] https://github.com/MetaMask/core/pull/1991
+- ~Fix downstream errors that were marked with `@ts-expect-error TODO:` during the migration process.~
+- [x] Manually create tags for untagged release commits.
+  - [x] https://github.com/MetaMask/core/issues/2002
+- [x] Record any changes made to packages during the migration process in their respective CHANGELOGs.
+  - [x] https://github.com/MetaMask/core/pull/2003
+- [x] Use the `yarn create-release-branch` tool to publish a release of core with a new version for the migrated package and any updated downstream packages.
+- [ ] ~Publish typedocs with GitHub Pages.~
+
+### References
+- See [#1551 (comment)](https://github.com/MetaMask/core/issues/1551#issuecomment-1745665740) for context on the migration process.
+- See [#1079 (comment)](https://github.com/MetaMask/core/issues/1079) for context on the migration initiative."
+MetaMask/eth-phishing-detect,6425,Issue,[Legitimate Site Blocked] www.ruckus.studio,"Hey All,
+
+Just installed the MetaMask extension into chrome and it blocked my company site.
+https://www.ruckus.studio/
+
+Can anyone help with this?"
+MetaMask/eth-phishing-detect,8759,Issue,[Legitimate Site Blocked] nftshark.cc,Hello! The site https://nftshark.cc/ is blocked. Could you help us understand what caused the false positive? The site is 100% legitimate so I'm not sure what is happening.
+MetaMask/eth-phishing-detect,13502,Pull Request,Add phishing sites to blocklist - 09/09,"""claims-boredapenft.com"",
+    ""connect-aptos.com"",
+    ""opensea-degods.pages.dev"",
+    ""zoira.online"",
+    ""pre-ico.live"",
+    ""layerzer0.markets"",
+    ""drop-layerzero.network"",
+    ""authweb3wk.gq"",
+    ""detailed-oxidized-calcium.glitch.me"",
+    ""sly-luck-mojoceratops.glitch.me"",
+    ""snow-horn-gym.glitch.me"",
+    ""fluorescent-blush-text.glitch.me"",
+    ""power-universal-seat.glitch.me"",
+    ""shade-festive-glazer.glitch.me"",
+    ""coffee-responsible-gargoyleosaurus.glitch.me"",
+    ""burly-probable-saguaro.glitch.me"",
+    ""lush-whimsical-steed.glitch.me"",
+    ""trackdieselperu.com"",
+    ""regulations-coin-message-base.com"",
+    ""pasteleriamelany.com"",
+    ""mirayaelectricsac.com"",
+    ""tamstrucks.com"",
+    ""michelledoylegoldsmith.com"",
+    ""carroceriaspicosa.com"",
+    ""imcoelecsac.com"",
+    ""hostalolayapuntahermosa.com"",
+    ""multiservicios3l.com"",
+    ""cartoansurperu.com"",
+    ""koveindustrial.com"",
+    ""corporacionnorth.com"",
+    ""pumaipce.com"",
+    ""aspirechristianbooks.com"","
+MetaMask/eth-phishing-detect,159849,Issue,Blocklist removal request,"### Legitimate domains, IPs, IPFS hashes, or IPNS names
+
+https://wolmkt.com.br
+
+### Please explain why this content is legitimate
+
+The website is used for showcasing services and company information only
+
+### Is this a duplicate request?
+
+- [x] I have checked the issues page and confirmed this is not a duplicate request"
+MetaMask/eth-phishing-detect,184576,Issue,Blocklist addition request https://juq.ng/,"### Malicious domains, IPs, IPFS hashes, or IPNS names
+
+https://juq.ng/ new 
+scam jupiter ag
+
+### Please explain why this content is malicious
+
+_No response_
+
+### Is this a duplicate request?
+
+- [x] I have checked the issues page and confirmed this is not a duplicate request"
+MetaMask/metamask-extension,1091,Issue,Transaction errors are not shown,"In our `sendTx` UI action, if the RPC throws an error, like an `insufficient implicit gas` error (easily reproduced by setting a low gas limit from the transaction params), the UI transitions to an empty view, and does not seem to show an error."
+MetaMask/metamask-extension,6105,Issue,web3.eth.defaultAccount still being exposed without enable,"I'm on Metamask 5.3.4, and account addresses are still being injected into every page.
+
+I was under the impression this was fixed in 4.14
+
+<img width=""1495"" alt=""screen shot 2019-02-03 at 3 36 36 pm"" src=""https://user-images.githubusercontent.com/1577353/52182293-add77880-27c9-11e9-87f4-94ae3c16c7d1.png"">"
+MetaMask/metamask-extension,13525,Issue,NFT UX Audit,Sweep through the recently added NFT features to ensure we're ready for release on the UX/UI front.
+MetaMask/metamask-extension,20424,Pull Request,Log before and after each migration run,"## Explanation
+
+In order to get better breadcrumbs in our sentry error reports, we are adding logs to tell us when migrations are starting and when they have successfully completed.
+
+## Manual Testing Steps
+
+- [ ] We could verify this by committing some temporary code to throw and error around the end of the migrations (either during the last migration or just after), and connecting to a personal sentry account, and then creating the scenario where the migrations are run and then verifying that the correct logs show up in sentry breadcrumbs
+
+## Pre-merge author checklist
+
+- [ ] I've clearly explained:
+  - [ ] What problem this PR is solving
+  - [ ] How this problem was solved
+  - [ ] How reviewers can test my changes
+- [ ] Sufficient automated test coverage has been added
+
+## Pre-merge reviewer checklist
+
+- [ ] Manual testing (e.g. pull and build branch, run in browser, test code being changed)
+- [ ] PR is linked to the appropriate GitHub issue
+- [ ] **IF** this PR fixes a bug in the release milestone, add this PR to the release milestone
+
+If further QA is required (e.g. new feature, complex testing steps, large refactor), add the `Extension QA Board` label.
+
+In this case, a QA Engineer approval will be be required."
+MetaMask/metamask-extension,22537,Issue,[Bug]: PPOM - Report false positives leaves the `Block number` empty if transaction failed to be verified,"### Describe the bug
+
+**Problem:** within the Blockaid feature, whenever you try to report a false positive for a `Failed to verify` transaction, we can see how the `Block number` field is always empty in the `Details`
+
+### Expected behavior
+
+- we should display the blocknumber -- the RPC response is correct
+
+
+### Screenshots/Recordings
+
+
+https://github.com/MetaMask/metamask-extension/assets/54408225/45afa639-94b5-46ba-b915-31bd2aa9f54a
+
+
+
+### Steps to reproduce
+
+1. Set a tenderly RPC devnet https://dashboard.tenderly.co/
+2. Add the RPC to the Wallet
+3. Go to the test dapp
+4. Click on the malicious ERC20 transfer
+5. Click on Something does not look right
+6. Check Details -- block number is empty
+
+### Error messages or log output
+
+_No response_
+
+### Version
+
+11.9.0
+
+### Build type
+
+None
+
+### Browser
+
+Chrome
+
+### Operating system
+
+Linux
+
+### Hardware wallet
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Severity
+
+_No response_"
+MetaMask/metamask-extension,25739,Pull Request,fix: caveat mutations for non-EVM accounts,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+
+<!--
+Write a short description of the changes included in this pull request, also include relevant motivation and context. Have in mind the following questions:
+1. What is the reason for the change?
+2. What is the improvement/solution?
+-->
+
+This PR fixes an edge case were the account removal of non EVM accounts is broken if there was an existing EVM dapp permission 
+
+## **Related issues**
+
+Fixes:
+
+## **Manual testing steps**
+
+1. Create BTC account
+2. Switch to evm account
+3. Connect to a dapp
+4. Remove the BTC account successfully. 
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+<!-- [screenshots/recordings] -->
+
+## **Pre-merge author checklist**
+
+- [x] I've followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Extension Coding Standards](https://github.com/MetaMask/metamask-extension/blob/develop/.github/guidelines/CODING_GUIDELINES.md).
+- [x] I've completed the PR template to the best of my ability
+- [x] I’ve included tests if applicable
+- [x] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [x] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-extension/blob/develop/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-extension,28962,Issue,[Bug]: False Positive Phishing Warning for Legitimate Website www.xrp-drop.com,"### Describe the bug
+
+Our legitimate website, https://www.xrp-drop.com/, has been flagged by MetaMask's phishing detection system as deceptive. Visitors are presented with a warning claiming potential risks such as fake versions of MetaMask, secret recovery phrase theft, and malicious transactions.
+
+These claims are incorrect. Our website does not host MetaMask integrations, wallet connections, or any features that could involve phishing attempts. We are a legitimate XRPL project and meme token ($DROP) and are not available on MetaMask. Our operations are limited to Bitrue, Sologenic, Magnetic, Dex Screener & First Ledger.
+
+### Expected behavior
+
+The website should not trigger phishing warnings as it is not involved in any activities outlined in the advisory. Legitimate access to our site should not be impeded by incorrect warnings.
+
+### Screenshots/Recordings
+
+Evidence that we are a legit Crypto token on XRPL.
+
+X: https://x.com/dropcoinxrpl
+
+Telegram: https://t.me/DropXRPL
+
+Coin market cap: https://coinmarketcap.com/currencies/drop/
+
+Bitrue: https://www.bitrue.com/trade/drop_usdt?cn=310425
+
+First Ledger: https://firstledger.net/token/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh/44524F5000000000000000000000000000000000
+
+Magnetic:
+https://xmagnetic.org/dex/DROP+rszenFJoDdiGjyezQc8pME9KWDQH43Tswh_XRP+XRP?network=mainnet
+
+Solo: https://sologenic.org/trade?market=44524F5000000000000000000000000000000000%2BrszenFJoDdiGjyezQc8pME9KWDQH43Tswh%2FXRP
+
+Screenshot attached of error:
+![Screenshot 2024-12-05 at 14 44 50](https://github.com/user-attachments/assets/0081eed6-2ba7-463d-bfc4-ce756815cb81)
+
+Evidence of domain and SSL ownership:
+![Screenshot 2024-12-05 at 14 50 46](https://github.com/user-attachments/assets/8eb8b35b-ce5a-47cd-9f5b-7d8463352e07)
+
+
+
+### Steps to reproduce
+
+1. Navigate to https://www.xrp-drop.com/ with Metamask extension installed.
+2. Observe the phishing warning displayed by MetaMask's detection system.
+
+### Error messages or log output
+
+```shell
+Deceptive site ahead
+MetaMask flagged the site you're trying to visit as potentially deceptive. Attackers may trick you into doing something dangerous. Learn more
+
+Potential threats on https://www.xrp-drop.com/ include:
+
+Fake versions of MetaMask
+Secret Recovery Phrase or password theft
+Malicious transactions resulting in stolen assets
+
+Advisory provided by multiple sources, including Ethereum Phishing Detector, SEAL, ChainPatrol, and PhishFort..
+
+If we're flagging a legitimate website, please report a detection problem.
+
+If you understand the risks and still want to proceed, you can continue to the site.
+```
+
+
+### Detection stage
+
+In production (default)
+
+### Version
+
+12.8.0
+
+### Build type
+
+None
+
+### Browser
+
+Chrome
+
+### Operating system
+
+MacOS
+
+### Hardware wallet
+
+_No response_
+
+### Additional context
+
+Our website focuses exclusively on promoting the $DROP token as a meme token on the XRPL.
+There is no MetaMask integration, no wallet connection, and no attempts to replicate MetaMask or steal user credentials.
+This issue is critical as it impacts the trust and reputation of our project.
+
+### Severity
+
+This issue is highly severe as it directly affects user trust and accessibility to our legitimate website.
+
+We request an urgent review and resolution to remove the false phishing flag. Thank you for your attention to this matter."
+MetaMask/metamask-extension,30553,Issue,"[Bug]: Unable to send tokens on Flow network, Continue button is disabled","### Describe the bug
+
+When attempting to transfer USDC.e or USDF on the Flow network, the` Continue` button remains disabled, preventing users from proceeding with the transaction. 
+
+### Expected behavior
+
+ERC 20 tokens successfully send on Flow
+
+### Screenshots/Recordings
+
+https://github.com/user-attachments/assets/e6350724-176b-4db8-a0bb-1ac9f029d0e2
+
+### Steps to reproduce
+
+1. Connect to Flow network
+2. Send USDC.e or USDF
+
+### Error messages or log output
+
+```shell
+
+```
+
+### Detection stage
+
+In production (default)
+
+### Version
+
+12.12.0
+
+### Build type
+
+None
+
+### Browser
+
+Chrome
+
+### Operating system
+
+MacOS
+
+### Hardware wallet
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Severity
+
+_No response_"
+MetaMask/metamask-extension,31382,Pull Request,fix: flaky test `Switching between account from different networks Create a Solana account and switch to another network`,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+Fixes a race condition when we create a Solana account and immediately switch to Solana Mainnet network. The problem is that the account is not yet loaded when we perform the network switch, making the dialog for ""you need a Solana accoun"" to sometimes appear, and obfuscate the next action make the test fail with the error `ElementClickInterceptedError`:
+
+![Screenshot from 2025-03-28 07-57-49](https://github.com/user-attachments/assets/d637197b-eef0-4f90-ae22-5af20ac48c90)
+
+Failure: https://app.circleci.com/pipelines/github/MetaMask/metamask-extension/134203/workflows/554e280c-2fa9-4dff-8652-0398b8ab80a0/jobs/4697627/tests
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/MetaMask/metamask-extension/pull/31382?quickstart=1)
+
+## **Related issues**
+
+Fixes:
+
+## **Manual testing steps**
+
+1. Check ci run with ff flask enabled: https://app.circleci.com/pipelines/github/MetaMask/metamask-extension/134219/workflows/52539bc9-bc6d-4d18-8fe6-fbdd51f48463/jobs/4697818
+
+![Screenshot from 2025-03-28 08-17-21](https://github.com/user-attachments/assets/d913ad89-2b56-4d34-a35c-310c3c5a7ad2)
+
+
+## **Screenshots/Recordings**
+See dialog for ""you need a Solana account"" obfuscating the home page
+
+![image](https://github.com/user-attachments/assets/77c9edb3-5359-4663-92c9-5a531a7752fc)
+
+
+## **Pre-merge author checklist**
+
+- [x] I've followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Extension Coding Standards](https://github.com/MetaMask/metamask-extension/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [x] I've completed the PR template to the best of my ability
+- [x] I’ve included tests if applicable
+- [x] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [x] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-extension/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,4441,Issue,Cannot press sign button when call sign typed data v4,"**Describe the bug**
+When call _signTypedData function from ethers metamask popup to sign the message shown up, Cancel button is pressable but the Sign button is unpressable. When I delete the field with an array type and then execute again, I can press the Sign button and it returns the transaction hash. I think the problem is due to typed data v4, which supports array.
+**Screenshots**
+_If applicable, add screenshots or links to help explain your problem_
+![image](https://user-images.githubusercontent.com/31586616/171920686-7a918483-735a-4bb0-a1ba-db5916534592.png)
+
+**To Reproduce**
+_Steps to reproduce the behavior_
+1. Call _signTypedData from ethers package or signTypedData from walletconnect package
+2. Popup from Metamask
+
+**Expected behavior**
+A sign button is pressable and returns the transaction hash
+
+**Smartphone (please complete the following information):**
+ - Device: Pixel 4
+ - OS: Android 13
+ - App Version 5.1.1
+ - Framework: React Native
+
+-------------------------------------------------------------
+_to be added after bug submission by internal support / PM_
+**Severity**
+
+
+- How critical is the impact of this bug on a user?
+- Add stats if available on % of customers impacted
+- Is this visible to all users?
+- Is this tech debt?"
+MetaMask/metamask-mobile,11138,Pull Request,feat: remove SECURITY_ALERTS_API_ENABLED flag,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+This PR aims to remove the temporary flag `SECURITY_ALERTS_API_ENABLED`.
+
+<!--
+Write a short description of the changes included in this pull request, also include relevant motivation and context. Have in mind the following questions:
+1. What is the reason for the change?
+2. What is the improvement/solution?
+-->
+
+## **Related issues**
+
+Fixes: https://github.com/MetaMask/mobile-planning/issues/1878
+
+## **Manual testing steps**
+
+1. Go to this test dapp
+2. trigger malicious transfer | malicious permit
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+<!-- [screenshots/recordings] -->
+
+[securty alerts api.webm](https://github.com/user-attachments/assets/3171e3de-e55f-483d-bd98-7fee15864d0f)
+
+
+## **Pre-merge author checklist**
+
+- [x] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [x] I've completed the PR template to the best of my ability
+- [x] I’ve included tests if applicable
+- [x] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [x] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,11455,Pull Request,feat: bootstrap a reset notifications feat,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+
+This PR implements an ability of our users delete they NOTIFICATIONS' storage keys. This means they will delete all notifications history connected with that storage key. Users  can enable Notifications again and so a new storage key will be created.
+
+## **Related issues**
+
+Fixes:
+
+## **Manual testing steps**
+
+1. Go to this page...
+2.
+3.
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+https://github.com/user-attachments/assets/ded1214d-dd30-45af-af8e-db957db65052
+
+<!-- [screenshots/recordings] -->
+
+## **Pre-merge author checklist**
+
+- [x] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [x] I've completed the PR template to the best of my ability
+- [x] I’ve included tests if applicable
+- [x] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [x] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [x] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [x] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,12951,Pull Request,test: add selected payment type for ramps sell e2e,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+
+The sell e2e is failing because no sell quotes were available. I made changes in the e2e to explicitly use a selected  payment type: `debit-credit `
+
+
+## **Related issues**
+
+Fixes:
+
+## **Manual testing steps**
+
+1. Go to this page...
+2.
+3.
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+<!-- [screenshots/recordings] -->
+
+## **Pre-merge author checklist**
+
+- [ ] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [ ] I've completed the PR template to the best of my ability
+- [ ] I’ve included tests if applicable
+- [ ] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [ ] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,13691,Pull Request,test: update bitrise yml to include iOS ramps tests,"## **Description**
+
+Update bitrise yml to include iOS ramps tests in the pipeline and fix deeplink e2e test cases.
+
+## **Related issues**
+
+## **Manual testing steps**
+
+## **Screenshots/Recordings**
+
+### **Before**
+
+### **After**
+
+## **Pre-merge author checklist**
+
+- [✓] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [✓] I've completed the PR template to the best of my ability
+- [✓] I’ve included tests if applicable
+- [ ] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [✓] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,13713,Pull Request,fix: network of the asset when pressed in popular list view,"## **Description**
+
+<!--
+Write a short description of the changes included in this pull request, also include relevant motivation and context. Have in mind the following questions:
+1. What is the reason for the change?
+2. What is the improvement/solution?
+-->
+
+Bug fix of network of the asset in popular list filtered tokens list
+
+## **Related issues**
+
+Fixes:
+
+## **Manual testing steps**
+
+1. Go to this page...
+2.
+3.
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+https://github.com/user-attachments/assets/26cda41b-a898-4f4b-b6c9-cf971aeb295c
+
+
+<!-- [screenshots/recordings] -->
+
+## **Pre-merge author checklist**
+
+- [ ] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [ ] I've completed the PR template to the best of my ability
+- [ ] I’ve included tests if applicable
+- [ ] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [ ] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,16448,Pull Request,test: convert browser page obects to typescript,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+This PR converts browser-related page objects and selectors from JavaScript to TypeScript to improve type safety and maintainability in the E2E testing framework. The changes include:
+
+### Key Changes:
+
+- Converted BrowserView.js to BrowserView.ts with proper TypeScript annotations including return types for all getters and methods
+- Added global Detox type definitions in e2e/types/detox.d.ts for DetoxElement, WebElement, SystemElement, and other common types
+- Migrated selector files to TypeScript with as const assertions and exported type definitions:
+```
+AccountOverview.selectors.ts
+AddBookmarkView.selectors.ts
+BrowserURLBar.selectors.ts
+```
+
+- Added type reference directive (/// <reference path=""../../types/detox.d.ts"" />) to ensure proper type resolution in the E2E test environment
+- Introduced TransactionParams interface for better type safety in transaction-related methods
+
+<!--
+Write a short description of the changes included in this pull request, also include relevant motivation and context. Have in mind the following questions:
+1. What is the reason for the change?
+2. What is the improvement/solution?
+-->
+
+## **Related issues**
+
+Fixes: https://consensyssoftware.atlassian.net/browse/MMQA-378
+
+## **Manual testing steps**
+
+1. Go to this page...
+2.
+3.
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+<!-- [screenshots/recordings] -->
+
+## **Pre-merge author checklist**
+
+- [ ] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [ ] I've completed the PR template to the best of my ability
+- [ ] I’ve included tests if applicable
+- [ ] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [ ] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/metamask-mobile,17295,Pull Request,fix: cp-7.51.0 add missing base notification properties,"## **Description**
+
+During our migration to a centralised source, we missed the base network in our configs.
+I'll create a followup PR to add these missing config fields.
+
+## **Changelog**
+
+<!--
+If this PR is not End-User-Facing and should not show up in the CHANGELOG, you can choose to either:
+1. Write `CHANGELOG entry: null`
+2. Label with `no-changelog`
+
+If this PR is End-User-Facing, please write a short User-Facing description in the past tense like:
+`CHANGELOG entry: Added a new tab for users to see their NFTs`
+`CHANGELOG entry: Fixed a bug that was causing some NFTs to flicker`
+
+(This helps the Release Engineer do their job more quickly and accurately)
+-->
+
+CHANGELOG entry: add missing base network properties
+
+## **Related issues**
+
+Fixes: https://github.com/MetaMask/metamask-mobile/issues/17274
+
+## **Manual testing steps**
+
+1. Enable notifications
+2. Create a base ETH sent/received notification (send the native token between accounts)
+3. Check notifications after refreshing.
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+<!-- [screenshots/recordings] -->
+
+https://www.loom.com/share/c58196388cb04e008f57ed988f038988?sid=4ad95fb3-af6c-4b76-a1d9-c3fe1e98220f
+
+## **Pre-merge author checklist**
+
+- [x] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [x] I've completed the PR template to the best of my ability
+- [x] I’ve included tests if applicable
+- [x] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [x] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+MetaMask/snaps,459,Pull Request,Remove WebAssembly endowment factory,"Node landed `WebAssembly.compileStreaming` and `instantiateStreaming` in https://github.com/nodejs/node/pull/42701 and made it available in Node 18, so we no longer need to exclude these properties from our WebAssembly endowment. This PR therefore removes the WebAssembly endowment factory, which will now be included in whatever form it exists on the execution environment root realm global."
+MoralisWeb3/react-moralis,142,Issue,Add ENS support (useENS hook),"## New Feature Request
+
+### Checklist
+
+- [x] I am not disclosing a [vulnerability](https://github.com/MoralisWeb3/react-moralis/blob/main/SECURITY.md).
+- [x] I have searched through [existing issues](https://github.com/MoralisWeb3/react-moralis/issues?q=is%3Aissue) and the [Moralis Forum](https://forum.moralis.io/).
+
+### Current Limitation
+
+No native ENS support to resolve or reverse resolve `.eth` address to ethereum address, text records (include avatar, email, etc), ipfs/arweave/skynet hash (for websites), user's other cryptocurrency address. There is currently Web3 API to reverse resolve, but I believe with this hook, it will make resolving and reverse resolving ENS address much simpler.
+
+### Feature / Enhancement Description
+
+<!-- What is the concept of the functionality and how should it be implemented? -->
+
+### Example Use Case
+
+1. Resolving `.eth` address to ethereum address, text records, etc. One example of such use case is in Etherscan
+
+![Screenshot from 2022-01-05 18-18-49](https://user-images.githubusercontent.com/48710170/148209434-c91c86eb-0a39-4a6e-8ad4-42e033bc6992.png)
+
+2. Reverse Resolving ethereum address to `.eth` address if there is one to display in dApp
+
+![image](https://user-images.githubusercontent.com/48710170/148209614-768c991a-41cd-4306-b034-4eca3ae8177f.png)
+
+
+### Alternatives / Workarounds
+
+Currently the alternative would be to use third-party library such as [`@ensdomains/ensjs`](https://www.npmjs.com/package/@ensdomains/ensjs) or [`web3.js`](https://www.npmjs.com/package/@ensdomains/ensjs). However, in order to use them, user might need to have deep understanding of how ENS works.
+
+### 3rd Party References
+
+None at the moment."
+NomicFoundation/hardhat,4652,Issue,Add support for library linking in hardhat-viem,"### Describe the feature
+
+The current version of hardhat-viem doesn't support library linking in its `deployContract` and `sendDeploymentTransaction` methods. The API should mirror the approach taken by `hardhat-ethers` for library linking, as outlined [here](https://www.npmjs.com/package/@nomicfoundation/hardhat-ethers#library-linking). A proper error should be displayed if a contract is deployed with an unlinked library.
+
+### Search terms
+
+hardhat-viem viem linking library"
+OpenZeppelin/cairo-contracts,328,Issue,Need `--account-contract` flag when importing `IAccount`,"`IAccount` exopses the `__execute__` function which gets the cairo-compiler to yell and error like this:
+```
+Only account contracts may have a function named ""__execute__"". Use --account-contract flag.
+
+        Failed
+ ```
+
+Unfortunately this means I can't write a contract that includes `IAccount` without adding the `--account-contract` flag (which is plain wrong because I'm NOT writing an account contract but simply interacting with one!).
+
+Not sure OZ can do anything about it, I think we need to address this to the StarkWare team but just putting it out there :)"
+OpenZeppelin/openzeppelin-contracts,722,Issue,"Error encountered, bailing. Network state unknown. Review successful transactions manually. Error: VM Exception while processing transaction: revert","## 🎉 Description
+
+<!-- Briefly describe the issue you are experiencing (or the feature you want to see added to OpenZeppelin). Tell us what you were trying to do and what happened instead. **Remember, this is _not_ a place to ask for help debugging code; for that, we welcome you in the [OpenZeppelin Slack Channel](https://slack.openzeppelin.org/).** -->
+
+- [* ] 🐛 This is a bug report.
+- [ ] 📈 This is a feature request.
+
+<!-- Please check one of the above by placing an x in the box. -->
+
+## 💻 Environment
+
+Next, we need to know what your environment looks like.
+
+- Which version of OpenZeppelin are you using? v1.6.0
+- What network are you deploying to? testrpc? Ganache? Ropsten? testrpc
+- How are you deploying your OpenZeppelin-backed contracts? truffle? Remix? Let us know! truffle
+
+## 📝 Details
+
+Describe the problem you have been experiencing in more detail. Include as much information as you think is relevant. Keep in mind that transactions can fail for many reasons; context is key here.
+
+Error after running cmd below:
+truffle migrate --network development
+
+```
+Using network 'development'.
+
+Running migration: 2_deploy_contracts.js
+1520374082 1522102082 1000 '4000000000000000000000' '0x4b7bebc60d1308b3f1bb15de43e373aecff81092'
+  Deploying LUXCoinCrowdsale...
+  ... 0x207f8d7293e801e139d01789fa9d9877335335ddb021adc3859f19d73dc9b904
+Error encountered, bailing. Network state unknown. Review successful transactions manually.
+Error: VM Exception while processing transaction: revert
+    at Object.InvalidResponse (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:41483:16)
+    at /usr/local/lib/node_modules/truffle/build/cli.bundled.js:330353:36
+    at /usr/local/lib/node_modules/truffle/build/cli.bundled.js:176198:11
+    at /usr/local/lib/node_modules/truffle/build/cli.bundled.js:326008:9
+    at XMLHttpRequest.request.onreadystatechange (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:329052:7)
+    at XMLHttpRequestEventTarget.dispatchEvent (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176427:18)
+    at XMLHttpRequest._setReadyState (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176717:12)
+    at XMLHttpRequest._onHttpResponseEnd (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176872:12)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176832:24)
+    at emitNone (events.js:111:20)
+```
+
+## 🔢 Code To Reproduce Issue [ Good To Have ]
+
+Contract for tokencrowdsale:
+
+https://github.com/tonywangcn/ContractForLUX/blob/master/contracts/LUXCoinCrowdsale.sol
+```
+pragma solidity ^0.4.17;
+
+import './LUXCoin.sol';
+import ""./CappedCrowdsale.sol"";
+
+contract LUXCoinCrowdsale is CappedCrowdsale {
+  function LUXCoinCrowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, uint256 _cap, address _wallet, MintableToken _token) public 
+    CappedCrowdsale(_cap)
+    Crowdsale(_startTime, _endTime, _rate, _wallet, _token)
+  {
+  }
+  function createTokenContract() internal returns (MintableToken) {
+    return new LUXCoin();
+  }
+}
+```
+truffle.js configuration
+
+```
+module.exports = {
+  // See <http://truffleframework.com/docs/advanced/configuration>
+  // to customize your Truffle configuration!
+  networks: {
+    development: {
+      network_id: ""*"",
+      host: ""127.0.0.1"",
+      port: 8545,   // Different than the default below
+      gas: 6712388,
+      gasPrice: 65000000000,
+    }
+  },
+  rpc: {
+    host: ""127.0.0.1"",
+    port: 8545
+  },
+  solc: {
+    optimizer: {
+      enabled: true,
+      runs: 200
+    }
+  }
+
+};
+```
+
+Please remember that with sample code it's easier to reproduce the bug and it's much faster to fix it.
+
+```
+insert short code snippets here
+```
+
+<!-- If your code is larger, consider linking us to a repo illustrating your issue. -->
+
+## 👍 Other Information
+Details for this error:
+Stackoverflow link : https://ethereum.stackexchange.com/questions/38539/error-encountered-bailing-network-state-unknown-review-successful-transaction
+
+<!-- List any other information that is relevant to your issue. Error logs, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc. -->"
+OpenZeppelin/openzeppelin-contracts,4084,Pull Request,Formal verification using Certora,"Replaces #4083 
+
+---
+
+This PR introduces the core tooling for formal verification. The scripts and specs should be copied for the formal-verification branch when they run cleanly.
+
+This include a refactor of the Makefile:
+
+- make apply: copy the contracts folder to certora/patched and apply all patches found in certora/diffs
+- make record: compare the certora/patched folder to contracts and store the diff as patches in certora/diffs
+- there is one diff per source file to improve the discoverability of changes/patches, and to avoid merge conflicts.
+
+The github action runs on all commit on the master and release-v* branches. For other branches (and PR) it must be triggered manually. Maybe we could have a label that turn on the formal verification workflow on a specific PR.
+
+---
+
+This PR currently includes specs for:
+
+- [x] AccessControl
+- [x] ERC20
+  - [x] ERC20Permit
+  - [x] ERC20FlashMint"
+OpenZeppelin/openzeppelin-contracts,5062,Issue,"[{ 	""resource"": ""/D:/NFT/contracts/MyNft.sol"", 	""owner"": ""_generated_diagnostic_collection_name_#0"", 	""code"": ""6275"", 	""severity"": 8, 	""message"": ""Source \\""@openzeppelin/contracts/utils/counters.sol\\"" not found: File import callback not supported"", 	""startLineNumber"": 6, 	""startColumn"": 1, 	""endLineNumber"": 6, 	""endColumn"": 53 }]","<!-- Briefly describe the issue you're experiencing. Tell us what you were trying to do and what happened instead. -->
+
+<!-- Remember, this is not a place to ask for help debugging code. For that, we welcome you in the OpenZeppelin Community Forum: https://forum.openzeppelin.com/. -->
+
+**💻 Environment**
+
+<!-- Tell us what version of OpenZeppelin Contracts you're using, and how you're using it: Hardhat, Remix, etc. -->
+
+**📝 Details**
+
+<!-- Describe the problem you have been experiencing in more detail. Include as much information as you think is relevant. Keep in mind that transactions can fail for many reasons; context is key here. -->
+
+**🔢 Code to reproduce bug**
+
+<!-- We will be able to better help if you provide a minimal example that triggers the bug. -->"
+OpenZeppelin/openzeppelin-sdk,917,Issue,Remove deprecated pages from docsite,"It seems that old pages are still accessible via their URL in the docsite (for instance, [building](https://docs.zeppelinos.org/docs/building.html)), which have completely outdated documentations and are super [confusing to new users](https://forum.zeppelin.solutions/t/could-not-find-zos-lib-contracts-migrations-migratable-sol-from-any-sources-when-following-tutorial/755).
+
+We need to clean them up on every deployment. Consider either fixing the s3sync process, or switching to Netlify directly."
+ProjectOpenSea/opensea-js,236,Issue,You must approve assets for trading before creating an order,"Currently running into a problem where I can't approve an asset for sale.  I am trying to approve sale on behalf of another contract through a proxy call.  The proxy signature seems to be generating correctly and  on etherscan (https://rinkeby.etherscan.io/tx/0xde7ee87487b4b678cc94352bfaf23b42e04abce44d3d2581097d1b9108eb21e7#eventlog) you can see that the correct events are getting fired but when I call publishOrder() to create the listing on openSea it gives me the following error: You must approve assets Hole for trading before creating an order
+
+Here's a link to the asset: https://testnets.opensea.io/assets/0x8cfd4fbb3e30030929bcef43fef4ca2fe45659fc/7"
+ProjectOpenSea/operator-filter-registry,93,Issue,"After setting the creator fees, it failed to sell NFT on Opensea.","I have followed the ReadMe and added the required methods. This is  the verified contract: https://goerli.etherscan.io/address/0x714965eAA0A9c44Fb741aEB690a565471Ba637a0#code
+
+And I have added the contract address as the creator fees receiver in the settings.
+<img width=""775"" alt=""image"" src=""https://user-images.githubusercontent.com/1100727/217154492-49d796eb-d05e-42e7-9e62-b56bbdeee169.png"">
+
+But when I try to list an item for sale, below error happened:
+```
+RRNLRequestError: Relay request for `useHandleBlockchainActionsCreateOrderMutation` failed by the following reasons:
+
+1. [500] [500] Error occurred while processing your request. Please try again later.
+
+Error id: a505e5cba87d419885e84678461b6885
+
+Error id: a505e5cba87d419885e84678461b6885
+   
+                       ^^^
+```
+This is my NFT collection on Opensea: https://testnets.opensea.io/collection/kits-og1sesicwa"
+SyncraDAO/psp-tokenlist,44,Pull Request,Test GH new PR Notification,"# ASCAN Token Submission
+
+## Introduction
+Before submitting this PR, ensure you have followed all the requirements below and filled out all necessary details about your token.
+
+## Checklist
+Please review the checklist below and check each item before submitting your token information:
+
+- [ ] I have reviewed the [submission guidelines](https://www.psplist.xyz/why).
+- [ ] The submitted files are in the correct format and fulfill all requirements outlined below.
+
+## Asset Details
+
+### General Information
+- **Token Name**: 
+- **Symbol**: 
+- **Contract Address**: 
+- **Decimals**: 
+
+### Logo
+- [ ] Logo file added to the PR
+- **File Name**: `logo.png`
+- **Size**: 256x256 pixels
+- **File Extension**: png
+
+### Metadata File
+- [ ] Metadata file added to the PR
+- **File Name**: `metadata.json`
+- **File Extension**: json
+
+### Token Information File
+- [ ] Token information file added to the PR
+- **File Name**: `info.json`
+- **File Extension**: json
+
+#### Required Content in `info.json`:
+```json
+{
+  ""name"": """",
+  ""symbol"": """",
+  ""type"": ""PSP22"",
+  ""contractAddress"": """",
+  ""decimals"": 12,
+  ""description"": """",
+  ""website"": """",
+  ""sourceCode"": ""https://github.com/{Github_Username}/{Repository_Name}/path/to/contract"",
+  ""links"": [
+    {
+      ""name"": ""X/Twitter"",
+      ""url"": """"
+    },
+    {
+      ""name"": ""Telegram"",
+      ""url"": """"
+    },
+    {
+      ""name"": ""Discord"",
+      ""url"": """"
+    }
+  ],
+  ""customTags"": [
+    ""burnerWallet"",
+    ""otherTag""
+  ],
+  ""warnings"": [],
+  ""owner"": ""ownerAddress"",
+  ""minter"": ""minterAddress""
+}
+```
+
+#### Note on Custom Tags
+The `customTags` field in the info.json file is optional. This field can be used to include specific tags that describe unique characteristics or features of the token, such as burner wallet. Include custom tags only if they are relevant to the token’s functionality or usage.
+
+#### Note on Owner and Minter
+The owner and minter fields should include the addresses of the accounts that hold these capabilities within the token's smart contract. The owner is typically the account that has administrative rights over the entire contract, while the minter might be an account with the capability to issue new tokens.
+
+### Note on Warnings
+Please do not fill out the warnings field in the info.json file. This field is reserved for use by our auditing team, who will add relevant warnings such as ""Mintable"" or ""Burnable"" after thoroughly reviewing the token's smart contract. This ensures that all warnings are accurate and based on a comprehensive technical assessment."
+TrueFiEng/Waffle,646,Issue,"Incorrect revert behavior on testnet, but not on hardhat development network","I have one contract which calls `burnFrom` in an erc20 contract and a reverts due to insufficient allowance. The revert is not being handle correctly. Getting this output:
+```
+      AssertionError: Expected transaction to be reverted
+      + expected - actual
+
+      -Transaction NOT reverted.
+      +Transaction reverted.
+```
+
+If I can look in the block explorer and see that the transaction is failing: https://explorer.testnet.harmony.one/tx/0xe134e66922a2a9a8f87f774d930b90ef919234a3dcfccab62fd5e0b22a9842c6?activeTab=0
+
+I am using harmony testnet as well as using the zeppelin uups contracts."
+Uniswap/interface,2094,Issue,mixed use of BigNumber and JSBI throughout the interface,"we should just use JSBI since it's a proxy for bigint which can be compiled out [at some point in the future](https://caniuse.com/bigint)
+
+however `BigNumber` is often used because it's the library that comes with ethers
+we should consistently return and use `JSBI` in all hook interfaces, where currently in many cases we are using `BigNumber`"
+Uniswap/v4-core,310,Issue,Inquiry about the storage location and asset management of ERC20 tokens in Uniswap V4,"### Component
+
+Pool Actions (swap, modifyPosition, donate, take, settle, mint)
+
+### Describe the suggested feature and problem it solves.
+
+I have been studying the code for Uniswap V4 and am trying to understand where exactly my ERC20 tokens are stored when I, as a liquidity provider (LP), add liquidity to Uniswap. Additionally, I am curious about where the asset management for ERC20 is implemented.
+
+I have examined parts of the ""v4-core-main"" and ""v4-periphery-main"" codes but I am still uncertain about the storage location for ERC20 tokens and the implementation of asset management. I noticed that the ""PoolManager.sol"" contract seems to handle some interactions with the liquidity pools, but I did not find logic that directly handles ERC20 tokens or asset management within this contract.
+
+I understand that in the complete Uniswap protocol, there is usually a specific contract, such as UniswapV3Pool, that manages liquidity pools, including the locking and unlocking of ERC20 tokens from LPs, as well as potential asset management. However, I did not find this or a similar contract in the code I examined.
+
+I also noticed that there are some Hook contracts, such as ""BaseHook.sol"", in ""v4-periphery-main"". I am wondering if the asset management for ERC20 is implemented in these Hook contracts, or elsewhere?
+
+My question is: In the ""v4-core-main"" and ""v4-periphery-main"" codes that I have provided, where exactly are ERC20 tokens stored? Where is the asset management logic implemented? If possible, could you indicate which file or segment of code I should look at for this logic?
+
+
+
+### Describe the desired implementation.
+
+_No response_
+
+### Describe alternatives.
+
+_No response_
+
+### Additional context.
+
+_No response_"
+Uniswap/v4-core,815,Pull Request,Nonzero delta count capitalization,"## Related Issue
+The slot holding the number of nonzero deltas is derived from keccak256(""Non<ins>z</ins>eroDeltaCount""). Most correctly refer to Non<ins>z</ins>eroDeltaCount, but there are some Non<ins>Z</ins>eroDeltaCount. This was confusing for me and wasted 2 minutes of my life trying to find the source of the red squiggly line.
+
+## Description of changes
+Rename all NonZeroDeltaCount -> NonzeroDeltaCount
+Rename all NonZeroNativeValue -> NonzeroNativeValue"
+Uniswap/web3-react,104,Issue,Ledger connector The method eth_sendTransaction does not exist/is not available,"**Bug Description**
+Hello,
+Many of my users using Ledger have this kind of error when they interact with smart contract:
+`The method eth_sendTransaction does not exist/is not available`
+Has anyone ever had this kind of trouble before?
+I specify that with the other connectors it works.
+I use Infura as RPC provider.
+
+**Reproduction**
+```
+// Helper to make write request to smart contract
+// and dispatch success(after 1 confirmation) or error
+export const sendContract = function* (action, method, methodParams, callParams) {
+  try {
+    const receiptResult = yield new Promise((res, rej) => {
+      action.data.contract.methods[method](...methodParams).send(...callParams)
+        .on('confirmation', (confirmationNumber, receipt) => {
+          if (confirmationNumber) res({ confirmationNumber, receipt });
+        }).on('error', rej);
+    });
+    yield put({ data: receiptResult, type: onSuccess(action.type) });
+  } catch (error) {
+    yield put({ data: error, type: onError(action.type) });
+  }
+};
+```
+https://github.com/vanmoortel/lrc-staking-dapp/blob/master/src/utils/simpleContractFetching.js"
+algorand/go-algorand,3261,Pull Request,ParticipationRegistry - StateProof loading methods,"## Summary
+
+Add ParticipationRegistry methods for setting and retrieving state proof keys. Since they aren't in master yet there is a `type StateProofKey []byte` stub which will need to be updated later.
+ 
+## Test Plan
+
+New unit tests."
+algorand/go-algorand,6374,Pull Request,network: refactor networking mesh maintaining code,"## Summary
+
+This PR refactors meshing code by generalizing and moving `meshThread` code into a new `mesh.go` source file and introducing a new `mesher` abstraction.
+
+By using this abstraction it is now possible to play with mesh creation logic for hybrid network. For example, this PR adds a new `hybridRelayMesh` that does not run p2p part meshing and just uses ws net meshing.
+
+Additionally this PR changes `NewWebsocketNetwork` / `NewP2PNetwork` constructors by introducing `GenesisInfo` in order to keep a number of parameters manageable.
+
+## Test Plan
+
+1. Existing unit tests to confirm the refactoring is OK
+2. Added a new unit test to make sure the `hybridRelayMesh` works as designed"
+blockscout/blockscout,4222,Issue,Mainnet: Send USDC from Matic to Binance wallet,"*Describe your issue here.* I Sent USDC from Metamusk Matic network to Binance ERC20 wallet address. Bainance do not support Matic mainnet and they cannot help me. 
+
+TXID : 0x459f95750f8db9373c641930443c9a35a26f0db54964a47eeb74ca46cfed80a2
+
+It is possible to received this USDC back??
+
+
+
+### Environment
+* Elixir Version: 1.11.3
+* Erlang Version: 23
+* BlockScout Version: v3.7.0-beta
+
+* User Agent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36`
+
+### Steps to reproduce
+
+*Tell us how to reproduce this issue. If possible, push up a branch to your fork with a regression test we can run to reproduce locally.* 
+
+### Expected Behaviour
+
+*Tell us what should happen.*
+
+### Actual Behaviour
+
+*Tell us what happens instead.*"
+blockscout/blockscout,5926,Issue,Ethereum Classic: <Issue Title>,"*Describe your issue here.*
+
+### Environment
+* Elixir Version: 1.13.1
+* Erlang Version: 24
+* BlockScout Version: v4.1.5-beta
+
+* User Agent: `Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1`
+
+### Steps to reproduce
+
+*Tell us how to reproduce this issue. If possible, push up a branch to your fork with a regression test we can run to reproduce locally.*
+
+### Expected Behaviour
+
+*Tell us what should happen.*
+
+### Actual Behaviour
+
+*Tell us what happens instead.*"
+blockscout/blockscout,6711,Issue,Incorrect contract code to address binding,Internal transactions fetcher sometimes misses the internal transactions that creates contract so the indexer doesn't update the corresponding address
+coinbase/coinbase-wallet-sdk,526,Pull Request,Add getAllItems to ScopedLocalStorage,"### _Summary_
+
+We're using ScopedLocalStorage in wallet extension and needed a way to get all items from the scoped storage. I wanted to avoid having to fork this to add this one method, but let me know if this is out of scope (pun intended).
+
+### _How did you test your changes?_
+
+Unit tests, tested change in wallet extension."
+coinbase/onchainkit,1602,Pull Request,fix: fix base URL in docs sidebar links,"**What changed? Why?**
+In previews, docs site sidebar links are pointed at `https://onchainkit.xyz/...`. This PR makes use of Vercel environment variables to update the `baseUrl` correctly in preview environments.
+
+**Notes to reviewers**
+
+**How has it been tested?**"
+embarklabs/embark,1361,Pull Request,fix(@embark/cockpit): Fix cockpit not suggesting console commands,"## NOTE 
+This is a recreation of https://github.com/embark-framework/embark/pull/1346, as somehow this commit got eliminated in a merge, and ultimately, never applied to master.
+
+## Fixes
+This PR fixes a number of issues relating to the cockpit console.
+
+#### Console commands display in cockpit console
+Fix cockpit console not displaying console usage commands that included “<usage option>”. For example “resolve <name>” would not display the “<name>” part, as it was attempting to write this in as HTML (ansi-to-html conversion).
+
+This was fixed by replacing any instances of “<usage>” with “[usage]”. Please note that future usage strings should not contain text wrapped in “<>”.
+
+#### Autosuggestions for “web.eth.” not appearing
+Fix “web3.eth.” not suggesting members of `web3.eth`. This was due to a `Object.keys(web3.eth)` throwing `'getOwnPropertyDescriptor' on proxy: trap returned descriptor for property 'defaultAccount' that is incompatible with the existing property in the proxy target` in the console. Changing `Object.keys` to `Object.getOwnPropertyDescriptor` solved the problem.
+
+#### Fix autosuggestion of known console commands (ie from plugins)
+Fix known console commands (ie from  plugins) not being autosuggested. For example, typing “web”, should autosuggest `webserver start/stop`,  `log webserver on`, and `log webserver off`.
+
+This PR adds in support for registered console commands (from plugins)."
+ethereum/aleth,603,Issue,compilation error,"```
+[ 62%] Building CXX object libethereum/CMakeFiles/ethereum.dir/ExtVM.cpp.o
+make[2]: *** No rule to make target `../libethereum/PastMessage.cpp', needed by `libethereum/CMakeFiles/ethereum.dir/PastMessage.cpp.o'.  Stop.
+make[1]: *** [libethereum/CMakeFiles/ethereum.dir/all] Error 2
+make: *** [all] Error 2
+```"
+ethereum/aleth,3639,Issue,Lower difficulty of the test block chain,"In `TestBlockChain::defaultGenesisBlock()` the genesis block has default genesis difficulty of Ethereum genesis block. It is too big for tests. See bCopyOperator unit test -- can take 10 mins on CIs.
+
+Please lower it to minimum value."
+ethereum/aleth,5551,Issue,Discovery ENR extension implementation plan,"Relevant EIPs:
+- https://eips.ethereum.org/EIPS/eip-778
+- https://eips.ethereum.org/EIPS/eip-868
+
+- [x] `ENR` class implemenation; creating initial ENR for `Host`; saving/loading from `network.rlp` https://github.com/ethereum/aleth/pull/5537
+- [x] ENR Server - add enr-seq field to Pings and Pongs that we send; support answering ENRRequest packets.
+- [x] Updating Host's ENR (when we get new network config from the command line and when we get external IP from the incoming packet)
+- [ ] ENR Client -  change our discovery algorithm to query the nodes for ENR when we see they support it"
+ethereum/consensus-specs,4177,Issue,Prune outdated issues and pull requests,"I believe there are a lot of no-longer-relevant issues & PRs. It would be valuable to review these (in reverse chronological order) and close ones which we don't want.
+
+* https://github.com/ethereum/consensus-specs/issues?q=is%3Aissue%20state%3Aopen%20sort%3Acreated-asc
+* https://github.com/ethereum/consensus-specs/pulls?q=is%3Apr+is%3Aopen+sort%3Acreated-asc"
+ethereum/eth-tester,243,Pull Request,update deprecated decode calls,"### What was wrong?
+`eth_abi.decode_abi` and `eth_abi.decode_single` are deprecated. 
+
+
+### How was it fixed?
+
+Updated to `eth_abi.decode`.
+
+### To-Do:
+
+- [ ] Add entry to the [release notes](https://github.com/ethereum/eth-tester/blob/master/newsfragments/README.md)
+
+#### Cute Animal Picture
+
+![image](https://user-images.githubusercontent.com/5199899/190009826-179de6bc-8ad1-42d8-b7ef-9bfad818cdc9.png)"
+ethereum/ethereum-org-website,5465,Pull Request,Resolving text errors (Chinese dapps page),"<!--- Provide a general summary of your changes in the Title above -->
+
+It should use `之` in between.
+
+<!--- Describe your changes in detail -->
+
+## Related Issue
+
+<!--- This project accepts pull requests related to open issues -->
+<!--- If suggesting a new feature or change, please discuss it in an issue first -->
+<!--- If fixing a bug, there should be an issue describing it with steps to reproduce -->
+<!--- Please link to the issue here: -->"
+ethereum/execution-apis,244,Pull Request,Engine API: narrow down fcU skip conditions,"Considering the following EL block tree:
+
+```
+CA <- A1 <- A2 <- HEAD
+  \\
+   <- B1 <- B2 <- B3  
+```
+
+Current spec allows to skip processing in following cases:
+* `fcU(head: A2.blockHash)`, `fcU(head: A1.blockHash)` -- ancestors of the head of canonical chain
+* `fcU(head: B2.blockHash)` -- ancestor of a tip of another chain (not a leaf)
+
+After this change, the spec disallows to skip `fcU(head: B2.blockHash)`. For instance, when `BeaconBlock(B3)` appeared to be invalid but the `B3` itself is `VALID`, and then the network re-orgs to `BeaconBlock(B2)` the EL must handle such a re-org properly and start a build process if requested.
+
+TODO:
+* [x] add Hive test, https://github.com/txrx-research/TestingTheMerge/pull/6
+
+Thanks to @rjl493456442 for helping to identify this issue.
+
+H/t @djrtwo for the review"
+ethereum/go-ethereum,85,Issue,Runtime crash at go 1.3,"Building with go version go1.3 darwin/amd64
+# gives the following runtime error:
+
+Ihors-MacBook-Air:tmp istar$ ethereum -mine
+2014/06/23 15:54:22 UPnP failed write udp4: i/o timeout
+2014/06/23 15:54:22 [CHAIN] Last known block height #0
+2014/06/23 15:54:22 Last block: 114fffb06203466bbc6351bac2f0c1948ce49c0a9d5ba032155c45318fc7ff85
+2014/06/23 15:54:22 Starting Ethereum v0.5.14
+2014/06/23 15:54:22 Ready and accepting connections
+2014/06/23 15:54:22 [SERV] Retrieving seed nodes
+2014/06/23 15:54:25 Miner started
+2014/06/23 15:54:25 (+) 701d5d37df323b6602dfc1b0a5e5595e3118ea24
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal 0xb code=0x1 addr=0x88 pc=0x409126e]
+
+goroutine 31 [running]:
+runtime.panic(0x45be0a0, 0x4a49c04)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/panic.c:279 +0xf5
+github.com/ethereum/eth-go/ethchain.(_Block).CalcGasLimit(0xc2080a3c20, 0x0, 0x14)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethchain/block.go:162 +0xae
+github.com/ethereum/eth-go/ethminer.(_Miner).mineNewBlock(0xc20804a5a0)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethminer/miner.go:144 +0x267
+github.com/ethereum/eth-go/ethminer.(_Miner).listener(0xc20804a5a0)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethminer/miner.go:117 +0xa2e
+created by github.com/ethereum/eth-go/ethminer.(_Miner).Start
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethminer/miner.go:60 +0x2f
+
+goroutine 16 [syscall]:
+net._C2func_getaddrinfo(0x63007d0, 0x0, 0xc2080e89f0, 0xc20803e190, 0x4017dcc, 0x4a6af10, 0x4c1de00)
+    net/_obj/_cgo_defun.c:52 +0x36
+net.cgoLookupIPCNAME(0x466eb70, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/cgo_unix.go:96 +0x1e1
+net.cgoLookupIP(0x466eb70, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0xc208000b20)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/cgo_unix.go:148 +0x69
+net.lookupIP(0x466eb70, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/lookup_unix.go:64 +0x66
+net.func·024(0x0, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/lookup.go:41 +0x54
+net.(_singleflight).Do(0x4a71600, 0x466eb70, 0xc, 0xc20807d768, 0x0, 0x0, 0x0, 0x0, 0x31)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/singleflight.go:45 +0x232
+net.lookupIPMerge(0x466eb70, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/lookup.go:42 +0xae
+net.LookupIP(0x466eb70, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/lookup.go:31 +0x63
+github.com/ethereum/eth-go.(_Ethereum).Seed(0xc2080460b0)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethereum.go:369 +0xff
+github.com/ethereum/eth-go.(*Ethereum).Start(0xc2080460b0, 0xc2084fe801)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethereum.go:361 +0x1c5
+main.main()
+    /Users/istar/go/src/github.com/ethereum/go-ethereum/ethereum/ethereum.go:189 +0xb9f
+
+goroutine 19 [finalizer wait]:
+runtime.park(0x40258c0, 0x4a6fca8, 0x4a4cec9)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/proc.c:1369 +0x89
+runtime.parkunlock(0x4a6fca8, 0x4a4cec9)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/proc.c:1385 +0x3b
+runfinq()
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/mgc0.c:2644 +0xcf
+runtime.goexit()
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/proc.c:1445
+
+goroutine 17 [syscall]:
+runtime.goexit()
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/proc.c:1445
+
+goroutine 20 [syscall]:
+os/signal.loop()
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/os/signal/signal_unix.go:21 +0x1e
+created by os/signal.init·1
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/os/signal/signal_unix.go:27 +0x32
+
+goroutine 22 [select]:
+github.com/syndtr/goleveldb/leveldb.(*DB).compactionError(0xc20806ad80)
+    /Users/istar/go/src/github.com/syndtr/goleveldb/leveldb/db_compaction.go:117 +0x202
+created by github.com/syndtr/goleveldb/leveldb.openDB
+    /Users/istar/go/src/github.com/syndtr/goleveldb/leveldb/db.go:116 +0x46c
+
+goroutine 23 [select]:
+github.com/syndtr/goleveldb/leveldb.(*DB).compaction(0xc20806ad80)
+    /Users/istar/go/src/github.com/syndtr/goleveldb/leveldb/db_compaction.go:447 +0x77d
+created by github.com/syndtr/goleveldb/leveldb.openDB
+    /Users/istar/go/src/github.com/syndtr/goleveldb/leveldb/db.go:119 +0x4ae
+
+goroutine 24 [select]:
+github.com/syndtr/goleveldb/leveldb.(*DB).writeJournal(0xc20806ad80)
+    /Users/istar/go/src/github.com/syndtr/goleveldb/leveldb/db_write.go:36 +0x14c
+created by github.com/syndtr/goleveldb/leveldb.openDB
+    /Users/istar/go/src/github.com/syndtr/goleveldb/leveldb/db.go:120 +0x4c6
+
+goroutine 26 [select]:
+github.com/ethereum/eth-go/ethchain.(_TxPool).queueHandler(0xc2080045a0)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethchain/transaction_pool.go:204 +0x53b
+created by github.com/ethereum/eth-go/ethchain.(_TxPool).Start
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethchain/transaction_pool.go:277 +0x2f
+
+goroutine 28 [chan receive]:
+main.func·002()
+    /Users/istar/go/src/github.com/ethereum/go-ethereum/ethereum/ethereum.go:27 +0xf0
+created by main.RegisterInterrupt
+    /Users/istar/go/src/github.com/ethereum/go-ethereum/ethereum/ethereum.go:30 +0x63
+
+goroutine 29 [IO wait]:
+net.runtime_pollWait(0x4c2a618, 0x72, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/runtime/netpoll.goc:146 +0x66
+net.(_pollDesc).Wait(0xc20805f5d0, 0x72, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/fd_poll_runtime.go:84 +0x46
+net.(_pollDesc).WaitRead(0xc20805f5d0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/fd_poll_runtime.go:89 +0x42
+net.(_netFD).accept(0xc20805f570, 0x4845d48, 0x0, 0x4c27568, 0x23)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/fd_unix.go:409 +0x343
+net.(_TCPListener).AcceptTCP(0xc20803e188, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/tcpsock_posix.go:234 +0x5d
+net.(_TCPListener).Accept(0xc20803e188, 0x0, 0x0, 0x0, 0x0)
+    /usr/local/Cellar/go/1.3/libexec/src/pkg/net/tcpsock_posix.go:244 +0x4b
+github.com/ethereum/eth-go.(_Ethereum).peerHandler(0xc2080460b0, 0x4c2aa30, 0xc20803e188)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethereum.go:423 +0x30
+created by github.com/ethereum/eth-go.(*Ethereum).Start
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethereum.go:350 +0x2ce
+
+goroutine 30 [chan receive]:
+github.com/ethereum/eth-go.(_Ethereum).ReapDeadPeerHandler(0xc2080460b0)
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethereum.go:332 +0x66
+created by github.com/ethereum/eth-go.(_Ethereum).Start
+    /Users/istar/go/src/github.com/ethereum/eth-go/ethereum.go:358 +0x1a8"
+ethereum/go-ethereum,2237,Issue,"Store blockchain in AppData Local, not AppData Roaming on Windows.is","When connected to a domain, everything in the `Roaming` application data folder will be synchronized to the network on logout.  At the moment, this means the entire blockchain will attempt to be copied over the network on logout.  Most domains setup Roaming quotas to prevent user applications from destroying the network, in this case using Geth will cause the the user to be unable to sync their roaming profile on logout which can have significant negative side effects on other applications that depend on roaming profile syncing.
+
+The correct location for this sort of thing would either be `%PROGRAMDATA%` if you want to allow multiple users on a shared machine share the data (all users will be able to read and write) or `%APPDATA%/Local` if you want only the current user to be able to access the data.  `%PROGRAMDATA%` is a better choice for very large files like this if you have some other security mechanism in place to ensure that file tampering isn't a problem since it means each user doesn't have to download their own entire block chain.  However, if verifying the entire blockchain is not easy/cheap, then `%APPDATA%/Local` is the correct choice.
+
+Perhaps there is some way to have Geth store the blockchain in `%PROGRAMDATA%` and only store some kind of verification hash in `%APPDATA%/Local` that would allow them to quickly identify whether or not the blockchain has been tampered with?
+
+Reference: http://superuser.com/a/150014/401511
+
+Code: https://github.com/ethereum/go-ethereum/blob/bzz/common/path.go#L91"
+ethereum/go-ethereum,23913,Issue,How is the balance calculated,"https://ropsten.etherscan.io/address/0x925914D277CDd3ce2AF08408099712BDBb10DABA
+![image](https://user-images.githubusercontent.com/54056210/141768242-8b620f3d-8252-431c-9afa-ebecc240409f.png)
+
+Why are they not equal"
+ethereum/mist,1179,Issue,Time out,"I get time out in geth.
+
+![geth-time-out](https://cloud.githubusercontent.com/assets/210366/18709533/7e686bb0-800d-11e6-8534-f6e2c36e43e6.PNG)"
+ethereum/trin,451,Pull Request,Remove chain id from history network message,"### What was wrong?
+`chain_id` field has just been removed from history network keys in the latest spec update.
+
+### How was it fixed?
+Removed the chain id field from history network content key type & test values.
+
+### To-Do
+
+[//]: # (Stay ahead of things, add list items here!)
+- [x] Add entry to the [release notes](https://github.com/ethereum/trin/blob/master/newsfragments/README.md) (may forgo for trivial changes)
+- [x] Clean up commit history"
+ethereum/web3.py,3441,Issue,Remove dependence on eth-utils `ValidationError` for `Web3ValidationError`,"All *web3.py* exceptions extend from `Web3Exception`. This will suffice for fine-tuning all exceptions raised within *web3.py*. 
+
+The current approach to the tooling libraries is to internalize all exceptions as internal exception classes to each library, e.g. `Web3Exception`, `ENSException`, `PyGethException`, etc...
+
+One day, if all libraries are caught up, perhaps it will make sense to inherit all of them from *eth-utils* base exception classes for better control over exception handling. For now, let's remove any ambiguity about how they should behave by removing this inheritance from `Web3ValidationError`.
+
+### Tasks
+
+- [ ] Remove ``ValidationError`` from ``Web3ValidationError`` inherited classes [here](https://github.com/ethereum/web3.py/blob/main/web3/exceptions.py#L188).
+- [ ] Update the migration guide to reflect this breaking change."
+ethers-io/ethers.js,970,Pull Request,Wallet Creation Demo,A simple html code to create desired number of wallets offline.
+ethersphere/bee,1362,Pull Request,chequebook: remove erc20 bindings,"this is the third in a series of PRs which remove the use of abigen-generated bindings in favour of just using the few things we need directly building on top of #1361.
+
+This PR
+* removes use of bindings for erc20
+* introduces an erc20 service instead which uses go-ethereum abi directly (this has been extracted as some of its functions are also needed in `storage-incentives` where some code is currently duplicated)"
+ethersphere/bee,2972,Issue,Deprecate gateway mode,"# Task
+
+There is an undocumented gateway mode (`gateway-mode` config variable) which disables certain endpoints. With the Restricted API and the [gateway-proxy](https://github.com/ethersphere/gateway-proxy) released the gateway mode is no longer need to be in Bee. Once the Restricted API is no longer experimental and the gateway-proxy is documented the gateway mode can be removed. In the meanwhile the deprecation process can be started.
+
+## Acceptance criterea
+The `gateway-mode` config variable is removed and all the code that forbids endpoints from being accessed is also removed."
+ethersphere/bee,5116,Pull Request,chore: set beekeeper branch to postage-ttl [test],"### Checklist
+
+- [ ] I have read the [coding guide](https://github.com/ethersphere/bee/blob/master/CODING.md).
+- [ ] My change requires a documentation update, and I have done it.
+- [ ] I have added tests to cover my changes.
+- [ ] I have filled out the description and linked the related issues.
+
+### Description
+<!--Please include a summary of the change and which issue is fixed.-->
+
+### Open API Spec Version Changes (if applicable)
+<!--Please indicate the version changes if applicable (see https://semver.org).-->
+
+#### Motivation and Context (Optional)
+<!--Please include relevant motivation and context.-->
+
+### Related Issue (Optional)
+<!-- List any dependencies that are required for this change.-->
+
+### Screenshots (if appropriate):"
+foundry-rs/foundry,8804,Pull Request,feat(cast/selectors): show function state mutability,"## Motivation
+The new version of EVMole can extract function state mutability with [high accuracy](https://github.com/cdump/evmole?tab=readme-ov-file#function-state-mutability). Let's use it in `cast selectors`
+
+## Solution
+Upgrade EVMole to 0.4.1 and show state mutability in the `cast selectors` output
+
+```
+$ cast selectors $(cast code 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
+0x06fdde03                              view
+0x095ea7b3      address,uint256         nonpayable
+0x18160ddd                              view
+0x23b872dd      address,address,uint256 nonpayable
+0x2e1a7d4d      uint256                 nonpayable
+0x313ce567                              view
+0x70a08231      address                 view
+0x95d89b41                              view
+0xa9059cbb      address,uint256         nonpayable
+0xd0e30db0                              payable
+0xdd62ed3e      address,address         view
+
+$ cast selectors $(cast code 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2) --resolve
+0x06fdde03                              view            name()
+0x095ea7b3      address,uint256         nonpayable      approve(address,uint256)
+0x18160ddd                              view            totalSupply()
+0x23b872dd      address,address,uint256 nonpayable      transferFrom(address,address,uint256)
+0x2e1a7d4d      uint256                 nonpayable      withdraw(uint256)|OwnerTransferV7b711143(uint256)
+0x313ce567                              view            decimals()
+0x70a08231      address                 view            balanceOf(address)
+0x95d89b41                              view            symbol()
+0xa9059cbb      address,uint256         nonpayable      transfer(address,uint256)
+0xd0e30db0                              payable         deposit()
+0xdd62ed3e      address,address         view            allowance(address,address)
+```
+
+According to [CONTRIBUTING.md](https://github.com/foundry-rs/foundry/blob/master/CONTRIBUTING.md#resolving-an-issue), I've used Cargo nightly, Cargo fmt added `;` to some existing return statements in `crates/cast/src/lib.rs`
+```
+$ cargo +nightly version
+cargo 1.83.0-nightly (c1fa840a8 2024-08-29)
+
+$ cargo +nightly fmt -- --check && cargo +nightly clippy --all --all-targets --all-features -- -D warnings && echo OK
+...
+OK
+```"
+foundry-rs/foundry,10589,Pull Request,fix: `vm.chainId` regression in isolation mode on `nightly` post `revm` bump,"<!--
+Thank you for your Pull Request. Please provide a description above and review
+the requirements below.
+
+Bug fixes and new features should include tests.
+
+Contributors guide: https://github.com/foundry-rs/foundry/blob/master/CONTRIBUTING.md
+
+The contributors guide includes instructions for running rustfmt and building the
+documentation.
+-->
+
+<!-- ** Please select ""Allow edits from maintainers"" in the PR Options ** -->
+
+## Motivation
+
+<!--
+Explain the context and why you're making that change. What is the problem
+you're trying to solve? In some cases there is not a problem and this can be
+thought of as being the motivation for your change.
+-->
+
+Closes: https://github.com/foundry-rs/foundry/issues/10586
+
+Previously caused `test-isolate` workflow to fail as reported in https://github.com/foundry-rs/foundry/actions/runs/15174951362/job/42673308312
+
+## Solution
+
+<!--
+Summarize the solution and provide any necessary context needed to understand
+the code change.
+-->
+
+Now applies chain id to the tx
+
+Correctly resets the fields, previous refactor logic applied in `revm` bump was flawed
+
+Previous logic for comparison: https://github.com/foundry-rs/foundry/blob/055b0ea4311254f89d1b3274eddb07bfac288f6c/crates/evm/evm/src/inspectors/stack.rs#L634-L648
+
+Test run performed on this PR confirms it is now working as intended: https://github.com/foundry-rs/foundry/actions/runs/15183854631
+
+## PR Checklist
+
+- [x] Added Tests
+- [ ] Added Documentation
+- [ ] Breaking changes"
+foundry-rs/foundry,11673,Issue,build: `foundry-evm` fails to build with `unresolved import solar_data_structures::sync::Lock`,"Cargo.toml
+```toml
+[package]
+name = ""playground""
+version = ""0.1.0""
+edition = ""2024""
+
+[dependencies]
+foundry-evm = { git = ""https://github.com/foundry-rs/foundry"", tag = ""v1.3.6"" }
+```
+
+Error:
+```
+   Compiling pkg-config v0.3.32
+   Compiling svm-rs-builds v0.5.19
+   Compiling miniz_oxide v0.8.9
+error[E0432]: unresolved import `solar_data_structures::sync::Lock`
+ --> /Users/skran/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solar-interface-0.1.5/src/diagnostics/context.rs:7:45
+  |
+7 | use solar_data_structures::{map::FxHashSet, sync::Lock};
+  |                                             ^^^^^^^^^^ no `Lock` in `sync`
+
+error[E0432]: unresolved import `solar_data_structures::sync::ReadGuard`
+ --> /Users/skran/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solar-interface-0.1.5/src/source_map/mod.rs:7:12
+  |
+7 |     sync::{ReadGuard, RwLock},
+  |            ^^^^^^^^^ no `ReadGuard` in `sync`
+
+   Compiling time v0.3.43
+```"
+foundry-rs/starknet-foundry,231,Issue,Deploying docs from release fails,"Because of the settings of `gh-pages` environment, deployment of docs from releases (tags) fails. We should update these settings or the workflow so the docs build passes."
+foundry-rs/starknet-foundry,2924,Issue,"Add ""Best practises"" section in docs","### Current State
+
+Add section in docs which would cover best practises for snforge and sncast
+
+### Objective
+
+Add ""Best practises"" section
+
+### Additional Context
+
+_No response_"
+graphprotocol/graph-node,1577,Issue,json.fromBytes should not crash subgraph in any case.,"Possible solutions:
+
+-  providing try /catch pattern on it 
+-  return error code or null value if error ...
+at https://github.com/graphprotocol/graph-node/blob/4b46753dc5c539da5dd0b0d6c179f5ea683b0fa3/runtime/wasm/src/host_exports.rs#L348"
+graphprotocol/graph-node,5156,Issue,[Bug] Rollback subgraph automatically if it lands on a fork when connected to Firehose,"### Bug report
+
+The Firehose fork database is kept for a limited amount of time. Graph-node could be more intelligent and do that automatically when the fork can't be resolved.
+
+Forks also don't resolve if you configure multiple firehose providers and one sees the fork and the other does not.
+
+Graph Node needs to throw away its cursor in this case and reverts back to known-final, but we need guidance on how to reliably detect the error message. Having a specific error handling process would be a key requirement (without parsing text messages).
+
+
+### Relevant log output
+
+```Shell
+Jan 22 04:15:32.485 ERRO Unable to connect to endpoint: status: Unknown, message: ""transport error"", details: [], metadata: MetadataMap { headers: {} }: transport error: operation was canceled: connection closed: connection closed, provider: firehose, deployment: QmSjgMiYaD3qPqhDBf3ody1wuwPRuD5iJjdxd3qTuxJ8Dj, sgd: 765, subgraph_id: QmSjgMiYaD3qPqhDBf3ody1wuwPRuD5iJjdxd3qTuxJ8Dj, component: FirehoseBlockStream
+Jan 22 04:16:23.776 ERRO An error occurred while streaming blocks: status: InvalidArgument, message: ""cannot resolve cursor: missing link between blocks 18962442 and #18962520 (48814e410c9313b9cb4562522cb18523c7840d7aba760498f50b61d4ccfcb655): no forked-block file found with ID ending with f50b61d4ccfcb655."", details: [], metadata: MetadataMap { headers: {} }, provider: firehose, deployment: QmSjgMiYaD3qPqhDBf3ody1wuwPRuD5iJjdxd3qTuxJ8Dj, sgd: 765, subgraph_id: QmSjgMiYaD3qPqhDBf3ody1wuwPRuD5iJjdxd3qTuxJ8Dj, component: FirehoseBlockStream
+Jan 22 04:17:13.841 ERRO An error occurred while streaming blocks: status: InvalidArgument, message: ""cannot resolve cursor: missing link between blocks 18962442 and #18962520 (48814e410c9313b9cb4562522cb18523c7840d7aba760498f50b61d4ccfcb655): no forked-block file found with ID ending with f50b61d4ccfcb655."", details: [], metadata: MetadataMap { headers: {} }, provider: firehose, deployment: QmSjgMiYaD3qPqhDBf3ody1wuwPRuD5iJjdxd3qTuxJ8Dj, sgd: 765, subgraph_id: QmSjgMiYaD3qPqhDBf3ody1wuwPRuD5iJjdxd3qTuxJ8Dj, component: FirehoseBlockStream
+```
+
+
+### IPFS hash
+
+_No response_
+
+### Subgraph name or link to explorer
+
+_No response_
+
+### Some information to help us out
+
+- [ ] Tick this box if this bug is caused by a regression found in the latest release.
+- [ ] Tick this box if this bug is specific to the hosted service.
+- [X] I have searched the issue tracker to make sure this issue is not a duplicate.
+
+### OS information
+
+Linux"
+hyperledger/besu,671,Pull Request,[MISC-39] Fix balance for self detruct,"Signed-off-by: Karim TAAM <karim.t2am@gmail.com>
+
+## Fixed Issue(s)
+
+During a self destruct operation when the address and the refundAddress are identical there is an invalid balance. We are adding the balance of an account to itself. This PR solves this issue
+- Fix issue
+- Create a new test
+- Update of tracing tests (after genesis and blocks file modification)
+
+https://github.com/hyperledger/besu/blob/d3778d567c4a85d72ad58b574bc4d57a99baa7a1/ethereum/core/src/main/java/org/hyperledger/besu/ethereum/vm/operations/SelfDestructOperation.java#L58
+
+https://github.com/hyperledger/besu/blob/d3778d567c4a85d72ad58b574bc4d57a99baa7a1/ethereum/api/src/test/resources/org/hyperledger/besu/ethereum/api/jsonrpc/trace/chain-data/blocks.json#L87"
+hyperledger/besu,3888,Pull Request,Allow to backward sync to request headers back to last finalized block if present or genesis,"Signed-off-by: Fabio Di Fabio <fabio.difabio@consensys.net>
+
+<!-- Thanks for sending a pull request! Please check out our contribution guidelines: -->
+<!-- https://github.com/hyperledger/besu/blob/main/CONTRIBUTING.md -->
+
+## PR description
+
+Remove the limit that prevents Backward sync to download headers for block with height less than current head block height, that prevents some reorgs to happen
+
+## Fixed Issue(s)
+<!-- Please link to fixed issue(s) here using format: fixes #<issue number> -->
+<!-- Example: ""fixes #2"" -->
+fixes #3887
+## Documentation
+
+- [x] I thought about documentation and added the `doc-change-required` label to this PR if
+    [updates are required](https://wiki.hyperledger.org/display/BESU/Documentation).
+
+## Changelog
+
+- [x] I thought about the changelog and included a [changelog update if required](https://wiki.hyperledger.org/display/BESU/Changelog)."
+hyperledger/besu,5146,Pull Request,Add an acceptance test to ensure eth_getBlockByNumber and eth_getBlockByHash return withdrawals correctly for shanghai,"Fixes https://github.com/hyperledger/besu/issues/4808
+
+I spent a good amount of time trying to add a test similar to https://github.com/hyperledger/besu/blob/main/ethereum/api/src/integration-test/java/org/hyperledger/besu/ethereum/api/jsonrpc/methods/fork/frontier/EthGetBlockByNumberIntegrationTest.java
+
+...but was ultimately thwarted by some post-merge genesis protocol schedule issues. 
+
+I think this AT-style is actually easier to understand and work with, and also tests the JSON serialization as a bonus."
+hyperledger/besu,6344,Issue,Under heavy load `eth_estimateGas` returns `INTERNAL_ERROR`,"### Description
+Running a moderately high workload using caliper, after ~ 2000 transactions `eth_estimateGas` returns `INTERNAL_ERROR` to the caliper WS client
+
+### Command that was run to start Besu (single validator):
+`besu --data-path=data --genesis-file=../genesis.json --min-gas-price=0  --sync-mode=FULL --rpc-http-enabled --rpc-ws-enabled --rpc-http-apis=DEBUG,TXPOOL,WEB3,ETH,TRACE,QBFT,ADMIN --tx-pool-limit-by-account-percentage=0.20 --rpc-ws-max-active-connections=300 --tx-pool=sequenced -l TRACE`
+
+### Logs
+I've pinned it down to this code block:
+
+```
+final BlockHeader blockHeader = blockHeader();
+if (blockHeader == null) {
+    return errorResponse(requestContext, RpcErrorType.INTERNAL_ERROR);
+}
+```
+
+https://github.com/hyperledger/besu/blob/e0cd89f9b5ca27763ba4b7b2589d486df81a9626/ethereum/api/src/main/java/org/hyperledger/besu/ethereum/api/jsonrpc/internal/methods/EthEstimateGas.java#L53
+
+It was difficult to pin down the offending line using `TRACE` but adding a `new Exception().printStackTrace()` to the `JsonRpcErrorResponse(...)` constructor gave the stack trace:
+
+```
+java.lang.Exception
+        at org.hyperledger.besu.ethereum.api.jsonrpc.internal.response.JsonRpcErrorResponse.<init>(JsonRpcErrorResponse.java:47)
+        at org.hyperledger.besu.ethereum.api.jsonrpc.internal.methods.AbstractEstimateGas.errorResponse(AbstractEstimateGas.java:135)
+        at org.hyperledger.besu.ethereum.api.jsonrpc.internal.methods.AbstractEstimateGas.errorResponse(AbstractEstimateGas.java:130)
+        at org.hyperledger.besu.ethereum.api.jsonrpc.internal.methods.EthEstimateGas.response(EthEstimateGas.java:53)
+        at org.hyperledger.besu.ethereum.api.jsonrpc.execution.BaseJsonRpcProcessor.process(BaseJsonRpcProcessor.java:44)
+        at org.hyperledger.besu.ethereum.api.jsonrpc.execution.JsonRpcExecutor.execute(JsonRpcExecutor.java:92)
+        at org.hyperledger.besu.ethereum.api.jsonrpc.websocket.WebSocketMessageHandler.lambda$handle$1(WebSocketMessageHandler.java:90)
+        at io.vertx.core.impl.ContextBase.lambda$null$0(ContextBase.java:137)
+        at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:264)
+        at io.vertx.core.impl.ContextBase.lambda$executeBlocking$1(ContextBase.java:135)
+        at io.vertx.core.impl.TaskQueue.run(TaskQueue.java:76)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+```
+
+Once I've got a fix in place I might add some additional `TRACE` logs in `EthEstimateGas` wherever an `INTERNAL_ERROR` is returned, to make diagnosing similar issues a little quicker."
+hyperledger/fabric-sdk-node,94,Pull Request,FABN-1453 NodeSDK add discovery test,"Add the discovery based query handler cucumber scenario test back
+in after the rewrite had removed them.
+Update the common utility code to allow for easier testing of results.
+
+Signed-off-by: Bret Harrison <beharrison@nc.rr.com>"
+ipfs/awesome-ipfs,485,Pull Request,Add boxo to tools,"## Pre-submit checklist
+
+- [x] This PR includes only one addition, removal, or edit.
+- [x] I have followed the [Contribution Guidelines](https://github.com/ipfs/awesome-ipfs/blob/master/CONTRIBUTING.md).
+- [x] I reviewed the [IPFS Community Code of Conduct](https://github.com/ipfs/community/blob/master/code-of-conduct.md) to ensure my submission meets the requirements."
+ipfs/helia,287,Issue,Marketing for `BlockBroker` API changes and retrievability improvements,"* https://discuss.ipfs.tech/t/helia-retrievability-improvements/17088
+* Twitter post
+* blog.ipfs.tech post
+* manually modify changelog with these changes (like from https://discuss.ipfs.tech/t/helia-retrievability-improvements/17088)
+* manually modify github-release notes with info (like from https://discuss.ipfs.tech/t/helia-retrievability-improvements/17088)"
+ipfs/ipfs-companion,485,Issue,Storing files of a few megabytes to window.ipfs.files.add hangs Firefox for a minute or more,"I'm trying to store MP3 files in IPFS for https://github.com/interfect/ipfstunes by loading them into `Buffer`s and then `ipfs.files.add`-ing them. Everything works fine using in-page `js-ipfs`, but with IPFS Companion's `window.ipfs`, using either the embedded or external node, storing a song-sized file will hang the Firefox UI and make my window manager prompt me to kill it because it is unresponsive.
+
+I don't seem to have this problem with tiny files."
+ipfs/ipfs-desktop,2125,Pull Request,1177 refactor ctx speed improvements,an extension on https://github.com/ipfs/ipfs-desktop/pull/2114 which fixes #1177; this PR is the result of me investigating various problems with the load times and intermingled dependency graphs between src modules
+ipfs/ipfs-desktop,2788,Issue,[gui error report] Error: Initializing daemon...,"👉️ Please describe what you were doing when this error happened.
+
+**Specifications**
+
+- **OS**: darwin 21.6.0
+- **IPFS Desktop Version**: 0.34.0
+- **Electron Version**: 19.1.9
+- **Chrome Version**: 102.0.5005.167
+
+**Error**
+
+```
+Error: Initializing daemon...
+Kubo version: 0.27.0
+Repo version: 15
+System version: amd64/darwin
+Golang version: go1.21.7
+Found outdated fs-repo, migrations need to be run.
+Looking for suitable migration binaries.
+Need 2 migrations, downloading.
+Downloading migration: fs-repo-13-to-14...
+Downloading migration: fs-repo-14-to-15...
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-14-to-15/versions""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-13-to-14/versions""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-14-to-15/v1.0.1/fs-repo-14-to-15_v1.0.1_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-13-to-14/v1.0.0/fs-repo-13-to-14_v1.0.0_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-13-to-14/v1.0.0/fs-repo-13-to-14_v1.0.0_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-14-to-15/v1.0.1/fs-repo-14-to-15_v1.0.1_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gatew"
+ipfs/ipfs-webui,845,Pull Request,fix: skip window.ipfs,"**blocked on**
+- [x] release ipfs-redux-bundle with https://github.com/ipfs-shipyard/ipfs-redux-bundle/pull/15
+
+Web UI wants all the privileges. With window.ipfs the files view
+gets silo'd to the files added _in this origin_ so it's gonna
+cause confusion.
+
+This PR updates thing to use the new ipfs-redux-bundle and skips
+window.ipfs in the provider checks.
+
+Also adds an identity bundle as we no longer use /id as the
+ipfs connection test, to move us towards supporting the read-only
+api where it is all that is available.
+
+fixes #787 
+fixes #837 
+
+License: MIT
+Signed-off-by: Oli Evans <oli@tableflip.io>"
+ipfs/ipfs-webui,2190,Issue,bug: webui not loading in firefox with cookies and localStorage disabled,"**Describe the bug**
+I try to open webui and browser show me nothing.
+
+My browser Firefox in private mod. All cookies disabled in settings. It is block access to local storage.
+
+In console i see errors:
+
+First error:
+```
+17:08:30.946 Uncaught DOMException: The operation is insecure.
+    value i18nextLocalStorageBackend.js:50
+    e i18nextLocalStorageBackend.js:60
+    value i18nextChainedBackend.js:19
+    value i18nextChainedBackend.js:49
+    n i18next.js:1925
+    value i18next.js:2361
+    61455 i18n.js:19
+    Webpack 4
+        __webpack_require__
+        <anonymous>
+        <anonymous>
+        <anonymous>
+main.20056d59.js:2
+    value i18nextLocalStorageBackend.js:50
+    e i18nextLocalStorageBackend.js:60
+    value i18nextChainedBackend.js:19
+    forEach self-hosted:203
+    value i18nextChainedBackend.js:49
+    n i18next.js:1925
+    value i18next.js:2361
+    61455 i18n.js:19
+    Webpack 4
+        __webpack_require__
+        <анонимный>
+        <анонимный>
+        <анонимный>
+``` 
+
+Error happen here in code (i18nextLocalStorageBackend.js:50):
+```javascript
+function getDefaults() {
+  return {
+    prefix: 'i18next_res_',
+    expirationTime: 7 * 24 * 60 * 60 * 1000,
+    defaultVersion: undefined,
+    versions: {},
+    store: typeof window !== 'undefined' ? window.localStorage : null /* error on this line */
+  };
+}
+```
+
+Second error:
+```
+17:08:30.988 Uncaught (in promise) DOMException: The operation is insecure.
+    n money-clip.m.js:32
+2 main.20056d59.js:2
+```
+
+Error happen here in code (money-clip.m.js:32):
+```javascript
+function createStore(dbName, storeName) {
+    const dbp = idbReady().then(() => {
+        const request = indexedDB.open(dbName); /* error on this line */
+        request.onupgradeneeded = () => request.result.createObjectStore(storeName);
+        return promisifyRequest(request);
+    });
+    return (txMode, callback) => dbp.then((db) => callback(db.transaction(storeName, txMode).objectStore(storeName)));
+}
+```
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Disable all cookies in Firefox 
+2. Open webui in private mod
+
+**Expected behavior**
+Web UI is shown
+
+**Desktop (please complete the following information):**
+ - OS: Windows 7
+ - Browser Firefox
+ - Version 115.5.0esr (64-разрядный)"
+ipfs/ipfs-webui,2348,Pull Request,feat : adds functionality to import and export IPNS keys in the IPFS WebUI,"## Summary
+This PR adds functionality to import and export IPNS keys in the IPFS WebUI.
+
+## Changes
+- Added functions for importing and exporting IPNS keys in `src/bundles/ipns.js`.
+- Updated `IpnsManager` component to include UI elements for importing and exporting IPNS keys in `src/components/ipns-manager/IpnsManager.js`.
+- Added translation strings for ""Import Key"" and ""Export Key"" in `public/locales/en/settings.json`."
+ipfs/js-ipfs,12,Issue,Grunt Install,"The project currently uses Make to automate installation. This hurts portability, since Windows developers would need Cygwin or something similar. Grunt is a much better alternative since Node developers are used to it and it is fully cross-platform (since it's Node-based).
+
+Resolving #11 would eliminate the need for a build system since the project could be installed via NPM."
+ipfs/js-ipfs,2343,Issue,Is there a way to boost up the download speed on js-ipfs browser node?,"<!--
+Thank you for reporting an issue.
+
+This issue tracker is for bugs and issues found within the JavaScript implementation of IPFS.
+If you require more general support please file an issue on our discuss forum. https://discuss.ipfs.io/
+
+Please fill in as much of the template below as you're able.
+
+Version: output of `jsipfs version --all` if using the CLI or `ipfs.version((err, version) => {})` if using the instance.
+Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows). If using in a Browser, please share the browser version as well.
+Subsystem: if known, please specify affected core module name (e.g Bitswap, libp2p, etc).
+
+If possible, please provide code that demonstrates the problem, keeping it as
+simple and free of external dependencies as you are able.
+-->
+
+- **Version**: 
+js-ipfs browser-side version with  _'<script src=""https://unpkg.com/ipfs/dist/index.min.js""></script>'_
+> node.version().then((res)=>console.log(res))
+ {version: ""0.37.0"", repo: 7, commit: """"}  
+
+- **Platform**: 
+Darwin neojuneui-MacBook-Pro-480.local 18.6.0 Darwin Kernel Version 18.6.0: Thu Apr 25 23:16:27 PDT 2019; root:xnu-4903.261.4~2/RELEASE_X86_64 x86_64
+Chrome browser 75.0.3770.142(official build) (64bit)
+
+- **Subsystem**:
+
+<!-- Bug, Feature, Question, Enhancement, Etc -->
+#### Type: Question
+
+
+#### Description: 
+I try to boost up the download speed('[get](https://github.com/ipfs/interface-ipfs-core/blob/master/SPEC/FILES.md#get)') via browser side js-ipfs nodes.
+I tested to 'add' and 'get' big sized video files from browser node to another browser node.
+whether one or more node shares or not, the average 'ipfs.get()' speeds are about 50Kib/s.
+
+I felt this too slow to share some videos more than several hundreds MB size.
+I suspected to use long time to 'retrieve' target file via network like js-ipfs swarm. but now, I think it's just because slow speed to '[get](https://github.com/ipfs/interface-ipfs-core/blob/master/SPEC/FILES.md#get)' itself.
+
+I checked [ipfs.swarm.peers](https://github.com/ipfs/interface-ipfs-core/tree/master/SPEC/SWARM.md#swarmpeers) or peers list at [ipfs.bitswap.stat](https://github.com/ipfs/interface-ipfs-core/blob/master/SPEC/BITSWAP.md#bitswapstat)
+and I was able to find node's id that added the videos. I thought it's like adjacent node in network, so it wouldn't be taken long time to retrieve to contents
+
+For reference, the internet speed of my test environment was not a problem.
+
+```
+<script src=""https://unpkg.com/ipfs/dist/index.min.js""></script>
+...
+
+<script>
+ const node = new Ipfs({
+    repo: 'ipfs-' + Math.random(),
+    config: {
+      Addresses: {
+        Swarm: [
+          '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
+        ]
+      }
+    },
+    relay: {enabled: true, hop: {enabled: true}}
+  })
+
+...
+...
+
+async function getIpfsFromBrowserNode() {
+
+    const validCID = document.getElementById('downloadHashBrowserNode').value
+    ipfsUrl = ""https://ipfs.io/ipfs/"" + validCID;
+
+    $('#get_ipfs_from_browser_node').parent().append(""<br> <span> it's been downloading, please wait... </span>"");
+
+    var start = new Date();
+    console.log(""start download(node): "", start)
+
+    fileMetaInfo = await node.ls(validCID);
+
+    node.get(fileMetaInfo[0].hash, function(err, files) {
+      if (err) {
+        console.log(err);
+        $('#get_ipfs_from_browser_node').parent().append(""<span> fail! </span>"");
+      }
+      downloadedfiles = files;
+      files.forEach((file) => {
+        console.log(""file name: "", fileMetaInfo[0].name)
+        console.log(""file path: "", fileMetaInfo[0].path)
+        //        console.log(file.content.toString('utf8'))
+
+        var type;
+
+        var extension = fileMetaInfo[0].name.split('.')[1];
+        if (typeof(extension) != 'undefined') {
+          if (extension == ""mp4"") {
+            type = 'video/mp4'
+          } else if (extension == ""png"" ||
+            extension == ""jpg"" ||
+            extension == ""jpeg"") {
+            type = 'image/' + extension;
+          } else if (extension == ""txt"") {
+            type = 'text/' + extension;
+          } else {
+            type = 'file/' + extension;
+          }
+
+        }
+
+
+        var blob = new Blob(
+          [file.content], {
+            type: type
+          }
+        );
+        var blobUrl = URL.createObjectURL(blob);
+
+        //var linkToDownload = document.getElementById('linkToDownloadBrowserNode');
+        $('#get_ipfs_from_browser_node').parent().append(""<a>download</a>"");
+
+        $('#get_ipfs_from_browser_node ~ a:last')[0].setAttribute('href', blobUrl);
+        $('#get_ipfs_from_browser_node ~ a:last')[0].innerHTML = 'download';
+        //linkToDownload.download = ""test.mp4""
+        $('#get_ipfs_from_browser_node ~ a:last')[0].download = fileMetaInfo[0].name;
+        var end = new Date();
+        console.log('interval download(node): ', (end - start) / 1000, 'size:', fileMetaInfo[0].size / 1000, 'kb')
+
+      })
+    })
+
+  }
+</script>
+```
+<!--
+This is for you! Please read, and then delete this text before posting it.
+The js-ipfs issues are only for bug reports and directly actionable features.
+
+Read https://github.com/ipfs/community/blob/master/CONTRIBUTING.md#reporting-issues if your issue doesn't fit either of those categories.
+-->"
+ipfs/js-ipfs,2760,Pull Request,fix: block put with CID as string,"resolves https://github.com/ipfs/js-ipfs/issues/2751
+
+Conform to [documented block.put API](https://github.com/ipfs/interface-js-ipfs-core/blob/master/SPEC/BLOCK.md#blockput).
+
+Depends on:
+
+* [x] https://github.com/ipfs/interface-js-ipfs-core/pull/588"
+ipfs/js-ipfs,3504,Issue,JS IPFS has too many security vulnerabilities,"<!--
+Thank you for reporting an issue.
+
+This issue tracker is for bugs found within the JavaScript implementation of IPFS.
+
+If you are asking a question about how to use IPFS, please ask on https://discuss.ipfs.io
+
+Otherwise please fill in as much of the template below as possible.
+-->
+
+- **Version**:
+```
+{
+  version: '0.4.2',
+  repo: 9,
+  commit: '2f526025a3603026553b320e050e57e2ee564562',
+  'interface-ipfs-core': '^0.143.1'
+}
+```
+- **Platform**:
+Linux
+
+- **Subsystem**:
+NPM 
+
+#### Severity:
+Critical
+
+#### Description:
+I created an empty Repository with `npm init` and only installed `npm i --save ipfs`.
+After that, I had 96 vulnerabilities (4 low, 92 high) and only the 4 low ones could be *fixed*
+by `npm audit fix`
+`npm audit` thus gave me [this](https://github.com/ipfs/js-ipfs/files/5861872/audit.txt)
+output.
+
+#### Steps to reproduce the error:
+```bash
+mkdir sampe
+cd sample
+npm init
+npm i --save ipfs
+npm audit
+```"
+ipfs/js-ipfs,4085,Pull Request,fix: update car dependency for CARv2 read support,"4.x adds basic CARv2 read support, so you could `ipfs dag import` a CARv2 with this; also with https://explore.ipld.io/ getting CAR support, this would allow importing and inspection of a CARv2 there.
+
+The breakage was in the return type definition of `CarReader#header()` which I don't believe is touched in js-ipfs, which only cares about `getRoots()` in the header which remains the same."
+ipfs/js-ipfs,4197,Issue,Remove support for deprecated IPNS records v1,"> Part of https://github.com/ipfs/specs/issues/314, corresponding Kubo issue: https://github.com/ipfs/kubo/issues/9240
+
+Support for extensible records (and v2 signature) was added in 2021 (https://github.com/ipfs/js-ipns/pull/121). JS-IPFS is producing and preferring updated v2 IPNS records by default, but if no v2 is found, it will still accept deprecated v1 for backward-compatibility during the transition period.
+
+A year later, we should remove fallback support for validating v1 signatures and ignore them instead."
+ipfs/kubo,460,Issue,dht panic: send on closed channel during FindProvidersAsync,"at fa6e63c702dc3f4214b80c3c44bb84bd354adcbe 
+
+bug discovered through network test: https://build.protocol-dev.com/job/network-test/151/
+
+client log reveals:
+
+```
+11:18:36.331 DEBUG      swarm: peer Qmbtc3 sent message to peer Qmbtc2 (17358) conn.go:200
+11:18:36.192 DEBUG        dht: ERROR worker for: peer Qmbtc2 no response to request query.go:251
+11:18:36.332 DEBUG        dht: completing worker for: peer QmNXuB query.go:231
+panic: runtime error: send on closed channel
+
+goroutine 34606 [running]:
+runtime.panic(0xa29f20, 0xe83e69)
+        /usr/src/go/src/pkg/runtime/panic.c:279 +0xf5
+github.com/jbenet/go-ipfs/routing/dht.func·004(0x7fa5635ad568, 0xc20df40540, 0x7fa5635adfb0, 0xc2082321e0, 0xc2082321e0, 0x0, 0x0)
+        /go/src/github.com/jbenet/go-ipfs/routing/dht/routing.go:180 +0x92a
+github.com/jbenet/go-ipfs/routing/dht.(*dhtQueryRunner).queryPeer(0xc208377a80, 0x7fa5635adfb0, 0xc2082321e0)
+        /go/src/github.com/jbenet/go-ipfs/routing/dht/query.go:248 +0x5b9
+created by github.com/jbenet/go-ipfs/routing/dht.(*dhtQueryRunner).spawnWorkers
+        /go/src/github.com/jbenet/go-ipfs/routing/dht/query.go:209 +0x283
+```"
+ipfs/kubo,1376,Pull Request,swap transport over to spdystream,"Don't merge this. I'm pushing this up for @diasdavid to take a peek at, and for @jbenet to see if he knows why the p2p/test/reconnect tests are failing.
+
+License: MIT
+Signed-off-by: Jeromy jeromyj@gmail.com"
+ipfs/kubo,1505,Pull Request,include hash of resolved object in object stat output,"this way i can do: `ipfs object stat a/b/c/d/e/f/g` and get the hash of `g`. Essentially exposing core.Resolve through the API.
+
+License: MIT
+Signed-off-by: Jeromy jeromyj@gmail.com"
+ipfs/kubo,3430,Issue,"Feature: General cli command for getting ""type"" info about a hash","#### Type: Feature
+
+#### Priority: Impacts Developer Experience
+
+#### Description:
+
+It would be very useful to have a general `ipfs stat <thing>` command or maybe `ipfs info <hash>` or `ipfs object type <hash>` that would tell you, at the very least, what type of object the hash corresponds to (ie. blob, directory, etc.)
+
+## Example
+
+If I do this:
+```bash
+$ ipfs add -w afile.txt
+added <blob-hash> afile.txt
+added <directory-hash> 
+```
+
+I'd like to be able to do something like this:
+```bash
+$ ipfs object type <blob-hash>
+blob
+$ ipfs object type <directory-hash>
+directory
+```
+
+... really I'd be happy with any means of getting ipfs to tell me the object's type. Currently the only way to figure out what type of object a hash represents is to try commands with the hash and inspect the error messages for type mis-matches.
+
+## Can't You use `ipfs object stat`?
+
+It seems like `ipfs object stat` might provide this info but it just returns info like:
+```
+NumLinks: 1
+BlockSize: 66
+LinksSize: 64
+DataSize: 2
+CumulativeSize: 123
+``` 
+
+So you could potentially add type info into the response from this command, but currently `ipfs object stat` isn't returning any type info.
+
+## Why do this?
+
+I'd like to be able to know that `QmQBcXur...` is a blob and `QmWw4vu...` is a directory because different types of objects require different commands to be useful. Given a hash, I need to know its type in order to know what commands to use in order to make sense of it:
+
+I can run
+```bash
+$ ipfs cat <blob-hash> 
+```
+and I can run
+```bash
+ipfs ls <directory-hash>
+```
+but not the other way around - I can't `cat` a directory object nor can I meaningfully `ls` a blob object.
+
+```bash
+$ ipfs cat <directory-hash>
+Error: this dag node is a directory
+```
+and `ipfs ls <blob-hash>` doesn’t return anything at all."
+ipfs/kubo,3869,Pull Request,gateway: use CID as an ETag strong validator,"* Always use the fully resolved CID from api.ResolveNode
+  as the ETag (also for IPNS).
+
+* Format the result as a valid ""Strong Validator""
+  (double quotes around the encoded CID).
+
+Fixes #3868
+
+License: MIT
+Signed-off-by: Remco Bloemen <remco@2π.com>"
+ipfs/kubo,4527,Issue,Weird files created when I try to initialize IPFS.,"<!--
+Output From `ipfs version --all`
+
+If your version is older than *0.4.11* please update
+and re-check if the problem persists.
+-->
+#### Version information: 0.4.13
+
+<!-- Bug, Feature, Enhancement, Etc -->
+#### Type: Weird behavior
+
+<!-- One of following:
+    Critical - System crash, application panic.
+    High - The main functionality of the application does not work, API breakage, repo format breakage, etc.
+    Medium - A non-essential functionality does not work, performance issues, etc.
+    Low - An optional functionality does not work.
+    Very Low - Translation or documentation mistake. Something that really does not matter much but should be noticed for a future release. -->
+#### Severity:
+
+#### Description:
+
+This is 4 files which are created by IPFS each time I run it.
+
+![image](https://user-images.githubusercontent.com/26530975/34409977-67c93812-ebcd-11e7-9831-17fdbb857d14.png)
+
+What kind of virus is this ?
+
+<!--
+This is for you! Please read, and then delete this text before posting it.
+The go-ipfs issues are only for bug reports and directly actionable features.
+Read https://github.com/ipfs/community/blob/master/contributing.md#reporting-issues if your issue doesn't fit either of those categories.
+Read https://github.com/ipfs/go-ipfs/blob/master/docs/github-issue-guide.md if you are not sure how to fill in this issue.
+-->"
+ipfs/kubo,5206,Pull Request,allow multiple concurrent pin fetches,"This commit
+- removes the locking around fetching graphs in recursive pins.
+- splits the function for readability and safer locking/unlocking
+- documents important pinning logic details
+
+This should improve performance significantly for users
+pinning multiple large graphs concurrently.
+
+ipfs-cluster should be able to use this directly without having to
+implement it at a higher level.
+
+pair programmed with @whyrusleeping
+
+cc @hsanjuan @stebalien"
+ipfs/kubo,5749,Issue,windows make install failed,"[[33mget [0m] [install]       QmeFPvhFJGXGiXAc9zunNxZjCaWgYQpcsdwip2NWLcccyw GoEndian[1B
+go install -ldflags=""-X ""github.com/ipfs/go-ipfs"".CurrentCommit=e8d1a1f0c"" ./cmd/ipfsan[1B
+# github.com/ipfs/go-ipfs/plugin/loader
+plugin\\loader\\preload.go:13:16: syntax error: unexpected ], expecting expression
+plugin\\loader\\preload.go:14:25: syntax error: unexpected comma, expecting ]
+plugin\\loader\\preload.go:15:1: syntax error: unexpected plugin, expecting comma or }
+make: *** [cmd/ipfs/Rules.mk:37: cmd/ipfs-install] Error 2
+
+C:\\Users\\NBS\\go\\src\\github.com\\ipfs\\go-ipfs>go version
+go version go1.11.2 windows/amd64
+
+C:\\Users\\NBS\\go\\src\\github.com\\ipfs\\go-ipfs>"
+ipfs/kubo,5920,Pull Request,Fixed and cleaned up TestIpfsStressRead,
+ipfs/kubo,6458,Issue,`ipfs name publish --allow-offline=true` doesn't work when offline,"go-ipfs version: 0.4.21-
+Repo version: 7
+System version: amd64/darwin
+Golang version: go1.12.5
+
+Steps to reproduce (on a computer without internet connection):
+
+1. `ipfs daemon`
+2. `ipfs name publish --key=<name-of-an-existing-key> --allow-offline=true <some-ipfs-path>`
+
+Result:
+```
+Error: failed to find any peer in table
+```
+
+The command (2) succeeds if any of the following conditions hold:
+1. There is an internet connection.
+2. The daemon was started in the presence of an internet connection, which was lost subsequently.
+3. There is no daemon running at all.
+
+I have hesitated between labeling this issue as a bug or as misleading documentation, since the observed behavior could well be intentional, with ""offline"" meaning ""no daemon"" rather than ""no network connection""  (as #4442 suggests). But I don't see a use case where this makes sense.
+
+Note: my own use case for `--allow-offline` is unit tests that I don't want to fail for lack of a network."
+ipfs/kubo,7168,Issue,Support publishing self-records in LAN DHT even when WAN DHT is available.,"As I mentioned in #7109, I am part of @tomeshnet, and we use IPFS on our experimental mesh network nodes. There are some new changes in the upcoming v0.5.0 release that will affect us, that I discussed with @Stebalien and @willscott in that issue, eventually leading me to create this feature request.
+
+> The only question I have now is whether there's a way to disable the setting that means nodes ""will only publish records (provider and IPNS) to the WAN DHT"". In a situation where a node is connected to the Internet and CJDNS, for example, we'd want them to still be publishing records to the LAN (CJDNS).
+> Or more specifically, we'd want them to publish any of their own records to the LAN, but not WAN records that a CJDNS-only node couldn't access.
+> -- [me](https://github.com/ipfs/go-ipfs/issues/7109#issuecomment-614200399)
+
+@Stebalien informed me this is not possible, and so I'm asking if this can happen, through a config option, as well dynamically through an `ipfs` command.
+
+To be clear, when this option is enabled on a node, then anytime a node is publishing records on the WAN DHT for blocks/IPNS addresses that it has, it should also publish those records on the LAN DHT. It should not publish records that point to WAN nodes.
+
+The endgoal of this is that if you have node **A** that is connected to the Internet and a private mesh network like CJDNS, and **A** adds a file to IPFS, then **B** which is only connected through CJDNS, should be able to retrieve the file, because **A** published the record for the file on the LAN DHT that **B** was a part of."
+ipfs/kubo,8303,Issue,OpenCL support for hashing,"### Checklist
+
+- [X] My issue is specific & actionable.
+- [X] I am not suggesting a protocol enhancement.
+- [X] I have searched on the [issue tracker](https://github.com/ipfs/go-ipfs/issues?q=is%3Aissue) for my issue.
+
+### Description
+
+Since most CPUs come with a quite powerful GPU build-in which is hardly used on servers, it would be nice to use the GPU via OpenCL.
+
+Hashing incoming data from the network for consistency checking as well as hashing new data added to the daemon could help to offload some work from the CPU and might accelerate the overall throughput."
+ipfs/public-gateway-checker,177,Pull Request,add ipfs.voxhost.fr,"Localised in Switzeland, In a Infomaniak Server with 20 GB Of Storage (I think it's enought ?) , 
+Neofetch
+![image](https://user-images.githubusercontent.com/30030208/140440917-7bcb42e6-a168-4971-93d1-b4a6f30fcc9d.png)
+Speed Test :
+![image](https://user-images.githubusercontent.com/30030208/140441295-1a691b3f-af19-421d-85f8-73e1482a5a3c.png)
+
+<!--
+Hello! To ensure this PR is correctly addressed as soon as possible by the IPFS team, please be sure of the following:
+
+IF ADDING A NEW PUBLIC GATEWAY:
+- Name your PR in the format `feat: add gateway.address.here`
+- Make sure there is no trailing comma in the final gateway in the list at `gateways.json`
+- Include a brief description of the gateway to be added (e.g. geographic location, connection speed, available space, etc)
+
+ALL OTHER PULL REQUESTS:
+- Name your PR in the format `feat: description`, `fix: description`, `docs: description`, `chore: description`, etc
+- Be as complete in your description of changes as possible; if there is an impact on the UI, please include screenshots
+- Reference any related issues
+
+(you can delete this section after reading)
+-->"
+ipfs/public-gateway-checker,215,Pull Request,feat: add the Alterdot Network IPFS gateway,"The Alterdot project is about merging together the two powerful technologies of blockchain and IPFS, therefore we maintain a public IPFS gateway ourselves.
+
+- SSL
+- Origin Isolation / Subdomain Resolution"
+ipfs/specs,383,Pull Request,IPIP-0383: Compact Denylist Format,"This IPIP introduces a line-based denylist format for content blocking on IPFS
+focused on simplicity, scalability and ease-of-use.
+
+
+Related:
+- https://github.com/hsanjuan/nopfs - an implementation of this IPIP which add supports for content blocking to the go-ipfs stack and particularly to Kubo."
+ipfs/specs,406,Issue,Mismatch with spec on casing,"### Checklist
+
+- [X] This is a bug report, not a question. Ask questions on [discuss.ipfs.io](https://discuss.ipfs.io).
+- [X] I have searched on the [issue tracker](https://github.com/ipfs/kubo/issues?q=is%3Aissue) for my bug.
+- [X] I am running the latest [kubo version](https://dist.ipfs.tech/#kubo) or have an issue updating.
+
+### Installation method
+
+ipfs-desktop
+
+### Version
+
+```Text
+Kubo version: 0.19.0
+Repo version: 13
+System version: amd64/linux
+Golang version: go1.19.1
+```
+
+
+### Config
+<details>
+  <summary>Click to expand</summary>
+
+```json
+{
+  ""API"": {
+    ""HTTPHeaders"": {
+      ""Access-Control-Allow-Methods"": [
+        ""GET"",
+        ""POST"",
+        ""PUT""
+      ],
+      ""Access-Control-Allow-Origin"": [
+        ""https://webui.ipfs.io"",
+        ""http://webui.ipfs.io.ipns.localhost:8080"",
+        ""http://127.0.0.1:5001""
+      ]
+    }
+  },
+  ""Addresses"": {
+    ""API"": ""/ip4/0.0.0.0/tcp/5001"",
+    ""Announce"": [],
+    ""AppendAnnounce"": [],
+    ""Gateway"": ""/ip4/0.0.0.0/tcp/8080"",
+    ""NoAnnounce"": [],
+    ""Swarm"": [
+      ""/ip4/0.0.0.0/tcp/4001"",
+      ""/ip6/::/tcp/4001"",
+      ""/ip4/0.0.0.0/udp/4001/quic"",
+      ""/ip4/0.0.0.0/udp/4001/quic-v1"",
+      ""/ip4/0.0.0.0/udp/4001/quic-v1/webtransport"",
+      ""/ip6/::/udp/4001/quic"",
+      ""/ip6/::/udp/4001/quic-v1"",
+      ""/ip6/::/udp/4001/quic-v1/webtransport""
+    ]
+  },
+  ""AutoNAT"": {},
+  ""Bootstrap"": [
+    ""/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN"",
+    ""/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"",
+    ""/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb"",
+    ""/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt"",
+    ""/ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ"",
+    ""/ip4/104.131.131.82/udp/4001/quic/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ""
+  ],
+  ""DNS"": {
+    ""Resolvers"": {}
+  },
+  ""Datastore"": {
+    ""BloomFilterSize"": 0,
+    ""GCPeriod"": ""1h"",
+    ""HashOnRead"": false,
+    ""Spec"": {
+      ""mounts"": [
+        {
+          ""child"": {
+            ""path"": ""blocks"",
+            ""shardFunc"": ""/repo/flatfs/shard/v1/next-to-last/2"",
+            ""sync"": true,
+            ""type"": ""flatfs""
+          },
+          ""mountpoint"": ""/blocks"",
+          ""prefix"": ""flatfs.datastore"",
+          ""type"": ""measure""
+        },
+        {
+          ""child"": {
+            ""compression"": ""none"",
+            ""path"": ""datastore"",
+            ""type"": ""levelds""
+          },
+          ""mountpoint"": ""/"",
+          ""prefix"": ""leveldb.datastore"",
+          ""type"": ""measure""
+        }
+      ],
+      ""type"": ""mount""
+    },
+    ""StorageGCWatermark"": 90,
+    ""StorageMax"": ""99GB""
+  },
+  ""Discovery"": {
+    ""MDNS"": {
+      ""Enabled"": true,
+      ""Interval"": 10
+    }
+  },
+  ""Experimental"": {
+    ""AcceleratedDHTClient"": false,
+    ""FilestoreEnabled"": false,
+    ""GraphsyncEnabled"": false,
+    ""Libp2pStreamMounting"": false,
+    ""P2pHttpProxy"": false,
+    ""StrategicProviding"": false,
+    ""UrlstoreEnabled"": false
+  },
+  ""Gateway"": {
+    ""APICommands"": [],
+    ""HTTPHeaders"": {
+      ""Access-Control-Allow-Headers"": [
+        ""X-Requested-With"",
+        ""Range"",
+        ""User-Agent""
+      ],
+      ""Access-Control-Allow-Methods"": [
+        ""GET""
+      ],
+      ""Access-Control-Allow-Origin"": [
+        ""*""
+      ]
+    },
+    ""NoDNSLink"": false,
+    ""NoFetch"": false,
+    ""PathPrefixes"": [],
+    ""PublicGateways"": {
+      ""chomp"": {
+        ""InlineDNSLink"": null,
+        ""NoDNSLink"": false,
+        ""Paths"": [
+          ""/ipfs"",
+          ""/ipns""
+        ],
+        ""UseSubdomains"": false
+      },
+      ""chomp.local"": {
+        ""InlineDNSLink"": null,
+        ""NoDNSLink"": false,
+        ""Paths"": [
+          ""/ipfs"",
+          ""/ipns""
+        ],
+        ""UseSubdomains"": false
+      }
+    },
+    ""RootRedirect"": """",
+    ""UseSubdomains"": false,
+    ""Writable"": false
+  },
+  ""Identity"": {
+    ""PeerID"": ""12D3KooWGDMwwqrpcYKpKCgxuKT2NfqPqa94QnkoBBpqvCaiCzWd""
+  },
+  ""Internal"": {},
+  ""Ipns"": {
+    ""RecordLifetime"": """",
+    ""RepublishPeriod"": """",
+    ""ResolveCacheSize"": 128
+  },
+  ""Migration"": {
+    ""DownloadSources"": [],
+    ""Keep"": """"
+  },
+  ""Mounts"": {
+    ""FuseAllowOther"": false,
+    ""IPFS"": ""/ipfs"",
+    ""IPNS"": ""/ipns""
+  },
+  ""Peering"": {
+    ""Peers"": null
+  },
+  ""Pinning"": {
+    ""RemoteServices"": {
+      ""pinata"": {
+        ""API"": {
+          ""Endpoint"": ""https://api.pinata.cloud/psa""
+        },
+        ""Policies"": {
+          ""MFS"": {
+            ""Enable"": false,
+            ""PinName"": """",
+            ""RepinInterval"": """"
+          }
+        }
+      }
+    }
+  },
+  ""Plugins"": {
+    ""Plugins"": null
+  },
+  ""Provider"": {
+    ""Strategy"": """"
+  },
+  ""Pubsub"": {
+    ""DisableSigning"": false,
+    ""Router"": """"
+  },
+  ""Reprovider"": {},
+  ""Routing"": {
+    ""Methods"": null,
+    ""Routers"": null
+  },
+  ""Swarm"": {
+    ""AddrFilters"": null,
+    ""ConnMgr"": {
+      ""GracePeriod"": ""1m0s"",
+      ""HighWater"": 40,
+      ""LowWater"": 20,
+      ""Type"": ""basic""
+    },
+    ""DisableBandwidthMetrics"": false,
+    ""DisableNatPortMap"": false,
+    ""RelayClient"": {},
+    ""RelayService"": {},
+    ""ResourceMgr"": {
+      ""Limits"": {}
+    },
+    ""Transports"": {
+      ""Multiplexers"": {},
+      ""Network"": {},
+      ""Security"": {}
+    }
+  }
+}
+```
+</details>
+
+### Description
+
+The entries in the CBOR of an IPNS record aren't cased quite like the spec:
+https://specs.ipfs.tech/ipns/ipns-record/#record-verification
+
+In all but one case, the spec has the first letter of the key lowercase while Kubo has it upper, e.g. : validityType vs. ValidityType
+The other case is ttl or TTL, which is all-lower in the spec and all-upper in Kubo.
+
+I'm not sure if the issue is Kubo or the spec, but they should agree with each other."
+junobuild/juno,481,Pull Request,feat: heap to stable migration,"While upgrading cycles.watch I freaking ""lost"" the users and heap data.
+
+It turned out that the test for the migration from v0.0.15 to v0.0.16 was successfull but, if extended to old version of the satellite, v0.0.11, modifying the default memory from heap to stable had for effect to lead to loose the data because of the deserialization.
+
+Fortunatelly this patch and updating cycles.watch with the patch fixed the issue.
+
+It's because of `match memory.clone().unwrap_or_default() {`
+
+i.e. that was a bug, no data loss."
+livepeer/go-livepeer,1786,Pull Request,cmd/livepeer_bench: Support delay,"**What does this pull request do? Explain your changes. (required)**
+<!-- A clear and concise description of what this pull request does. -->
+
+**Specific updates (required)**
+<!--- List out all significant updates your code introduces -->
+- 
+- 
+- 
+
+**How did you test each of these updates (required)**
+<!-- A detailed description of how you tested your code changes. Include details of your testing environment, and the tests you ran to see how your change affects other areas of the code, etc. -->
+
+
+**Does this pull request close any open issues?**
+<!-- Fixes # -->
+
+
+**Checklist:**
+<!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
+<!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
+- [ ] README and other documentation updated
+- [ ] Node runs in OSX and devenv
+- [ ] All tests in `./test.sh` pass"
+livepeer/go-livepeer,3229,Pull Request,fix: Add image-to-text pipeline to remote worker,"**What does this pull request do? Explain your changes. (required)**
+Adds remote worker parts to `server` package so image-to-text pipeline can be processed by remote working.
+
+**Specific updates (required)**
+<!--- List out all significant updates your code introduces -->
+- add image to text to `runAIJob`
+- update to add pipeline to `parseMultipartResult`
+- Add test in `server/ai_worker_test.go`
+
+**How did you test each of these updates (required)**
+<!-- A detailed description of how you tested your code changes. Include details of your testing environment, and the tests you ran to see how your change affects other areas of the code, etc. -->
+Ran tests and built docker container to test combined and split Orchestrator and AI Worker
+
+**Does this pull request close any open issues?**
+<!-- Fixes # -->
+No
+
+**Checklist:**
+<!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
+<!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
+- [ ] Read the [contribution guide](./CONTRIBUTING.md)
+- [x ] `make` runs successfully
+- [x ] All tests in `./test.sh` pass  `AI tests pass`
+- [ ] README and other documentation updated
+- [ ] [Pending changelog](./CHANGELOG_PENDING.md) updated"
+matter-labs/anvil-zksync,351,Pull Request,fix: fixes release pipeline due bump in rust version,"# What :computer: 
+* Suppresses warnings that are treated as errors in cross installation and usage 
+* Bump gcc dependencies for x86 cross container for `aws-lc-sys` crate
+
+# Why :hand:
+* Release pipeline was broken as a result of cross installation failing to be installed. See:  https://github.com/matter-labs/era-test-node/actions/runs/11057024685/job/30719919478
+* Building will fail with `error: failed to run custom build command for aws-lc-sys v0.21.2` using old gcc dep in cross-containers building for x86 target
+
+# Evidence :camera:
+Include screenshots, screen recordings, or `console` output here demonstrating that your changes work as intended
+- Test release on forked repo: https://github.com/dutterbutter/era-test-node/actions/runs/11071741595
+<!-- All sections below are optional. You can uncomment any section applicable to your Pull Request. -->
+
+<!-- # Notes :memo:
+* Any notes/thoughts that the reviewers should know prior to reviewing the code? -->"
+matter-labs/foundry-zksync,358,Pull Request,fix: avoid test contract migration,"<!--
+Thank you for your Pull Request. Please provide a description above and review
+the requirements below.
+
+Bug fixes and new features should include tests.
+-->
+
+## Motivation
+During forking during `setUp` when run with `--zksync`, the test contract isn't in the `persisted_accounts` list during initialization and as such isn't migrated to zksync. This causes it to be incorrectly migrated to an empty code account when a evm fork is encountered.
+
+This in turn causes the test to _silently pass_ as it's never called (since we've effectively erased the test contract). Such a failure can be detected by a negative test, which foundry provides via `testFail`, i.e. if the function doesn't revert the test fails -ensuring that the test is executed.
+
+<!--
+Explain the context and why you're making that change. What is the problem
+you're trying to solve? In some cases there is not a problem and this can be
+thought of as being the motivation for your change.
+-->
+
+## Solution
+Avoid migrating test contract at all, since we never call it in zksync context.
+
+<!--
+Summarize the solution and provide any necessary context needed to understand
+the code change.
+-->
+
+## Notes
+An alternate solution would be to detect if the test contract is in `persisted_accounts` and has not been migrated yet, to selectively migrate it to zksync during Cheatcode tracer init."
+near/core-contracts,197,Issue,wNEAR: lack of test coverage,"Full test coverage is an essential process in ensuring the codebase works as intended (outlined in NEAR’s design documentation). Insufficient code coverage may lead to the arisal of unexpected issues due to changes in the underlying smart contract implementation, leading to undetected changes in functionality.
+
+Consider updating the tests for wNEAR to include interactions with storage, `ft_transfer_call`,
+`near_withdraw` and other edge cases specified in the FungibleToken standard’s documentation."
+near/nearcore,306,Issue,Language independent serialization,"Transactions and Blocks should be serialized in the format that is language independent.
+We either need to validate that we can serialize/deserialize from other languages into the same format as serde, or switch to a different format."
+near/nearcore,2483,Issue,Change config in pytest,"In python tests, we have a convenient way to change node configs before the cluster is started, but there is no easy way to stop the node, change its config and restart again."
+near/nearcore,2846,Pull Request,fix: fix some issues in zero downtime upgrade,"There is an issue with account announcement that prevents zero downtime upgrade from working properly. This PR fixes the issue and also adds a test to make sure that the upgrade process described in https://github.com/near/docs/issues/341 works properly.
+
+Test plan
+-----------
+* pytest `validator_switch_key.py`."
+near/nearcore,6512,Pull Request,fix chainsync workspace grouping,"https://github.com/near/nearcore/issues/6380 introduced the private crate - `chainsync-loadtest` as an “independent” crate, using that directive, `cargo-workspaces` defaulted to interactive input during CI run, querying for a version. This patch makes `chainsync-loadtest` part of the larger workspace group, fixing the issue."
+near/nearcore,11333,Pull Request,feat: skip applying state witness for chunk producers,"As noted in https://github.com/near/nearcore/pull/11330, we cannot skip validation of state witness altogether even if we have applied the chunk itself because chunk header still needs to be validated. Otherwise the invariant that no blocks contain invalid chunks could be broken. This PR does a much less invasive optimization and only skip apply state witness if we have the previous chunk extra locally. Other validation of state witness still remains the same.
+
+Existing tests should suffice since we still send chunk endorsement inside the same function `start_validating_chunk`, just slightly earlier."
+openethereum/parity-ethereum,5747,Issue,Remote UI - Contract methods not loading,"Using an SSH tunnel, as prescribed in the wiki, to connect via a remote node and interacting with the UI on my local machine.
+
+After adding a contract, and attempting to load the contract page, no functions load, and the event loading progress indicator spins infinitely.
+
+Following is logged to the console, as soon as the page opens:
+
+`Uncaught Error: Cannot convert function to valid ParamType`
+
+EDIT: Remote parity version - version Parity/v1.6.7-beta-e128418-20170518/x86_64-linux-gnu/rustc1.17.0"
+paradigmxyz/reth,2760,Pull Request,chore: trace return values on insert,trace return values of payload handlers
+paradigmxyz/reth,16266,Pull Request,docs: Fix typos in `static-file` crate README,"Docs-only update to `crates/static-file/static-file/README.md`:
+
+| before | after |
+| --- | --- |
+| concerns **of** modification | concerns **about** modification |
+| illustrating **on how** | illustrating **how** |
+| **one** a specific | **on** a specific |
+| **static_file** files | **static** files |
+| For more **check** | For more, **check** |
+
+No code or behavior changes,thanks"
+paradigmxyz/reth,17374,Pull Request,fix: typo in documentation comments,"---
+
+
+
+## Description
+This pull request corrects a minor typo in documentation comments by replacing `re-use` with `reuse` for consistency and clarity.
+
+- Updated in `hashed_state.rs` and `updates.rs`"
+paradigmxyz/solar,329,Pull Request,cache len,cached the len since it's used multiple times
+paritytech/polkadot,3714,Issue,exception when run polkadot.,"Hello everyone,
+I want to run polkadot with chain: rococo, but I get an exception:
+
+```
+Thread 'tokio-runtime-worker' panicked at 'Digest item must match that calculated.', /usr/local/cargo/git/checkouts/substrate-7e08433d4c370a21/91061a7/frame/executive/src/lib.rs:467
+```
+
+Full exception is:
+
+```
+Thread 'tokio-runtime-worker' panicked at 'Digest item must match that calculated.', /usr/local/cargo/git/checkouts/substrate-7e08433d4c370a21/91061a7/frame/executive/src/lib.rs:467
+
+This is a bug. Please report it at:
+
+	https://github.com/paritytech/polkadot/issues/new
+
+2021-08-24 22:31:42 Succesfully imported finalized header with hash 0xb35c5d84785a4d69993abc89c9f9d2ad40ce603fe207ca4812323cc92cfc980d!    
+^CDigestItem: given=DigestItem::Consensus([66, 69, 69, 70], [3, 79, 165, 125, 94, 185, 203, 152, 15, 157, 116, 223, 133, 146, 53, 235, 26, 113, 168, 43, 49, 48, 184, 159, 220, 103, 42, 189, 45, 154, 205, 49, 62]), expected=DigestItem::Consensus([66, 69, 69, 70], [3, 146, 2, 164, 191, 17, 161, 230, 58, 128, 33, 193, 23, 148, 163, 14, 120, 5, 132, 233, 138, 77, 29, 37, 69, 161, 116, 97, 147, 155, 159, 221, 75])
+
+====================
+
+Version: 0.9.9-1-e3901b89c-x86_64-linux-gnu
+
+   0: sp_panic_handler::set::{{closure}}
+   1: std::panicking::rust_panic_with_hook
+             at /rustc/53cb7b09b00cbea8754ffb78e7e3cb521cb8af4b/library/std/src/panicking.rs:595:17
+   2: std::panicking::begin_panic::{{closure}}
+   3: std::sys_common::backtrace::__rust_end_short_backtrace
+   4: std::panicking::begin_panic
+   5: frame_executive::Executive<System,Block,Context,UnsignedValidator,AllPallets,COnRuntimeUpgrade>::final_checks
+   6: tracing::span::Span::in_scope
+   7: frame_executive::Executive<System,Block,Context,UnsignedValidator,AllPallets,COnRuntimeUpgrade>::execute_block
+   8: <rococo_runtime::Runtime as sp_api::runtime_decl_for_Core::Core<sp_runtime::generic::block::Block<sp_runtime::generic::header::Header<u32,sp_runtime::traits::BlakeTwo256>,sp_runtime::generic::unchecked_extrinsic::UncheckedExtrinsic<sp_runtime::multiaddress::MultiAddress<<<sp_runtime::MultiSignature as sp_runtime::traits::Verify>::Signer as sp_runtime::traits::IdentifyAccount>::AccountId,()>,rococo_runtime::Call,sp_runtime::MultiSignature,(frame_system::extensions::check_spec_version::CheckSpecVersion<rococo_runtime::Runtime>,frame_system::extensions::check_tx_version::CheckTxVersion<rococo_runtime::Runtime>,frame_system::extensions::check_genesis::CheckGenesis<rococo_runtime::Runtime>,frame_system::extensions::check_mortality::CheckMortality<rococo_runtime::Runtime>,frame_system::extensions::check_nonce::CheckNonce<rococo_runtime::Runtime>,frame_system::extensions::check_weight::CheckWeight<rococo_runtime::Runtime>,pallet_transaction_payment::ChargeTransactionPayment<rococo_runtime::Runtime>)>>>>::execute_block
+   9: sp_api::runtime_decl_for_Core::execute_block_native_call_generator::{{closure}}
+  10: std::thread::local::LocalKey<T>::with
+  11: sc_executor::native_executor::WasmExecutor::with_instance::{{closure}}
+  12: sc_executor::wasm_runtime::RuntimeCache::with_instance
+  13: <sc_executor::native_executor::NativeExecutor<D> as sp_core::traits::CodeExecutor>::call
+  14: sp_state_machine::execution::StateMachine<B,H,N,Exec>::execute_aux
+  15: sp_state_machine::execution::StateMachine<B,H,N,Exec>::execute_using_consensus_failure_handler
+  16: sp_api::runtime_decl_for_Core::execute_block_call_api_at
+  17: <rococo_runtime::RuntimeApiImpl<__SR_API_BLOCK__,RuntimeApiImplCall> as sp_api::Core<__SR_API_BLOCK__>>::Core_execute_block_runtime_api_impl
+  18: sp_api::Core::execute_block_with_context
+  19: sc_service::client::client::Client<B,E,Block,RA>::prepare_block_storage_changes
+  20: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  21: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  22: <sc_consensus_babe::BabeBlockImport<Block,Client,Inner> as sc_consensus::block_import::BlockImport<Block>>::import_block::{{closure}}
+  23: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  24: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  25: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  26: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  27: <futures_util::future::future::map::Map<Fut,F> as core::future::future::Future>::poll
+  28: <futures_util::future::select::Select<A,B> as core::future::future::Future>::poll
+  29: <core::future::from_generator::GenFuture<T> as core::future::future::Future>::poll
+  30: <tracing_futures::Instrumented<T> as core::future::future::Future>::poll
+  31: futures_executor::local_pool::block_on
+  32: tokio::runtime::task::core::Core<T,S>::poll
+  33: <std::panic::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once
+  34: tokio::runtime::task::raw::poll
+  35: tokio::runtime::blocking::pool::Inner::run
+  36: tokio::runtime::context::enter
+  37: std::sys_common::backtrace::__rust_begin_short_backtrace
+  38: core::ops::function::FnOnce::call_once{{vtable.shim}}
+  39: <alloc::boxed::Box<F,A> as core::ops::function::FnOnce<Args>>::call_once
+             at /rustc/53cb7b09b00cbea8754ffb78e7e3cb521cb8af4b/library/alloc/src/boxed.rs:1546:9
+      <alloc::boxed::Box<F,A> as core::ops::function::FnOnce<Args>>::call_once
+             at /rustc/53cb7b09b00cbea8754ffb78e7e3cb521cb8af4b/library/alloc/src/boxed.rs:1546:9
+      std::sys::unix::thread::Thread::new::thread_start
+             at /rustc/53cb7b09b00cbea8754ffb78e7e3cb521cb8af4b/library/std/src/sys/unix/thread.rs:71:17
+  40: start_thread
+  41: __clone
+
+
+Thread 'tokio-runtime-worker' panicked at 'Dige
+```
+
+
+I run polkadot as:
+
+
+```
+./polkadot --base-path /mnt/volume_fra1_02/rococo --pruning archive --name sync-rococo --rpc-external --rpc-cors all --ws-external --no-telemetry --no-prometheus --in-peers 100 --max-parallel-downloads 25 --out-peers 100 --chain rococo
+```"
+paritytech/polkadot-sdk,317,Issue,Add Memory Information to Runtime Benchmarks,"It would be nice to see the maximum amount of memory used by an extrinsic during a benchmark.
+
+This could help us detect and catch problems like what happened with elections earlier."
+paritytech/polkadot-sdk,1851,Pull Request,Small optimisation to `--profile dev` wasm builds,"`wasm-builder` was adjusted to default to building wasm blobs in `release` mode even when cargo is in `debug` because `debug` wasm is too slow.
+
+A side effect of this was `.compact` and `.compact.compressed` getting built when the dev is running build in `debug`, adding ~5s to the build time of every wasm runtime.
+
+I think it's reasonable to assume if the dev is running `debug` build they want to optimise speed and do not care about the size of the wasm binary. Compacting a blob has negligible impact on its actual performance.
+
+In this PR, I adjusted the behavior of the wasm builder so it does not produce `.compact` or `.compact.compressed` wasm when the user is running in `debug`. The builder will continue to produce the bloaty wasm in release mode unless it is overriden with an env var.
+
+As suggested by @koute in review, also refactored the `maybe_compact_wasm_and_copy_blobs` into multiple funuctions, and renamed things to better support RISC-V in the future.
+
+---
+
+There is no `T-runtime` label so @KiChjang told me to put `T1-FRAME` :)"
+paritytech/polkadot-sdk,2245,Issue,[remote-externalities] Batch calls scraping child-tree data,"Child-tree data is currently fetched sequentially.
+
+Most chains to date don't have that many child-trees so this hasn't been an issue, but the Rococo Contracts chain has almost 3000 child tries making this serial approach unnecessarily add a really long time to scraping keys.
+
+The keys to scrape appear to all be known ahead of time, so we should be able to batch the requests.
+
+This should be a pretty easy one. Good beginner issue with mentor available :)"
+paritytech/polkadot-sdk,3203,Issue,"When attempting to connect my external parachain, it fails to receive blocks from the relay chain. How can I address this issue? For instance, the relay chain is hosted on the office WiFi, while the parachain is connected via external internet. In this setup, the parachain struggles to establish peer connections or receive blocks from the relay chain. What steps can be taken to resolve this connectivity issue?""","When attempting to connect my external parachain, it fails to receive blocks from the relay chain. How can I address this issue? For instance, the relay chain is hosted on the office WiFi, while the parachain is connected via external internet. In this setup, the parachain struggles to establish peer connections or receive blocks from the relay chain. What steps can be taken to resolve this connectivity issue?""
+
+_Originally posted by @arunjot12 in https://github.com/paritytech/polkadot-sdk/issues/3030#issuecomment-1926604693_"
+paritytech/polkadot-sdk,4745,Issue,Track offence severity in the runtime for re-enabling purposes (+ migration),"- Easiest way to track severity is to add it to `DisabledValidators`
+- Migration can assume max severity for all pending slashes (getting proper severity would be better but is not necessary)"
+paritytech/polkadot-sdk,9497,Pull Request,Society pallet supports non-consecutive block provider,"Society pallet supports non-consecutive block provider
+
+Society pallet correctly handles situations where `on_initialize` is invoked with block numbers that:
+- increase but are not strictly consecutive (e.g., jump from 5 → 10), or
+- are repeated (e.g., multiple blocks are built at the same Relay Chain parent block, all reporting the same BlockNumberProvider value).
+
+This situation may occur when the BlockNumberProvider is not local - for example, on a parachain using the Relay Chain block number provider."
+paritytech/substrate,5493,Pull Request,Use saturating sub in basic authorship,"This pr ensures that we don't panic because of a deadline that is
+already reached in basic authorship. This is mainly useful for debug
+builds, as release builds normally don't have debug assertions enabled.
+
+Fixes: https://github.com/paritytech/substrate/issues/4949"
+paritytech/substrate,9696,Issue,Move ss58-registry into its own crate,"The ss58-registry currently exists as the following json file: https://github.com/paritytech/substrate/blob/master/ss58-registry.json and once in code here: https://github.com/paritytech/substrate/blob/master/primitives/core/src/crypto.rs#L486
+
+As it is generally a bad idea that we have two places for the same information, we should merge them. This was the idea from the beginning of the json file. So the following needs to be done:
+
+1. Create a new crate in a separate repo (the name of the repo and crate needs to be decided on).
+2. The repo contains the json file and this crate.
+3. The crate parses at compile time the json file and generates the proper `Ss58AddressFormat` enum.
+4. Release and integrate this crate into substrate."
+paritytech/substrate,9738,Pull Request,Make event record easier to decode,"### Breaking change
+
+the struct EventRecord changed the type of its field `event`. It is now a `WrapperOpaque<Event>` which means it is encoded with its encoded length in front, in order to be decodable as `Vec<u8>`.
+To be more precise the field event is now encoded as compact encoding of the size in bytes of the encoding of event concatenated with the encoding of event. Instead of previously: encoding of event.
+Some rust code can be also breaking, people should update by referencing to the inner type of `WrapperOpaque` using `.0` and some conversion using `.into()`.
+
+### Description
+
+This should fix https://github.com/paritytech/substrate/issues/9480 by making event record easier to decode when some event variant are not decodable.
+
+The event record now wraps the event into a `OpaqueWrapper`, this wrapper implements codec in a way that is compatible with `Vec<u8>`. basically it encode its inner type and prepend the size (the size is encoded as a compact u32).
+
+### TODO
+
+* [x] add test
+* [x] companion: https://github.com/paritytech/polkadot/pull/3945"
+paritytech/subxt,1117,Pull Request,Codegen for custom values in metadata,"This PR adds static addresses for custom values, accessible via codegen.
+So for example, if there is a custom value with name ""Foo"" referring to a type `struct Foo { n: u8, b: bool }` and the attached value is scale encoded (e.g. [5,0] for Foo), then we get back a decoded Foo from `custom_value_client.at(&static_address)?`:
+
+```rs
+#[subxt::subxt(runtime_metadata_path = ""some_metadata.scale"")]
+pub mod interface {}
+let static_address = interface::custom().foo();
+let api = OnlineClient::<PolkadotConfig>::new().await?;
+let custom_value_client = api.custom_values();
+// Now the `at()` function already decodes the value into the Foo type:
+let foo = custom_value_client.at(&static_address)?;
+```
+
+After some back and forth, I decided not to add a test for this, because it would involve creating some artificial metadata scale or json file, using it in the subxt macro and then using the interface with it. I think if people are moving to using custom types or they appear in polkadot in the future we should add an integration test for it."
+protofire/solhint,197,Issue,mark-callable-contracts notified on superclass method calls,"Superclasses cannot be renamed to follow the `Trusted`/`Untrusted` pattern, and they should always be trusted since they are imported and the source is known beforehand.
+
+Example:
+```
+import '@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol';
+import '@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol';
+import '@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Mintable.sol';
+
+contract GLDToken is ERC20, ERC20Detailed, ERC20Mintable {
+  function initialize(uint256 initialSupply) public {
+    ERC20Mintable.initialize(msg.sender);
+    ERC20Detailed.initialize('Gold', 'GLD', 18);
+
+    _mint(msg.sender, initialSupply);
+  }
+}
+```
+
+solhint output:
+```
+# npx solhint contracts/**/*.sol
+
+contracts/GLDToken.sol
+  10:5  error  Explicitly mark all external contracts as trusted or untrusted  mark-callable-contracts
+  11:5  error  Explicitly mark all external contracts as trusted or untrusted  mark-callable-contracts
+
+✖ 2 problems (2 errors, 0 warnings)
+```
+
+Expected behavior is to ignore the calls to `ERC20Mintable.initialize(...)` and `ERC20Detailed.initialize(...)`"
+rainbow-me/rainbow,3675,Pull Request,Add `typescript` to CodeQL langs,
+scroll-tech/contribute-to-scroll,1966,Issue,Add Scroll to Lens Protocol,"### Name of the project
+
+Lens Protocol
+
+### Project type
+
+Tool
+
+### Site of the project
+
+https://www.lens.xyz/
+
+### Github repository of the project
+
+https://github.com/lens-protocol
+
+### Networks
+
+Scroll Mainnet
+
+### Additional context
+
+**The development of SoFi is more relevant than ever.**
+
+**Lens Protocol SoFi Platform**
+The Lens Protocol is a Web3 social graph on the Polygon Proof-of-Stake blockchain. It is designed to empower creators to own the links between themselves and their community, forming a fully composable, user-owned social graph. The protocol is built from the ground up with modularity in mind, allowing new features and fixes to be added while ensuring immutable user-owned content and social relationships.
+
+
+**05/14/2024 announced integration with zkSync.**
+
+[https://x.com/LensProtocol/status/1790458242855751950](url)
+
+![image](https://github.com/scroll-tech/contribute-to-scroll/assets/96150169/2020e6ba-f806-4d82-a0a4-74b2bc3f1bc2)"
+sigp/lighthouse,911,Pull Request,Book corrections to allow http api access for docker use,"User's on discord has issues with docker and hitting the http api. 
+
+The docs currently are misleading and will confuse users.
+
+This updates the docs around docker allowing users to hit the http api server externally."
+sigp/lighthouse,4971,Pull Request,Enable progressive balances fast mode by default,"## Proposed Changes
+
+Since we added the progressive balances cache in #4362 there haven't been any issues on our infra or reported by users. I think it's time we take advantage of the cache and actually bring its benefits to users.
+
+## Additional Info
+
+In `tree-states` the cache is used by default with no option to turn it off. Enabling `fast` by default on stable paves the way for that.
+
+There _was_ a bug in the progressive-balances cache on `tree-states` (#4834), but it was related to changes I'd made and not to the inherent implementation. The fuzzing of the `tree-states` branch is also exercising the cache and is yet to unearth any issues."
+smartcontractkit/chainlink,2681,Pull Request,Add unique index on txes.hash,"The code assumes that the hash on txes is unique, but it isn't enforced. And
+there are duplicates in the wild. Enforcing this may cause the code to error
+out in some edge cases where it wouldn't have before, exposing whatever bug
+caused these duplicates to appear.
+
+Migration is fast. Timing information on utility node DB:
+
+```
+	DROP INDEX IF EXISTS idx_txs_hash;
+
+	WITH duplicate_txes_hash AS (
+		SELECT hash FROM txes GROUP BY hash HAVING count(hash) > 1
+	), txes_to_delete AS (
+		SELECT id
+		FROM txes
+		JOIN duplicate_txes_hash dups ON dups.hash = txes.hash
+		WHERE id NOT IN (
+			SELECT DISTINCT ON (txes.hash) id
+			FROM txes
+			JOIN duplicate_txes_hash dups ON dups.hash = txes.hash
+			ORDER BY txes.hash, id ASC
+		)
+	)
+	DELETE FROM txes WHERE id IN (SELECT id FROM txes_to_delete);
+
+	CREATE UNIQUE INDEX idx_txes_hash ON txes (hash);
+	 gormigrate.v1@v1.6.0/gormigrate.go:364 rows_affected=0 time=0.434967806
+```"
+smartcontractkit/chainlink,13017,Pull Request,test/flakey head prev 10,"- **Revert ""Create HeadPoller for Multi-Node (#12871)""**
+- **Revert ""Update log trigger log provider readMaxBatchSize to 56 (#12951)""**
+- **Revert ""Wrap RPC errors (#12638)""**
+- **Revert ""update contracts README with changesets (#13002)""**
+- **Revert ""fix: prevent query syntax error if allowlist is empty (#12912)""**
+- **Revert ""Fix Node Migration Test Check For Versions (#12982)""**
+- **Revert ""LogPoller CLI command to resolve reorg greater than finality depth (#12867)""**
+- **Revert ""Configurable Mercury transmitter parameters (#12680)""**
+- **Revert ""Validate config on NewApplication (#12997)""**"
+smol-dot/smoldot,1806,Issue,Testing smoldot with substrate WebRTC,"I would like to test the litep2p WebRTC with smoldot.
+
+I've created this branch in substrate to configure webRtc with litep2p:
+- https://github.com/paritytech/polkadot-sdk/pull/4310
+
+I'm running the local polkadot node as:
+
+```
+RUST_LOG=""litep2p=trace"" ./target/release/polkadot --dev --node-key 0000000000000000000000000000000000000000000000000000000000000002 --network-backend litep2p --listen-addr /ip4/127.0.0.1/udp/8888/webrtc-direct --rpc-port 9999
+```
+
+However, I'm not able to connect subxt's lightclient to the node
+- branch https://github.com/paritytech/subxt/compare/lexnv/test-webrtc
+
+```
+ cd testing/integration-tests/
+
+ SUBSTRATE_NODE_PATH=/home/ubuntu/workspace/polka-work/target/release/substrate-node RUST_LOG=trace cargo test --release --features unstable-light-client
+ ``` 
+ 
+Currently, the peer is banned every 10 seconds:
+
+```
+2024-05-01T12:11:42.808763Z DEBUG async_io::block_on: network: slot-assigned; chain=rococo_dev, peer_id=12D3KooWHdiAxVd8uMQR1hGWXccidmfCwLqcMpGwR6QcTP6QRMuD
+2024-05-01T12:11:42.808927Z DEBUG async_io::block_on: network: slot-unassigned; chain=rococo_dev, peer_id=12D3KooWHdiAxVd8uMQR1hGWXccidmfCwLqcMpGwR6QcTP6QRMuD, ban_duration=10s, reason=no-address
+
+```
+
+Would you happen to know if I need a custom branch for smoldot to work with webrtc?
+It might be possible that the default PlatformRef we use in subxt only supports websockets and TCP? 🤔 
+Wanted to double check, is this up-to date with latest smoldot: https://tomaka.github.io/test-browser-node/index.html?
+Thanks 🙏"
+snapshot-labs/sx-monorepo,981,Pull Request,test: improve speed of starknet integration tests 10x,"### Summary
+
+The issue is with starknetjs implementation of waitForTransaction, that will always take at least 10s with default settings.
+
+We can improve it a lot by just decreasing intervals.
+
+https://github.com/starknet-io/starknet.js/issues/1237#issuecomment-2475861985
+
+
+### How to test
+
+1. In sx.js
+2. Run `yarn node:starknet`
+3. Run `yarn test:integration:starknet`
+4. It's actually manageably fast."
+solana-labs/solana,3377,Pull Request,Clear progress map on squash,"#### Problem
+The progress map in ReplayStage won't clear any dead forks after a squash
+
+#### Summary of Changes
+Clear the progress map of dead forks after we squash
+
+Fixes #"
+solana-labs/solana,5681,Pull Request,Add getInflation JSON RPC endpoint,"#### Problem
+
+* Network Explorer currently has hardcoded JS constants for network inflation rate
+* A proper implementation retrieves these from the fullnode/bank/genesis block
+
+#### Summary of Changes
+
+* We plumb the Inflation parameters via a new RPC method `getInflation()`"
+solana-labs/token-list,1165,Pull Request,Add Vault Coin,"## I agree to not ping *anybody* on Discord/Twitter/email about this pull request. Instead I will inquire by posting a new comment in the pull request if needed.
+----
+PRs are reviewed in bulk and and can take up to **two weeks** to be merged.  
+
+**Please provide the following information for your token.**
+
+Please include change to the `src/tokens/solana.tokenlist.json` file in the PR. 
+DON'T modify any other token on the list.
+
+At minimum each entry should have
+* Token Address: 48cR9mPuj33XowR4BX5nWtn6zqNP2rWjEAKURb6AcvkC
+* Token Name: Vault Coin
+* Token Symbol: VLT
+* Logo: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/assets/48cR9mPuj33XowR4BX5nWtn6zqNP2rWjEAKURb6AcvkC/logo.png
+* Link to the official homepage of token: https://vaultnft.org/
+* Coingecko ID if available (https://www.coingecko.com/api/documentations/v3#/coins/get_coins__id_):"
+solana-labs/token-list,16854,Issue,Update PAWS Info,"I'm submitting a ...
+[ ] bug report
+[x] feature request
+[ ] question about the decisions made in the repository
+[ ] question about how to use this project
+
+Summary
+
+update PAWS info #16850 
+
+Would love to merge an update.
+
+Here the original PR:
+#16232 
+
+Other information (e.g. detailed explanation, stack traces, related issues, suggestions how to fix, links for us to have context, eg. StackOverflow, personal fork, etc.)"
+trustwallet/assets,2057,Pull Request,Upload BOF logo,Upload BOF Logo
+trustwallet/assets,4740,Pull Request,Add Axie Infinity Shards (AXS),"This PR is being closed due to inactivity. If you wish to continue, please have us reopen the PR before sending your payment.
+Do NOT send payments for closed PR, as the fee may by lost!
+  (60 vs. 60 hrs)"
+trustwallet/assets,5452,Pull Request,[Internal] Tokenpairs manual update,Test manual update of token pairs update; remove some non-existent pairs.
+trustwallet/assets,7985,Pull Request,Add O3 Swap (ERC20),"Adding info for ERC20 token 'O3 Swap'.
+
+
+
+PR created by <a href=""https://assets.trustwallet.com"">TW Assets Management</a>"
+trustwallet/assets,13141,Pull Request,Adding new ERC contract for dotmoovs,
+trustwallet/assets,14229,Pull Request,Add BNB Cash Info and Token Logo,This request is for adding the BNB Cash token logo and info to TW. BNB Cash is the native token of BNB Fintech
+trustwallet/assets,15915,Pull Request,Updated CBC logo and info,Updated CBC logo and info
+trustwallet/assets,16096,Pull Request,remove old logo for AERDROP (BEP20),
+trustwallet/assets,24480,Pull Request,Add Genesis Universe Token (BEP20),"Adding info for BEP20 token 'Genesis Universe Token'.
+
+
+
+PR created by <a href=""https://assets.trustwallet.com"">TW Assets Management</a>"
+trustwallet/assets,26515,Pull Request,Add Decentrawood (POLYGON),"Adding info for POLYGON token 'Decentrawood'.
+
+
+
+PR created by <a href=""https://assets.trustwallet.com"">TW Assets Management</a>"
+trustwallet/assets,29848,Pull Request,Add logo for Cogito (COG) token,"This PR adds the logo for the Cogito (COG) token, an ERC-20 token on Ethereum. Contract Address: 0x038435F0a2eadE4F6f4e7737BE73f01c12c71979."
+trustwallet/assets,29882,Pull Request,Add EuropaCoin (BEP20),"Adding info for BEP20 token 'EuropaCoin'.
+
+
+
+PR created by <a href=""https://assets.trustwallet.com"">TW Assets Management</a>"
+trustwallet/assets,30558,Pull Request,Adding BTX (Betax) Token Logo and Info for Polygon ERC-20,
+trustwallet/tokens,104,Pull Request,Use ERC-55 and remove duplicates,"as discussed in https://github.com/ethereum-lists/tokens/pull/58 - the move to ERC-55 
+This also uncovered some duplicates - FYI: I did not check the content there - was a first come - first serve."
+trustwallet/wallet-core,2768,Pull Request,[ZkSync]: Add support for ZkSync V2 mainnet,"## Description
+
+We currently support zkSync v2 testnet, this PR changes zkSync to mainnet.
+
+## How to test
+
+Unit tests
+
+## Types of changes
+
+
+## Checklist
+- [X] Update existing tests and registry"
+web3/web3.js,2299,Pull Request,Add missing quotes in ENS documentation,"## Description
+
+Add missing quotes in ENS documentation.
+
+## Type of change
+
+- [x] Bug fix 
+- [ ] New feature 
+- [ ] Breaking change"
+web3/web3.js,6085,Issue,Truffle-migtration-4.x/Validation of nested tuples doesn't work properly in contract's methods,"In the `truffle` project, in some of their tests, they pass in a method of a contract a nested tuple as an argument.
+```
+let result = await deployedContract.run([[7, -5], 3], 1, address, address);
+```
+However, during the migration to `4.x` I noticed that the validation fails with the error:
+```
+    Web3 validator found 3 error[s]:
+    value ""7,-5"" at ""/0/1"" must pass ""uint256"" validation
+    value ""7,-5,3"" at ""/1"" must pass ""uint8"" validation
+    value ""1"" at ""/2"" must pass ""address"" validation
+   
+```
+which indicates that our library doesn't parse right the arguments.
+
+This happens in two tests (however, they use the same call):
+
+https://github.com/nazarhussain/truffle/blob/20b70910c79683cdb4b4d983e95b05476fed165c/packages/decoder/test/current/test/downgrade-test.js#L83
+
+https://github.com/nazarhussain/truffle/blob/20b70910c79683cdb4b4d983e95b05476fed165c/packages/decoder/test/current/test/downgrade-test.js#L103"
+wevm/wagmi,1412,Pull Request,refactor: add error options with cause,"## Description
+
+Even though we are targeting ES2021, this refactors `Error.internal` to `Error.cause` (h/t https://github.com/wagmi-dev/wagmi/discussions/871)
+
+## Additional Information
+
+- [x] I read the [contributing docs](/wagmi-dev/wagmi/blob/main/.github/CONTRIBUTING.md) (if this is your first contribution)
+
+Your ENS/address: awkweb.eth"
+MetaMask/metamask-docs,1505,Pull Request,recreates fixes,"# Description
+
+Fixes #1501 
+
+## Issue(s) fixed
+
+<!-- Include the issue number that this PR fixes. -->
+
+Fixes #
+
+## Preview
+
+<!-- Provide a PR preview link to the page(s) changed. -->
+
+## Checklist
+
+Complete this checklist before merging your PR:
+
+- [ ] If this PR contains a major change to the documentation content, I have added an entry to the top of the [""What's new?""](https://github.com/MetaMask/metamask-docs/blob/main/docs/whats-new.md) page.
+- [ ] The proposed changes have been reviewed and approved by a member of the documentation team."
+MetaMask/metamask-mobile,14857,Pull Request,Test: disable multi-SRP,"<!--
+Please submit this PR as a draft initially.
+Do not mark it as ""Ready for review"" until the template has been completely filled out, and PR status checks have passed at least once.
+-->
+
+## **Description**
+
+<!--
+Write a short description of the changes included in this pull request, also include relevant motivation and context. Have in mind the following questions:
+1. What is the reason for the change?
+2. What is the improvement/solution?
+-->
+
+## **Related issues**
+
+Fixes:
+
+## **Manual testing steps**
+
+1. Go to this page...
+2.
+3.
+
+## **Screenshots/Recordings**
+
+<!-- If applicable, add screenshots and/or recordings to visualize the before and after of your change. -->
+
+### **Before**
+
+<!-- [screenshots/recordings] -->
+
+### **After**
+
+<!-- [screenshots/recordings] -->
+
+## **Pre-merge author checklist**
+
+- [ ] I’ve followed [MetaMask Contributor Docs](https://github.com/MetaMask/contributor-docs) and [MetaMask Mobile Coding Standards](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/CODING_GUIDELINES.md).
+- [ ] I've completed the PR template to the best of my ability
+- [ ] I’ve included tests if applicable
+- [ ] I’ve documented my code using [JSDoc](https://jsdoc.app/) format if applicable
+- [ ] I’ve applied the right labels on the PR (see [labeling guidelines](https://github.com/MetaMask/metamask-mobile/blob/main/.github/guidelines/LABELING_GUIDELINES.md)). Not required for external contributors.
+
+## **Pre-merge reviewer checklist**
+
+- [ ] I've manually tested the PR (e.g. pull and build branch, run the app, test code being changed).
+- [ ] I confirm that this PR addresses all acceptance criteria described in the ticket it closes and includes the necessary testing evidence such as recordings and or screenshots."
+paritytech/substrate,1310,Issue,"Substrate Local Dev: cargo run --  --dev , the chain gets stuck",
+hyperledger/besu,4012,Issue,요건몰랐네,"<!-- Have you done the following? -->
+<!--   * read the Code of Conduct? By filing an Issue, you are expected to -->  
+<!--     comply with it, including treating everyone with respect: -->
+<!--     https://github.com/hyperledger/besu/blob/main/CODE_OF_CONDUCT.md -->
+<!--   * Reproduced the issue in the latest version of the software -->
+<!--   * Read the debugging docs: https://besu.hyperledger.org/en/stable/HowTo/Monitor/Logging/ -->
+<!--   * Duplicate Issue check:  https://github.com/search?q=+is%3Aissue+repo%3Ahyperledger/Besu -->
+<!-- Note:  Not all sections will apply to all issue types. -->
+
+### Description
+As an [Actor], I want [feature] so that [why]. 
+
+### Acceptance Criteria
+* [Criteria 1]
+
+### Steps to Reproduce (Bug)
+1. [Step 1]
+2. [Step 2]
+3. [Step ...]
+
+**Expected behavior:** [What you expect to happen]
+
+**Actual behavior:** [What actually happens]
+
+**Frequency:** [What percentage of the time does it occur?]
+
+### Versions (Add all that apply)
+* Software version: [`besu --version`]
+* Java version: [`java -version`]
+* OS Name & Version: [`cat /etc/*release`]
+* Kernel Version: [`uname -a`]
+* Virtual Machine software & version: [`vmware -v`]
+* Docker Version: [`docker version`]
+* Cloud VM, type, size: [Amazon Web Services I3-large]
+
+### Smart contract information (If you're reporting an issue arising from deploying or calling a smart contract, please supply related information)
+* Solidity version [`solc --version`]
+* Repo with minimal set of deployable/reproducible contract code - please provide a link
+* Please include specifics on how you are deploying/calling the contract 
+* Have you reproduced the issue on other eth clients
+
+### Additional Information (Add any of the following or anything else that may be relevant)
+* Besu setup info - genesis file, config options
+* System info - memory, CPU"
+matter-labs/zksync,215,Pull Request,Contract changes.,"- [x] verify send
+- [x] new tool -- parse hex of pubdata from command line
+- [x] eth transfer -> eth send, check for eth send and erc20 send success
+- [x] onchain ops bug"

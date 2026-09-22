@@ -1,0 +1,201 @@
+custom_id_stage1,issue_key,repo,number,type,title,call1_relevant_categories,call1_prompt_tokens,call1_completion_tokens,call2_skipped,call2_relevant_subcategories,call2_prompt_tokens,call2_completion_tokens,call3_skipped,call3_candidate_count,call3_candidates,call3_prompt_tokens,call3_completion_tokens,gated_subcategory_count,gated_pattern_count,total_tokens
+stage1_ethereum_pm_867,ethereum/pm#867,ethereum/pm,867,Issue,Execution Layer Meeting 171,,2465,241,yes,,0,0,yes,0,,0,0,0,0,2706
+stage1_solana-labs_solana-program-library_2003,solana-labs/solana-program-library#2003,solana-labs/solana-program-library,2003,Pull Request,we added a secondary oracle and functionality to deposit asset + ctoken in same instruction,,2081,218,yes,,0,0,yes,0,,0,0,0,0,2299
+stage1_web3swift-team_web3swift_103,web3swift-team/web3swift#103,web3swift-team/web3swift,103,Issue,Support ST-20,,2158,223,yes,,0,0,yes,0,,0,0,0,0,2381
+stage1_crytic_slither_117,crytic/slither#117,crytic/slither,117,Pull Request,Refactor reentrancy detector into three variants,,2170,247,yes,,0,0,yes,0,,0,0,0,0,2417
+stage1_Uniswap_v3-sdk_141,Uniswap/v3-sdk#141,Uniswap/v3-sdk,141,Issue,"What is the significance of ""POOL_INIT_CODE_HASH"" ?",,2098,215,yes,,0,0,yes,0,,0,0,0,0,2313
+stage1_ethereum_consensus-specs_44,ethereum/consensus-specs#44,ethereum/consensus-specs,44,Pull Request,Fix `recent_block_hashes`,,2307,274,yes,,0,0,yes,0,,0,0,0,0,2581
+stage1_ipfs_public-gateway-checker_452,ipfs/public-gateway-checker#452,ipfs/public-gateway-checker,452,Issue,"Add opt-in ""online"" + latency check on the client side",,2202,215,yes,,0,0,yes,0,,0,0,0,0,2417
+stage1_paritytech_substrate_900,paritytech/substrate#900,paritytech/substrate,900,Pull Request,Remove the packet ID system,,2100,215,yes,,0,0,yes,0,,0,0,0,0,2315
+stage1_trustwallet_assets_17741,trustwallet/assets#17741,trustwallet/assets,17741,Pull Request,Add Pop (ERC20),,2100,231,yes,,0,0,yes,0,,0,0,0,0,2331
+stage1_OpenZeppelin_openzeppelin-contracts_3735,OpenZeppelin/openzeppelin-contracts#3735,OpenZeppelin/openzeppelin-contracts,3735,Issue,EIP-4907 support,,2278,326,yes,,0,0,yes,0,,0,0,0,0,2604
+stage1_foundry-rs_foundry_8015,foundry-rs/foundry#8015,foundry-rs/foundry,8015,Issue,expectCall started counting calls differently (and probably wrongly),,2654,197,yes,,0,0,yes,0,,0,0,0,0,2851
+stage1_graphprotocol_graph-node_3373,graphprotocol/graph-node#3373,graphprotocol/graph-node,3373,Pull Request,Ethereum Transaction Receipts in Event Handlers,,2772,197,yes,,0,0,yes,0,,0,0,0,0,2969
+stage1_solana-labs_solana-program-library_3165,solana-labs/solana-program-library#3165,solana-labs/solana-program-library,3165,Issue,token-swap: Add Oracle or CLOB curve,,2161,262,yes,,0,0,yes,0,,0,0,0,0,2423
+stage1_AztecProtocol_aztec-packages_2388,AztecProtocol/aztec-packages#2388,AztecProtocol/aztec-packages,2388,Pull Request,"feat: aztec-cli unbox ""really empty box""",,2300,215,yes,,0,0,yes,0,,0,0,0,0,2515
+stage1_AztecProtocol_aztec-packages_5038,AztecProtocol/aztec-packages#5038,AztecProtocol/aztec-packages,5038,Issue,fail transaction if we revert in setup or teardown,,2133,212,yes,,0,0,yes,0,,0,0,0,0,2345
+stage1_AztecProtocol_aztec-packages_5651,AztecProtocol/aztec-packages#5651,AztecProtocol/aztec-packages,5651,Pull Request,fix: watch less files.,,2217,197,yes,,0,0,yes,0,,0,0,0,0,2414
+stage1_AztecProtocol_aztec-packages_11391,AztecProtocol/aztec-packages#11391,AztecProtocol/aztec-packages,11391,Pull Request,Enhance Nightly Masternet Deploy Workflow: Improved Reliability and Flexibility,,2234,215,yes,,0,0,yes,0,,0,0,0,0,2449
+stage1_Consensys_gnark_388,Consensys/gnark#388,Consensys/gnark,388,Pull Request,feat: add lookup table,,2288,285,yes,,0,0,yes,0,,0,0,0,0,2573
+stage1_Consensys_gnark_1311,Consensys/gnark#1311,Consensys/gnark,1311,Pull Request,docs: add input packing example,,2274,215,yes,,0,0,yes,0,,0,0,0,0,2489
+stage1_Consensys_quorum_72,Consensys/quorum#72,Consensys/quorum,72,Issue,"Getting 'Failed to start Ledger hub, disabling: libusb: unknown error [code -99]' while running init.sh",,4760,215,yes,,0,0,yes,0,,0,0,0,0,4975
+stage1_Consensys_quorum_387,Consensys/quorum#387,Consensys/quorum,387,Pull Request,Feature/fix_some_tests,,2260,215,yes,,0,0,yes,0,,0,0,0,0,2475
+stage1_Consensys_quorum_1586,Consensys/quorum#1586,Consensys/quorum,1586,Issue,Cannot sync any new nodes after enabling istanbul fork,,3180,224,yes,,0,0,yes,0,,0,0,0,0,3404
+stage1_Consensys_teku_8385,Consensys/teku#8385,Consensys/teku,8385,Issue,(SPIKE) Acceptance tests using Kurtosis + Assertoor,,2105,215,yes,,0,0,yes,0,,0,0,0,0,2320
+stage1_FuelLabs_fuel-connectors_349,FuelLabs/fuel-connectors#349,FuelLabs/fuel-connectors,349,Pull Request,ci(changesets): versioning packages,,2501,215,yes,,0,0,yes,0,,0,0,0,0,2716
+stage1_FuelLabs_fuel-core_2528,FuelLabs/fuel-core#2528,FuelLabs/fuel-core,2528,Pull Request,feat(gas_price_service): improve performance of SharedGasPriceAlgo by replacing underlying RwLock with SeqLock,,2661,453,yes,,0,0,yes,0,,0,0,0,0,3114
+stage1_FuelLabs_sway_4516,FuelLabs/sway#4516,FuelLabs/sway,4516,Issue,Add a ci check for gas consumption,,2106,219,yes,,0,0,yes,0,,0,0,0,0,2325
+stage1_FuelLabs_sway_7228,FuelLabs/sway#7228,FuelLabs/sway,7228,Pull Request,Bump fuel deps,,2334,215,yes,,0,0,yes,0,,0,0,0,0,2549
+stage1_INFURA_infura_81,INFURA/infura#81,INFURA/infura,81,Issue,IPFS No 'Access-Control-Allow-Origin' header,,2121,257,yes,,0,0,yes,0,,0,0,0,0,2378
+stage1_MetaMask_contract-metadata_1125,MetaMask/contract-metadata#1125,MetaMask/contract-metadata,1125,Pull Request,Add Verse Token (ERC20),,2216,224,yes,,0,0,yes,0,,0,0,0,0,2440
+stage1_MetaMask_core_309,MetaMask/core#309,MetaMask/core,309,Pull Request,Add default type and timestamps to approval controller,,2297,256,yes,,0,0,yes,0,,0,0,0,0,2553
+stage1_MetaMask_core_691,MetaMask/core#691,MetaMask/core,691,Pull Request,Add NotificationControllerV2,,2212,215,yes,,0,0,yes,0,,0,0,0,0,2427
+stage1_MetaMask_core_1981,MetaMask/core#1981,MetaMask/core,1981,Issue,Post-migration cleanup for `@metamask/json-rpc-engine`,,2386,215,yes,,0,0,yes,0,,0,0,0,0,2601
+stage1_MetaMask_eth-phishing-detect_6425,MetaMask/eth-phishing-detect#6425,MetaMask/eth-phishing-detect,6425,Issue,[Legitimate Site Blocked] www.ruckus.studio,,2100,197,yes,,0,0,yes,0,,0,0,0,0,2297
+stage1_MetaMask_eth-phishing-detect_8759,MetaMask/eth-phishing-detect#8759,MetaMask/eth-phishing-detect,8759,Issue,[Legitimate Site Blocked] nftshark.cc,,2110,197,yes,,0,0,yes,0,,0,0,0,0,2307
+stage1_MetaMask_eth-phishing-detect_13502,MetaMask/eth-phishing-detect#13502,MetaMask/eth-phishing-detect,13502,Pull Request,Add phishing sites to blocklist - 09/09,,2404,227,yes,,0,0,yes,0,,0,0,0,0,2631
+stage1_MetaMask_eth-phishing-detect_159849,MetaMask/eth-phishing-detect#159849,MetaMask/eth-phishing-detect,159849,Issue,Blocklist removal request,,2133,215,yes,,0,0,yes,0,,0,0,0,0,2348
+stage1_MetaMask_eth-phishing-detect_184576,MetaMask/eth-phishing-detect#184576,MetaMask/eth-phishing-detect,184576,Issue,Blocklist addition request https://juq.ng/,,2136,215,yes,,0,0,yes,0,,0,0,0,0,2351
+stage1_MetaMask_metamask-extension_1091,MetaMask/metamask-extension#1091,MetaMask/metamask-extension,1091,Issue,Transaction errors are not shown,,2117,197,yes,,0,0,yes,0,,0,0,0,0,2314
+stage1_MetaMask_metamask-extension_6105,MetaMask/metamask-extension#6105,MetaMask/metamask-extension,6105,Issue,web3.eth.defaultAccount still being exposed without enable,,2198,215,yes,,0,0,yes,0,,0,0,0,0,2413
+stage1_MetaMask_metamask-extension_13525,MetaMask/metamask-extension#13525,MetaMask/metamask-extension,13525,Issue,NFT UX Audit,,2083,197,yes,,0,0,yes,0,,0,0,0,0,2280
+stage1_MetaMask_metamask-extension_20424,MetaMask/metamask-extension#20424,MetaMask/metamask-extension,20424,Pull Request,Log before and after each migration run,,2343,215,yes,,0,0,yes,0,,0,0,0,0,2558
+stage1_MetaMask_metamask-extension_22537,MetaMask/metamask-extension#22537,MetaMask/metamask-extension,22537,Issue,[Bug]: PPOM - Report false positives leaves the `Block number` empty if transaction failed to be verified,,2337,438,yes,,0,0,yes,0,,0,0,0,0,2775
+stage1_MetaMask_metamask-extension_25739,MetaMask/metamask-extension#25739,MetaMask/metamask-extension,25739,Pull Request,fix: caveat mutations for non-EVM accounts,,2547,197,yes,,0,0,yes,0,,0,0,0,0,2744
+stage1_MetaMask_metamask-extension_28962,MetaMask/metamask-extension#28962,MetaMask/metamask-extension,28962,Issue,[Bug]: False Positive Phishing Warning for Legitimate Website www.xrp-drop.com,,3029,197,yes,,0,0,yes,0,,0,0,0,0,3226
+stage1_MetaMask_metamask-extension_30553,MetaMask/metamask-extension#30553,MetaMask/metamask-extension,30553,Issue,"[Bug]: Unable to send tokens on Flow network, Continue button is disabled",,2264,438,yes,,0,0,yes,0,,0,0,0,0,2702
+stage1_MetaMask_metamask-extension_31382,MetaMask/metamask-extension#31382,MetaMask/metamask-extension,31382,Pull Request,fix: flaky test `Switching between account from different networks Create a Solana account and switch to another network`,,2878,215,yes,,0,0,yes,0,,0,0,0,0,3093
+stage1_MetaMask_metamask-mobile_4441,MetaMask/metamask-mobile#4441,MetaMask/metamask-mobile,4441,Issue,Cannot press sign button when call sign typed data v4,,2387,240,yes,,0,0,yes,0,,0,0,0,0,2627
+stage1_MetaMask_metamask-mobile_11138,MetaMask/metamask-mobile#11138,MetaMask/metamask-mobile,11138,Pull Request,feat: remove SECURITY_ALERTS_API_ENABLED flag,,2589,197,yes,,0,0,yes,0,,0,0,0,0,2786
+stage1_MetaMask_metamask-mobile_11455,MetaMask/metamask-mobile#11455,MetaMask/metamask-mobile,11455,Pull Request,feat: bootstrap a reset notifications feat,,2526,215,yes,,0,0,yes,0,,0,0,0,0,2741
+stage1_MetaMask_metamask-mobile_12951,MetaMask/metamask-mobile#12951,MetaMask/metamask-mobile,12951,Pull Request,test: add selected payment type for ramps sell e2e,,2478,215,yes,,0,0,yes,0,,0,0,0,0,2693
+stage1_MetaMask_metamask-mobile_13691,MetaMask/metamask-mobile#13691,MetaMask/metamask-mobile,13691,Pull Request,test: update bitrise yml to include iOS ramps tests,,2384,215,yes,,0,0,yes,0,,0,0,0,0,2599
+stage1_MetaMask_metamask-mobile_13713,MetaMask/metamask-mobile#13713,MetaMask/metamask-mobile,13713,Pull Request,fix: network of the asset when pressed in popular list view,,2503,215,yes,,0,0,yes,0,,0,0,0,0,2718
+stage1_MetaMask_metamask-mobile_16448,MetaMask/metamask-mobile#16448,MetaMask/metamask-mobile,16448,Pull Request,test: convert browser page obects to typescript,,2691,215,yes,,0,0,yes,0,,0,0,0,0,2906
+stage1_MetaMask_metamask-mobile_17295,MetaMask/metamask-mobile#17295,MetaMask/metamask-mobile,17295,Pull Request,fix: cp-7.51.0 add missing base notification properties,,2694,215,yes,,0,0,yes,0,,0,0,0,0,2909
+stage1_MetaMask_snaps_459,MetaMask/snaps#459,MetaMask/snaps,459,Pull Request,Remove WebAssembly endowment factory,,2151,197,yes,,0,0,yes,0,,0,0,0,0,2348
+stage1_MoralisWeb3_react-moralis_142,MoralisWeb3/react-moralis#142,MoralisWeb3/react-moralis,142,Issue,Add ENS support (useENS hook),,2571,245,yes,,0,0,yes,0,,0,0,0,0,2816
+stage1_NomicFoundation_hardhat_4652,NomicFoundation/hardhat#4652,NomicFoundation/hardhat,4652,Issue,Add support for library linking in hardhat-viem,,2174,215,yes,,0,0,yes,0,,0,0,0,0,2389
+stage1_OpenZeppelin_cairo-contracts_328,OpenZeppelin/cairo-contracts#328,OpenZeppelin/cairo-contracts,328,Issue,Need `--account-contract` flag when importing `IAccount`,,2191,215,yes,,0,0,yes,0,,0,0,0,0,2406
+stage1_OpenZeppelin_openzeppelin-contracts_722,OpenZeppelin/openzeppelin-contracts#722,OpenZeppelin/openzeppelin-contracts,722,Issue,"Error encountered, bailing. Network state unknown. Review successful transactions manually. Error: VM Exception while processing transaction: revert",,3363,197,yes,,0,0,yes,0,,0,0,0,0,3560
+stage1_OpenZeppelin_openzeppelin-contracts_4084,OpenZeppelin/openzeppelin-contracts#4084,OpenZeppelin/openzeppelin-contracts,4084,Pull Request,Formal verification using Certora,,2283,255,yes,,0,0,yes,0,,0,0,0,0,2538
+stage1_OpenZeppelin_openzeppelin-contracts_5062,OpenZeppelin/openzeppelin-contracts#5062,OpenZeppelin/openzeppelin-contracts,5062,Issue,"[{ 	""resource"": ""/D:/NFT/contracts/MyNft.sol"", 	""owner"": ""_generated_diagnostic_collection_name_#0"", 	""code"": ""6275"", 	""severity"": 8, 	""message"": ""Source \\""@openzeppelin/contracts/utils/counters.sol\\"" not found: File import callback not supported"", 	""startLineNumber"": 6, 	""startColumn"": 1, 	""endLineNumber"": 6, 	""endColumn"": 53 }]",,2358,215,yes,,0,0,yes,0,,0,0,0,0,2573
+stage1_OpenZeppelin_openzeppelin-sdk_917,OpenZeppelin/openzeppelin-sdk#917,OpenZeppelin/openzeppelin-sdk,917,Issue,Remove deprecated pages from docsite,,2183,215,yes,,0,0,yes,0,,0,0,0,0,2398
+stage1_ProjectOpenSea_opensea-js_236,ProjectOpenSea/opensea-js#236,ProjectOpenSea/opensea-js,236,Issue,You must approve assets for trading before creating an order,,2285,197,yes,,0,0,yes,0,,0,0,0,0,2482
+stage1_ProjectOpenSea_operator-filter-registry_93,ProjectOpenSea/operator-filter-registry#93,ProjectOpenSea/operator-filter-registry,93,Issue,"After setting the creator fees, it failed to sell NFT on Opensea.",,2401,316,yes,,0,0,yes,0,,0,0,0,0,2717
+stage1_SyncraDAO_psp-tokenlist_44,SyncraDAO/psp-tokenlist#44,SyncraDAO/psp-tokenlist,44,Pull Request,Test GH new PR Notification,,2680,512,yes,,0,0,yes,0,,0,0,0,0,3192
+stage1_TrueFiEng_Waffle_646,TrueFiEng/Waffle#646,TrueFiEng/Waffle,646,Issue,"Incorrect revert behavior on testnet, but not on hardhat development network",,2249,229,yes,,0,0,yes,0,,0,0,0,0,2478
+stage1_Uniswap_interface_2094,Uniswap/interface#2094,Uniswap/interface,2094,Issue,mixed use of BigNumber and JSBI throughout the interface,,2152,197,yes,,0,0,yes,0,,0,0,0,0,2349
+stage1_Uniswap_v4-core_310,Uniswap/v4-core#310,Uniswap/v4-core,310,Issue,Inquiry about the storage location and asset management of ERC20 tokens in Uniswap V4,,2466,251,yes,,0,0,yes,0,,0,0,0,0,2717
+stage1_Uniswap_v4-core_815,Uniswap/v4-core#815,Uniswap/v4-core,815,Pull Request,Nonzero delta count capitalization,,2188,215,yes,,0,0,yes,0,,0,0,0,0,2403
+stage1_Uniswap_web3-react_104,Uniswap/web3-react#104,Uniswap/web3-react,104,Issue,Ledger connector The method eth_sendTransaction does not exist/is not available,,2327,215,yes,,0,0,yes,0,,0,0,0,0,2542
+stage1_algorand_go-algorand_3261,algorand/go-algorand#3261,algorand/go-algorand,3261,Pull Request,ParticipationRegistry - StateProof loading methods,,2118,197,yes,,0,0,yes,0,,0,0,0,0,2315
+stage1_algorand_go-algorand_6374,algorand/go-algorand#6374,algorand/go-algorand,6374,Pull Request,network: refactor networking mesh maintaining code,,2232,496,yes,,0,0,yes,0,,0,0,0,0,2728
+stage1_blockscout_blockscout_4222,blockscout/blockscout#4222,blockscout/blockscout,4222,Issue,Mainnet: Send USDC from Matic to Binance wallet,,2359,428,yes,,0,0,yes,0,,0,0,0,0,2787
+stage1_blockscout_blockscout_5926,blockscout/blockscout#5926,blockscout/blockscout,5926,Issue,Ethereum Classic: <Issue Title>,,2239,215,yes,,0,0,yes,0,,0,0,0,0,2454
+stage1_blockscout_blockscout_6711,blockscout/blockscout#6711,blockscout/blockscout,6711,Issue,Incorrect contract code to address binding,,2083,231,yes,,0,0,yes,0,,0,0,0,0,2314
+stage1_coinbase_coinbase-wallet-sdk_526,coinbase/coinbase-wallet-sdk#526,coinbase/coinbase-wallet-sdk,526,Pull Request,Add getAllItems to ScopedLocalStorage,,2140,215,yes,,0,0,yes,0,,0,0,0,0,2355
+stage1_coinbase_onchainkit_1602,coinbase/onchainkit#1602,coinbase/onchainkit,1602,Pull Request,fix: fix base URL in docs sidebar links,,2130,215,yes,,0,0,yes,0,,0,0,0,0,2345
+stage1_embarklabs_embark_1361,embarklabs/embark#1361,embarklabs/embark,1361,Pull Request,fix(@embark/cockpit): Fix cockpit not suggesting console commands,,2396,197,yes,,0,0,yes,0,,0,0,0,0,2593
+stage1_ethereum_aleth_603,ethereum/aleth#603,ethereum/aleth,603,Issue,compilation error,,2158,215,yes,,0,0,yes,0,,0,0,0,0,2373
+stage1_ethereum_aleth_3639,ethereum/aleth#3639,ethereum/aleth,3639,Issue,Lower difficulty of the test block chain,,2115,215,yes,,0,0,yes,0,,0,0,0,0,2330
+stage1_ethereum_aleth_5551,ethereum/aleth#5551,ethereum/aleth,5551,Issue,Discovery ENR extension implementation plan,,2241,215,yes,,0,0,yes,0,,0,0,0,0,2456
+stage1_ethereum_consensus-specs_4177,ethereum/consensus-specs#4177,ethereum/consensus-specs,4177,Issue,Prune outdated issues and pull requests,,2176,215,yes,,0,0,yes,0,,0,0,0,0,2391
+stage1_ethereum_eth-tester_243,ethereum/eth-tester#243,ethereum/eth-tester,243,Pull Request,update deprecated decode calls,,2201,215,yes,,0,0,yes,0,,0,0,0,0,2416
+stage1_ethereum_ethereum-org-website_5465,ethereum/ethereum-org-website#5465,ethereum/ethereum-org-website,5465,Pull Request,Resolving text errors (Chinese dapps page),,2162,197,yes,,0,0,yes,0,,0,0,0,0,2359
+stage1_ethereum_execution-apis_244,ethereum/execution-apis#244,ethereum/execution-apis,244,Pull Request,Engine API: narrow down fcU skip conditions,,2305,215,yes,,0,0,yes,0,,0,0,0,0,2520
+stage1_ethereum_go-ethereum_85,ethereum/go-ethereum#85,ethereum/go-ethereum,85,Issue,Runtime crash at go 1.3,,5161,215,yes,,0,0,yes,0,,0,0,0,0,5376
+stage1_ethereum_go-ethereum_2237,ethereum/go-ethereum#2237,ethereum/go-ethereum,2237,Issue,"Store blockchain in AppData Local, not AppData Roaming on Windows.is",,2421,215,yes,,0,0,yes,0,,0,0,0,0,2636
+stage1_ethereum_go-ethereum_23913,ethereum/go-ethereum#23913,ethereum/go-ethereum,23913,Issue,How is the balance calculated,,2176,215,yes,,0,0,yes,0,,0,0,0,0,2391
+stage1_ethereum_mist_1179,ethereum/mist#1179,ethereum/mist,1179,Issue,Time out,,2130,215,yes,,0,0,yes,0,,0,0,0,0,2345
+stage1_ethereum_trin_451,ethereum/trin#451,ethereum/trin,451,Pull Request,Remove chain id from history network message,,2176,197,yes,,0,0,yes,0,,0,0,0,0,2373
+stage1_ethereum_web3.py_3441,ethereum/web3.py#3441,ethereum/web3.py,3441,Issue,Remove dependence on eth-utils `ValidationError` for `Web3ValidationError`,,2260,215,yes,,0,0,yes,0,,0,0,0,0,2475
+stage1_ethers-io_ethers.js_970,ethers-io/ethers.js#970,ethers-io/ethers.js,970,Pull Request,Wallet Creation Demo,,2074,215,yes,,0,0,yes,0,,0,0,0,0,2289
+stage1_ethersphere_bee_1362,ethersphere/bee#1362,ethersphere/bee,1362,Pull Request,chequebook: remove erc20 bindings,,2166,296,yes,,0,0,yes,0,,0,0,0,0,2462
+stage1_ethersphere_bee_2972,ethersphere/bee#2972,ethersphere/bee,2972,Issue,Deprecate gateway mode,,2188,215,yes,,0,0,yes,0,,0,0,0,0,2403
+stage1_ethersphere_bee_5116,ethersphere/bee#5116,ethersphere/bee,5116,Pull Request,chore: set beekeeper branch to postage-ttl [test],,2236,215,yes,,0,0,yes,0,,0,0,0,0,2451
+stage1_foundry-rs_foundry_8804,foundry-rs/foundry#8804,foundry-rs/foundry,8804,Pull Request,feat(cast/selectors): show function state mutability,,2810,215,yes,,0,0,yes,0,,0,0,0,0,3025
+stage1_foundry-rs_foundry_10589,foundry-rs/foundry#10589,foundry-rs/foundry,10589,Pull Request,fix: `vm.chainId` regression in isolation mode on `nightly` post `revm` bump,,2503,215,yes,,0,0,yes,0,,0,0,0,0,2718
+stage1_foundry-rs_foundry_11673,foundry-rs/foundry#11673,foundry-rs/foundry,11673,Issue,build: `foundry-evm` fails to build with `unresolved import solar_data_structures::sync::Lock`,,2430,215,yes,,0,0,yes,0,,0,0,0,0,2645
+stage1_foundry-rs_starknet-foundry_231,foundry-rs/starknet-foundry#231,foundry-rs/starknet-foundry,231,Issue,Deploying docs from release fails,,2096,197,yes,,0,0,yes,0,,0,0,0,0,2293
+stage1_foundry-rs_starknet-foundry_2924,foundry-rs/starknet-foundry#2924,foundry-rs/starknet-foundry,2924,Issue,"Add ""Best practises"" section in docs",,2102,197,yes,,0,0,yes,0,,0,0,0,0,2299
+stage1_graphprotocol_graph-node_1577,graphprotocol/graph-node#1577,graphprotocol/graph-node,1577,Issue,json.fromBytes should not crash subgraph in any case.,,2150,197,yes,,0,0,yes,0,,0,0,0,0,2347
+stage1_graphprotocol_graph-node_5156,graphprotocol/graph-node#5156,graphprotocol/graph-node,5156,Issue,[Bug] Rollback subgraph automatically if it lands on a fork when connected to Firehose,,2977,197,yes,,0,0,yes,0,,0,0,0,0,3174
+stage1_hyperledger_besu_671,hyperledger/besu#671,hyperledger/besu,671,Pull Request,[MISC-39] Fix balance for self detruct,,2320,250,yes,,0,0,yes,0,,0,0,0,0,2570
+stage1_hyperledger_besu_3888,hyperledger/besu#3888,hyperledger/besu,3888,Pull Request,Allow to backward sync to request headers back to last finalized block if present or genesis,,2308,215,yes,,0,0,yes,0,,0,0,0,0,2523
+stage1_hyperledger_besu_5146,hyperledger/besu#5146,hyperledger/besu,5146,Pull Request,Add an acceptance test to ensure eth_getBlockByNumber and eth_getBlockByHash return withdrawals correctly for shanghai,,2217,197,yes,,0,0,yes,0,,0,0,0,0,2414
+stage1_hyperledger_besu_6344,hyperledger/besu#6344,hyperledger/besu,6344,Issue,Under heavy load `eth_estimateGas` returns `INTERNAL_ERROR`,,2874,215,yes,,0,0,yes,0,,0,0,0,0,3089
+stage1_hyperledger_fabric-sdk-node_94,hyperledger/fabric-sdk-node#94,hyperledger/fabric-sdk-node,94,Pull Request,FABN-1453 NodeSDK add discovery test,,2120,215,yes,,0,0,yes,0,,0,0,0,0,2335
+stage1_ipfs_awesome-ipfs_485,ipfs/awesome-ipfs#485,ipfs/awesome-ipfs,485,Pull Request,Add boxo to tools,,2159,457,yes,,0,0,yes,0,,0,0,0,0,2616
+stage1_ipfs_helia_287,ipfs/helia#287,ipfs/helia,287,Issue,Marketing for `BlockBroker` API changes and retrievability improvements,,2183,524,yes,,0,0,yes,0,,0,0,0,0,2707
+stage1_ipfs_ipfs-companion_485,ipfs/ipfs-companion#485,ipfs/ipfs-companion,485,Issue,Storing files of a few megabytes to window.ipfs.files.add hangs Firefox for a minute or more,,2186,309,yes,,0,0,yes,0,,0,0,0,0,2495
+stage1_ipfs_ipfs-desktop_2125,ipfs/ipfs-desktop#2125,ipfs/ipfs-desktop,2125,Pull Request,1177 refactor ctx speed improvements,,2120,215,yes,,0,0,yes,0,,0,0,0,0,2335
+stage1_ipfs_ipfs-desktop_2788,ipfs/ipfs-desktop#2788,ipfs/ipfs-desktop,2788,Issue,[gui error report] Error: Initializing daemon...,,2766,388,yes,,0,0,yes,0,,0,0,0,0,3154
+stage1_ipfs_ipfs-webui_845,ipfs/ipfs-webui#845,ipfs/ipfs-webui,845,Pull Request,fix: skip window.ipfs,,2234,264,yes,,0,0,yes,0,,0,0,0,0,2498
+stage1_ipfs_ipfs-webui_2190,ipfs/ipfs-webui#2190,ipfs/ipfs-webui,2190,Issue,bug: webui not loading in firefox with cookies and localStorage disabled,,2769,215,yes,,0,0,yes,0,,0,0,0,0,2984
+stage1_ipfs_ipfs-webui_2348,ipfs/ipfs-webui#2348,ipfs/ipfs-webui,2348,Pull Request,feat : adds functionality to import and export IPNS keys in the IPFS WebUI,,2177,215,yes,,0,0,yes,0,,0,0,0,0,2392
+stage1_ipfs_js-ipfs_12,ipfs/js-ipfs#12,ipfs/js-ipfs,12,Issue,Grunt Install,,2134,215,yes,,0,0,yes,0,,0,0,0,0,2349
+stage1_ipfs_js-ipfs_2343,ipfs/js-ipfs#2343,ipfs/js-ipfs,2343,Issue,Is there a way to boost up the download speed on js-ipfs browser node?,,3520,197,yes,,0,0,yes,0,,0,0,0,0,3717
+stage1_ipfs_js-ipfs_2760,ipfs/js-ipfs#2760,ipfs/js-ipfs,2760,Pull Request,fix: block put with CID as string,,2149,307,yes,,0,0,yes,0,,0,0,0,0,2456
+stage1_ipfs_js-ipfs_3504,ipfs/js-ipfs#3504,ipfs/js-ipfs,3504,Issue,JS IPFS has too many security vulnerabilities,,2360,197,yes,,0,0,yes,0,,0,0,0,0,2557
+stage1_ipfs_js-ipfs_4085,ipfs/js-ipfs#4085,ipfs/js-ipfs,4085,Pull Request,fix: update car dependency for CARv2 read support,,2169,297,yes,,0,0,yes,0,,0,0,0,0,2466
+stage1_ipfs_js-ipfs_4197,ipfs/js-ipfs#4197,ipfs/js-ipfs,4197,Issue,Remove support for deprecated IPNS records v1,,2201,263,yes,,0,0,yes,0,,0,0,0,0,2464
+stage1_ipfs_kubo_460,ipfs/kubo#460,ipfs/kubo,460,Issue,dht panic: send on closed channel during FindProvidersAsync,,2582,215,yes,,0,0,yes,0,,0,0,0,0,2797
+stage1_ipfs_kubo_1376,ipfs/kubo#1376,ipfs/kubo,1376,Pull Request,swap transport over to spdystream,,2127,215,yes,,0,0,yes,0,,0,0,0,0,2342
+stage1_ipfs_kubo_1505,ipfs/kubo#1505,ipfs/kubo,1505,Pull Request,include hash of resolved object in object stat output,,2119,333,yes,,0,0,yes,0,,0,0,0,0,2452
+stage1_ipfs_kubo_3430,ipfs/kubo#3430,ipfs/kubo,3430,Issue,"Feature: General cli command for getting ""type"" info about a hash",,2559,197,yes,,0,0,yes,0,,0,0,0,0,2756
+stage1_ipfs_kubo_3869,ipfs/kubo#3869,ipfs/kubo,3869,Pull Request,gateway: use CID as an ETag strong validator,,2141,289,yes,,0,0,yes,0,,0,0,0,0,2430
+stage1_ipfs_kubo_4527,ipfs/kubo#4527,ipfs/kubo,4527,Issue,Weird files created when I try to initialize IPFS.,,2417,457,yes,,0,0,yes,0,,0,0,0,0,2874
+stage1_ipfs_kubo_5206,ipfs/kubo#5206,ipfs/kubo,5206,Pull Request,allow multiple concurrent pin fetches,,2155,235,yes,,0,0,yes,0,,0,0,0,0,2390
+stage1_ipfs_kubo_5749,ipfs/kubo#5749,ipfs/kubo,5749,Issue,windows make install failed,,2320,215,yes,,0,0,yes,0,,0,0,0,0,2535
+stage1_ipfs_kubo_5920,ipfs/kubo#5920,ipfs/kubo,5920,Pull Request,Fixed and cleaned up TestIpfsStressRead,,2058,266,yes,,0,0,yes,0,,0,0,0,0,2324
+stage1_ipfs_kubo_6458,ipfs/kubo#6458,ipfs/kubo,6458,Issue,`ipfs name publish --allow-offline=true` doesn't work when offline,,2318,215,yes,,0,0,yes,0,,0,0,0,0,2533
+stage1_ipfs_kubo_7168,ipfs/kubo#7168,ipfs/kubo,7168,Issue,Support publishing self-records in LAN DHT even when WAN DHT is available.,,2473,278,yes,,0,0,yes,0,,0,0,0,0,2751
+stage1_ipfs_kubo_8303,ipfs/kubo#8303,ipfs/kubo,8303,Issue,OpenCL support for hashing,,2197,215,yes,,0,0,yes,0,,0,0,0,0,2412
+stage1_ipfs_public-gateway-checker_177,ipfs/public-gateway-checker#177,ipfs/public-gateway-checker,177,Pull Request,add ipfs.voxhost.fr,,2415,401,yes,,0,0,yes,0,,0,0,0,0,2816
+stage1_ipfs_public-gateway-checker_215,ipfs/public-gateway-checker#215,ipfs/public-gateway-checker,215,Pull Request,feat: add the Alterdot Network IPFS gateway,,2107,197,yes,,0,0,yes,0,,0,0,0,0,2304
+stage1_ipfs_specs_383,ipfs/specs#383,ipfs/specs,383,Pull Request,IPIP-0383: Compact Denylist Format,,2144,225,yes,,0,0,yes,0,,0,0,0,0,2369
+stage1_ipfs_specs_406,ipfs/specs#406,ipfs/specs,406,Issue,Mismatch with spec on casing,,4076,197,yes,,0,0,yes,0,,0,0,0,0,4273
+stage1_junobuild_juno_481,junobuild/juno#481,junobuild/juno,481,Pull Request,feat: heap to stable migration,,2197,362,yes,,0,0,yes,0,,0,0,0,0,2559
+stage1_livepeer_go-livepeer_1786,livepeer/go-livepeer#1786,livepeer/go-livepeer,1786,Pull Request,cmd/livepeer_bench: Support delay,,2276,215,yes,,0,0,yes,0,,0,0,0,0,2491
+stage1_livepeer_go-livepeer_3229,livepeer/go-livepeer#3229,livepeer/go-livepeer,3229,Pull Request,fix: Add image-to-text pipeline to remote worker,,2370,215,yes,,0,0,yes,0,,0,0,0,0,2585
+stage1_matter-labs_anvil-zksync_351,matter-labs/anvil-zksync#351,matter-labs/anvil-zksync,351,Pull Request,fix: fixes release pipeline due bump in rust version,,2329,197,yes,,0,0,yes,0,,0,0,0,0,2526
+stage1_matter-labs_foundry-zksync_358,matter-labs/foundry-zksync#358,matter-labs/foundry-zksync,358,Pull Request,fix: avoid test contract migration,,2367,246,yes,,0,0,yes,0,,0,0,0,0,2613
+stage1_near_core-contracts_197,near/core-contracts#197,near/core-contracts,197,Issue,wNEAR: lack of test coverage,,2160,215,yes,,0,0,yes,0,,0,0,0,0,2375
+stage1_near_nearcore_306,near/nearcore#306,near/nearcore,306,Issue,Language independent serialization,,2101,215,yes,,0,0,yes,0,,0,0,0,0,2316
+stage1_near_nearcore_2483,near/nearcore#2483,near/nearcore,2483,Issue,Change config in pytest,,2095,215,yes,,0,0,yes,0,,0,0,0,0,2310
+stage1_near_nearcore_2846,near/nearcore#2846,near/nearcore,2846,Pull Request,fix: fix some issues in zero downtime upgrade,,2132,238,yes,,0,0,yes,0,,0,0,0,0,2370
+stage1_near_nearcore_6512,near/nearcore#6512,near/nearcore,6512,Pull Request,fix chainsync workspace grouping,,2144,197,yes,,0,0,yes,0,,0,0,0,0,2341
+stage1_near_nearcore_11333,near/nearcore#11333,near/nearcore,11333,Pull Request,feat: skip applying state witness for chunk producers,,2183,215,yes,,0,0,yes,0,,0,0,0,0,2398
+stage1_openethereum_parity-ethereum_5747,openethereum/parity-ethereum#5747,openethereum/parity-ethereum,5747,Issue,Remote UI - Contract methods not loading,,2191,215,yes,,0,0,yes,0,,0,0,0,0,2406
+stage1_paradigmxyz_reth_2760,paradigmxyz/reth#2760,paradigmxyz/reth,2760,Pull Request,chore: trace return values on insert,,2073,215,yes,,0,0,yes,0,,0,0,0,0,2288
+stage1_paradigmxyz_reth_16266,paradigmxyz/reth#16266,paradigmxyz/reth,16266,Pull Request,docs: Fix typos in `static-file` crate README,,2166,197,yes,,0,0,yes,0,,0,0,0,0,2363
+stage1_paradigmxyz_reth_17374,paradigmxyz/reth#17374,paradigmxyz/reth,17374,Pull Request,fix: typo in documentation comments,,2110,215,yes,,0,0,yes,0,,0,0,0,0,2325
+stage1_paradigmxyz_solar_329,paradigmxyz/solar#329,paradigmxyz/solar,329,Pull Request,cache len,,2070,215,yes,,0,0,yes,0,,0,0,0,0,2285
+stage1_paritytech_polkadot_3714,paritytech/polkadot#3714,paritytech/polkadot,3714,Issue,exception when run polkadot.,,4357,215,yes,,0,0,yes,0,,0,0,0,0,4572
+stage1_paritytech_polkadot-sdk_317,paritytech/polkadot-sdk#317,paritytech/polkadot-sdk,317,Issue,Add Memory Information to Runtime Benchmarks,,2095,215,yes,,0,0,yes,0,,0,0,0,0,2310
+stage1_paritytech_polkadot-sdk_1851,paritytech/polkadot-sdk#1851,paritytech/polkadot-sdk,1851,Pull Request,Small optimisation to `--profile dev` wasm builds,,2331,197,yes,,0,0,yes,0,,0,0,0,0,2528
+stage1_paritytech_polkadot-sdk_2245,paritytech/polkadot-sdk#2245,paritytech/polkadot-sdk,2245,Issue,[remote-externalities] Batch calls scraping child-tree data,,2164,229,yes,,0,0,yes,0,,0,0,0,0,2393
+stage1_paritytech_polkadot-sdk_3203,paritytech/polkadot-sdk#3203,paritytech/polkadot-sdk,3203,Issue,"When attempting to connect my external parachain, it fails to receive blocks from the relay chain. How can I address this issue? For instance, the relay chain is hosted on the office WiFi, while the parachain is connected via external internet. In this setup, the parachain struggles to establish peer connections or receive blocks from the relay chain. What steps can be taken to resolve this connectivity issue?""",,2260,215,yes,,0,0,yes,0,,0,0,0,0,2475
+stage1_paritytech_polkadot-sdk_4745,paritytech/polkadot-sdk#4745,paritytech/polkadot-sdk,4745,Issue,Track offence severity in the runtime for re-enabling purposes (+ migration),,2108,232,yes,,0,0,yes,0,,0,0,0,0,2340
+stage1_paritytech_polkadot-sdk_9497,paritytech/polkadot-sdk#9497,paritytech/polkadot-sdk,9497,Pull Request,Society pallet supports non-consecutive block provider,,2179,269,yes,,0,0,yes,0,,0,0,0,0,2448
+stage1_paritytech_substrate_5493,paritytech/substrate#5493,paritytech/substrate,5493,Pull Request,Use saturating sub in basic authorship,,2129,215,yes,,0,0,yes,0,,0,0,0,0,2344
+stage1_paritytech_substrate_9696,paritytech/substrate#9696,paritytech/substrate,9696,Issue,Move ss58-registry into its own crate,,2242,215,yes,,0,0,yes,0,,0,0,0,0,2457
+stage1_paritytech_substrate_9738,paritytech/substrate#9738,paritytech/substrate,9738,Pull Request,Make event record easier to decode,,2323,270,yes,,0,0,yes,0,,0,0,0,0,2593
+stage1_paritytech_subxt_1117,paritytech/subxt#1117,paritytech/subxt,1117,Pull Request,Codegen for custom values in metadata,,2309,474,yes,,0,0,yes,0,,0,0,0,0,2783
+stage1_protofire_solhint_197,protofire/solhint#197,protofire/solhint,197,Issue,mark-callable-contracts notified on superclass method calls,,2417,236,yes,,0,0,yes,0,,0,0,0,0,2653
+stage1_rainbow-me_rainbow_3675,rainbow-me/rainbow#3675,rainbow-me/rainbow,3675,Pull Request,Add `typescript` to CodeQL langs,,2056,197,yes,,0,0,yes,0,,0,0,0,0,2253
+stage1_scroll-tech_contribute-to-scroll_1966,scroll-tech/contribute-to-scroll#1966,scroll-tech/contribute-to-scroll,1966,Issue,Add Scroll to Lens Protocol,,2321,476,yes,,0,0,yes,0,,0,0,0,0,2797
+stage1_sigp_lighthouse_911,sigp/lighthouse#911,sigp/lighthouse,911,Pull Request,Book corrections to allow http api access for docker use,,2110,197,yes,,0,0,yes,0,,0,0,0,0,2307
+stage1_sigp_lighthouse_4971,sigp/lighthouse#4971,sigp/lighthouse,4971,Pull Request,Enable progressive balances fast mode by default,,2223,246,yes,,0,0,yes,0,,0,0,0,0,2469
+stage1_smartcontractkit_chainlink_2681,smartcontractkit/chainlink#2681,smartcontractkit/chainlink,2681,Pull Request,Add unique index on txes.hash,,2348,276,yes,,0,0,yes,0,,0,0,0,0,2624
+stage1_smartcontractkit_chainlink_13017,smartcontractkit/chainlink#13017,smartcontractkit/chainlink,13017,Pull Request,test/flakey head prev 10,,2258,215,yes,,0,0,yes,0,,0,0,0,0,2473
+stage1_smol-dot_smoldot_1806,smol-dot/smoldot#1806,smol-dot/smoldot,1806,Issue,Testing smoldot with substrate WebRTC,,2648,433,yes,,0,0,yes,0,,0,0,0,0,3081
+stage1_snapshot-labs_sx-monorepo_981,snapshot-labs/sx-monorepo#981,snapshot-labs/sx-monorepo,981,Pull Request,test: improve speed of starknet integration tests 10x,,2192,215,yes,,0,0,yes,0,,0,0,0,0,2407
+stage1_solana-labs_solana_3377,solana-labs/solana#3377,solana-labs/solana,3377,Pull Request,Clear progress map on squash,,2107,197,yes,,0,0,yes,0,,0,0,0,0,2304
+stage1_solana-labs_solana_5681,solana-labs/solana#5681,solana-labs/solana,5681,Pull Request,Add getInflation JSON RPC endpoint,,2124,233,yes,,0,0,yes,0,,0,0,0,0,2357
+stage1_solana-labs_token-list_1165,solana-labs/token-list#1165,solana-labs/token-list,1165,Pull Request,Add Vault Coin,,2340,215,yes,,0,0,yes,0,,0,0,0,0,2555
+stage1_solana-labs_token-list_16854,solana-labs/token-list#16854,solana-labs/token-list,16854,Issue,Update PAWS Info,,2165,215,yes,,0,0,yes,0,,0,0,0,0,2380
+stage1_trustwallet_assets_2057,trustwallet/assets#2057,trustwallet/assets,2057,Pull Request,Upload BOF logo,,2067,215,yes,,0,0,yes,0,,0,0,0,0,2282
+stage1_trustwallet_assets_4740,trustwallet/assets#4740,trustwallet/assets,4740,Pull Request,Add Axie Infinity Shards (AXS),,2121,197,yes,,0,0,yes,0,,0,0,0,0,2318
+stage1_trustwallet_assets_5452,trustwallet/assets#5452,trustwallet/assets,5452,Pull Request,[Internal] Tokenpairs manual update,,2080,215,yes,,0,0,yes,0,,0,0,0,0,2295
+stage1_trustwallet_assets_7985,trustwallet/assets#7985,trustwallet/assets,7985,Pull Request,Add O3 Swap (ERC20),,2106,213,yes,,0,0,yes,0,,0,0,0,0,2319
+stage1_trustwallet_assets_13141,trustwallet/assets#13141,trustwallet/assets,13141,Pull Request,Adding new ERC contract for dotmoovs,,2058,217,yes,,0,0,yes,0,,0,0,0,0,2275
+stage1_trustwallet_assets_14229,trustwallet/assets#14229,trustwallet/assets,14229,Pull Request,Add BNB Cash Info and Token Logo,,2097,215,yes,,0,0,yes,0,,0,0,0,0,2312
+stage1_trustwallet_assets_15915,trustwallet/assets#15915,trustwallet/assets,15915,Pull Request,Updated CBC logo and info,,2069,215,yes,,0,0,yes,0,,0,0,0,0,2284
+stage1_trustwallet_assets_16096,trustwallet/assets#16096,trustwallet/assets,16096,Pull Request,remove old logo for AERDROP (BEP20),,2061,197,yes,,0,0,yes,0,,0,0,0,0,2258
+stage1_trustwallet_assets_24480,trustwallet/assets#24480,trustwallet/assets,24480,Pull Request,Add Genesis Universe Token (BEP20),,2104,233,yes,,0,0,yes,0,,0,0,0,0,2337
+stage1_trustwallet_assets_26515,trustwallet/assets#26515,trustwallet/assets,26515,Pull Request,Add Decentrawood (POLYGON),,2106,197,yes,,0,0,yes,0,,0,0,0,0,2303
+stage1_trustwallet_assets_29848,trustwallet/assets#29848,trustwallet/assets,29848,Pull Request,Add logo for Cogito (COG) token,,2140,215,yes,,0,0,yes,0,,0,0,0,0,2355
+stage1_trustwallet_assets_29882,trustwallet/assets#29882,trustwallet/assets,29882,Pull Request,Add EuropaCoin (BEP20),,2103,206,yes,,0,0,yes,0,,0,0,0,0,2309
+stage1_trustwallet_assets_30558,trustwallet/assets#30558,trustwallet/assets,30558,Pull Request,Adding BTX (Betax) Token Logo and Info for Polygon ERC-20,,2067,207,yes,,0,0,yes,0,,0,0,0,0,2274
+stage1_trustwallet_tokens_104,trustwallet/tokens#104,trustwallet/tokens,104,Pull Request,Use ERC-55 and remove duplicates,,2121,226,yes,,0,0,yes,0,,0,0,0,0,2347
+stage1_trustwallet_wallet-core_2768,trustwallet/wallet-core#2768,trustwallet/wallet-core,2768,Pull Request,[ZkSync]: Add support for ZkSync V2 mainnet,,2124,215,yes,,0,0,yes,0,,0,0,0,0,2339
+stage1_web3_web3.js_2299,web3/web3.js#2299,web3/web3.js,2299,Pull Request,Add missing quotes in ENS documentation,,2103,215,yes,,0,0,yes,0,,0,0,0,0,2318
+stage1_web3_web3.js_6085,web3/web3.js#6085,web3/web3.js,6085,Issue,Truffle-migtration-4.x/Validation of nested tuples doesn't work properly in contract's methods,,2387,215,yes,,0,0,yes,0,,0,0,0,0,2602
+stage1_wevm_wagmi_1412,wevm/wagmi#1412,wevm/wagmi,1412,Pull Request,refactor: add error options with cause,,2169,215,yes,,0,0,yes,0,,0,0,0,0,2384
+stage1_MetaMask_metamask-docs_1505,MetaMask/metamask-docs#1505,MetaMask/metamask-docs,1505,Pull Request,recreates fixes,,2198,197,yes,,0,0,yes,0,,0,0,0,0,2395
+stage1_MetaMask_metamask-mobile_14857,MetaMask/metamask-mobile#14857,MetaMask/metamask-mobile,14857,Pull Request,Test: disable multi-SRP,,2482,215,yes,,0,0,yes,0,,0,0,0,0,2697
+stage1_paritytech_substrate_1310,paritytech/substrate#1310,paritytech/substrate,1310,Issue,"Substrate Local Dev: cargo run --  --dev , the chain gets stuck",,2062,197,yes,,0,0,yes,0,,0,0,0,0,2259
+stage1_hyperledger_besu_4012,hyperledger/besu#4012,hyperledger/besu,4012,Issue,요건몰랐네,,2524,522,yes,,0,0,yes,0,,0,0,0,0,3046
+stage1_matter-labs_zksync_215,matter-labs/zksync#215,matter-labs/zksync,215,Pull Request,Contract changes.,,2114,237,yes,,0,0,yes,0,,0,0,0,0,2351
