@@ -1,0 +1,62 @@
+[
+  {
+    "artifact_sha256": "25d57b0e36efb420ee5a998110539cce5c577bae54a68a6339a9a34d507d987b",
+    "custom_id_stage1": "s1_a147400ba5c97771a5708bd7382cfc58",
+    "included_char_count": 2224,
+    "input_truncated": false,
+    "issue_key": "ethereum/pm#867",
+    "issue_number": "867",
+    "original_char_count": 2037,
+    "repository": "ethereum/pm"
+  },
+  {
+    "artifact_sha256": "422c21f24a4a4c0b2b2d16d315e4fe1559c81f9868680a96b1bc3893257cc881",
+    "custom_id_stage1": "s1_afdfa623dd56e91a0bac4e1cd1635673",
+    "included_char_count": 662,
+    "input_truncated": false,
+    "issue_key": "solana-labs/solana-program-library#2003",
+    "issue_number": "2003",
+    "original_char_count": 451,
+    "repository": "solana-labs/solana-program-library"
+  },
+  {
+    "artifact_sha256": "353637cac4af64d278ba9c8302879e82d7d9d2b5be909623917fc6481dbec495",
+    "custom_id_stage1": "s1_908208bbb4e71cdd6cc71e06e278a9d9",
+    "included_char_count": 1714,
+    "input_truncated": false,
+    "issue_key": "web3swift-team/web3swift#103",
+    "issue_number": "103",
+    "original_char_count": 1514,
+    "repository": "web3swift-team/web3swift"
+  },
+  {
+    "artifact_sha256": "3cb336371ce12c6ab1b6241e607f964b76a3e434655ecca8eb81a52206fa520c",
+    "custom_id_stage1": "s1_4b05e41fa0ab3096aad9ff48c14ec10d",
+    "included_char_count": 4786,
+    "input_truncated": true,
+    "issue_key": "crytic/slither#117",
+    "issue_number": "117",
+    "original_char_count": 7234,
+    "repository": "crytic/slither"
+  },
+  {
+    "artifact_sha256": "82d0f2eae24bb74d29b0055737fe6faf07aa15d978ee99fca52798c1eed9f021",
+    "custom_id_stage1": "s1_cbe7e3959df65f23bd6efa35ce102a85",
+    "included_char_count": 807,
+    "input_truncated": false,
+    "issue_key": "Uniswap/v3-sdk#141",
+    "issue_number": "141",
+    "original_char_count": 617,
+    "repository": "Uniswap/v3-sdk"
+  },
+  {
+    "artifact_sha256": "22211c2897e18db8c85de1be69c653199c66ca59147c228e9b0e396ce0e56c6d",
+    "custom_id_stage1": "s1_e91693ea296cc2fab967a78c77967dfb",
+    "included_char_count": 5398,
+    "input_truncated": true,
+    "issue_key": "ethereum/consensus-specs#44",
+    "issue_number": "44",
+    "original_char_count": 5962,
+    "repository": "ethereum/consensus-specs"
+  }
+]

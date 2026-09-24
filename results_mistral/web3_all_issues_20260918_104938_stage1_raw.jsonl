@@ -1,0 +1,12 @@
+{"custom_id": "stage1_ethereum_pm_867", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2465, "completion_tokens": 241, "total_tokens": 2706}}}
+{"custom_id": "stage1_solana-labs_solana-program-library_2003", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2081, "completion_tokens": 250, "total_tokens": 2331}}}
+{"custom_id": "stage1_web3swift-team_web3swift_103", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2158, "completion_tokens": 241, "total_tokens": 2399}}}
+{"custom_id": "stage1_crytic_slither_117", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2170, "completion_tokens": 243, "total_tokens": 2413}}}
+{"custom_id": "stage1_Uniswap_v3-sdk_141", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2098, "completion_tokens": 215, "total_tokens": 2313}}}
+{"custom_id": "stage1_ethereum_consensus-specs_44", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2307, "completion_tokens": 238, "total_tokens": 2545}}}
+{"custom_id": "stage1_ipfs_public-gateway-checker_452", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2202, "completion_tokens": 215, "total_tokens": 2417}}}
+{"custom_id": "stage1_paritytech_substrate_900", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2100, "completion_tokens": 215, "total_tokens": 2315}}}
+{"custom_id": "stage1_trustwallet_assets_17741", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2100, "completion_tokens": 231, "total_tokens": 2331}}}
+{"custom_id": "stage1_OpenZeppelin_openzeppelin-contracts_3735", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2278, "completion_tokens": 533, "total_tokens": 2811}}}
+{"custom_id": "stage1_foundry-rs_foundry_8015", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2654, "completion_tokens": 296, "total_tokens": 2950}}}
+{"custom_id": "stage1_graphprotocol_graph-node_3373", "call": "call1", "response": {"categories": [], "metadata": {"prompt_tokens": 2772, "completion_tokens": 258, "total_tokens": 3030}}}

@@ -1,0 +1,30 @@
+/home/pamella/.local/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py:23: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[load] Carregando catálogo e taxonomia...
+[load] 82 patterns, 6 categories
+[load] Preparando issues...
+[load] 200 issues preparadas
+
+[stage1] Executando pipeline hierárquico...
+[hier call1] 1/200 ethereum/pm#867
+Traceback (most recent call last):
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1223, in <module>
+    main()
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1175, in main
+    stage1_results = run_hierarchical_stage1_sync(
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 785, in run_hierarchical_stage1_sync
+    response1 = call_sync(client, call1_params)
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 135, in call_sync
+    response = client.chat.complete(
+  File "/home/pamella/.local/lib/python3.10/site-packages/mistralai/client/chat.py", line 284, in complete
+    raise errors.SDKError("API error occurred", http_res, http_res_text)
+mistralai.client.errors.sdkerror.SDKError: API error occurred: Status 429. Body: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"code":"1300","raw_status_code":429}

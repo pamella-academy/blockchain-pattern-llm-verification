@@ -1,0 +1,14 @@
+{
+  "completed_ids": [
+    "s1_a147400ba5c97771a5708bd7382cfc58",
+    "s1_afdfa623dd56e91a0bac4e1cd1635673",
+    "s1_908208bbb4e71cdd6cc71e06e278a9d9",
+    "s1_4b05e41fa0ab3096aad9ff48c14ec10d",
+    "s1_cbe7e3959df65f23bd6efa35ce102a85",
+    "s1_e91693ea296cc2fab967a78c77967dfb"
+  ],
+  "failed_ids": [],
+  "last_updated": "2026-09-18T00:20:18+00:00",
+  "run_id": "yes6_CORRECTED_taxonomy",
+  "stage": "hierarchical_stage1"
+}

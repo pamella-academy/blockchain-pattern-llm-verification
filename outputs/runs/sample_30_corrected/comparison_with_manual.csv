@@ -1,0 +1,31 @@
+issue_key,manual_yes,pipeline_yes,match_type,manual_patterns,pipeline_patterns,manual_full
+MetaMask/contract-metadata#1125,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+MetaMask/core#309,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+MetaMask/eth-phishing-detect#6425,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+MetaMask/metamask-extension#1091,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+MoralisWeb3/react-moralis#142,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+OpenZeppelin/openzeppelin-contracts#3735,True,True,TRUE_POSITIVE,Role-based control|Time-Constrained Access,Tokenization,llm: no; A1: yes
+OpenZeppelin/openzeppelin-contracts#722,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+SyncraDAO/psp-tokenlist#44,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+Uniswap/web3-react#104,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ethereum/consensus-specs#4177,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ethereum/eth-tester#243,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ethereum/pm#867,True,False,FALSE_NEGATIVE,Mortal,,llm: yes; A1: yes
+foundry-rs/foundry#8015,True,False,FALSE_NEGATIVE,Proxy contract,,llm: no; A1: yes
+graphprotocol/graph-node#3373,True,True,TRUE_POSITIVE,Reverse Oracle,Reverse Oracle,llm: no; A1: yes
+ipfs/helia#287,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ipfs/ipfs-companion#485,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ipfs/ipfs-desktop#2125,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ipfs/ipfs-desktop#2788,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ipfs/kubo#3430,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ipfs/kubo#5749,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+ipfs/specs#383,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+matter-labs/anvil-zksync#351,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+paritytech/polkadot-sdk#3203,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+paritytech/polkadot-sdk#9497,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+sigp/lighthouse#911,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+solana-labs/solana#3377,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+solana-labs/solana-program-library#2003,True,True,TRUE_POSITIVE,Oracle,Oracle,llm: yes; A1: yes
+solana-labs/solana-program-library#3165,True,True,TRUE_POSITIVE,Oracle,Oracle,llm: no; A1: yes
+trustwallet/assets#29848,False,False,TRUE_NEGATIVE,,,llm: no; A1: no
+web3swift-team/web3swift#103,True,True,TRUE_POSITIVE,Tokenization,Tokenization,llm: yes; A1: yes

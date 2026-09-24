@@ -1,0 +1,15 @@
+{
+  "completed_ids": [
+    "s2_b7d1400b158a3591e8ac132fd3dc3206",
+    "s2_998671116ce00728d4e67a939aca835a",
+    "s2_e6b841ef162de105ec322013d8226e9b",
+    "s2_a0891194495f20fa357ce8e7da34f549",
+    "s2_a2da9fad7782ddd3f84535056cf7fc12",
+    "s2_2934d40374a66baa0acc8b61fb88846c",
+    "s2_59675d15ff4f51e64bc29fc1a11ddb8b"
+  ],
+  "failed_ids": [],
+  "last_updated": "2026-09-18T00:28:02+00:00",
+  "run_id": "sample_30_corrected",
+  "stage": "stage2"
+}

@@ -1,0 +1,300 @@
+/home/pamella/.local/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py:23: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[load] Carregando catálogo e taxonomia...
+[load] 82 patterns, 6 categories
+[load] Preparando issues...
+[load] 200 issues preparadas
+
+[stage1] Executando pipeline hierárquico...
+[hier call1] 1/200 ethereum/pm#867
+  [early stop] No relevant categories
+[hier call1] 2/200 solana-labs/solana-program-library#2003
+[hier call2] 2/200 solana-labs/solana-program-library#2003 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 2/200 solana-labs/solana-program-library#2003 subcategories=['Transactions'] patterns=1
+[hier call1] 3/200 web3swift-team/web3swift#103
+[hier call2] 3/200 web3swift-team/web3swift#103 categories=['On/off-chain interaction', 'On-chain - Domain-based'] subcategories=8
+[hier call3] 3/200 web3swift-team/web3swift#103 subcategories=['Transactions'] patterns=1
+[hier call1] 4/200 crytic/slither#117
+  [early stop] No relevant categories
+[hier call1] 5/200 Uniswap/v3-sdk#141
+[hier call2] 5/200 Uniswap/v3-sdk#141 categories=['On/off-chain interaction'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 6/200 ethereum/consensus-specs#44
+[hier call2] 6/200 ethereum/consensus-specs#44 categories=['On-chain - Domain-based', 'On-chain - Data management'] subcategories=8
+  [early stop] No relevant subcategories
+[hier call1] 7/200 ipfs/public-gateway-checker#452
+  [early stop] No relevant categories
+[hier call1] 8/200 paritytech/substrate#900
+[hier call2] 8/200 paritytech/substrate#900 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 8/200 paritytech/substrate#900 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 9/200 trustwallet/assets#17741
+  [early stop] No relevant categories
+[hier call1] 10/200 OpenZeppelin/openzeppelin-contracts#3735
+[hier call2] 10/200 OpenZeppelin/openzeppelin-contracts#3735 categories=['On-chain - Domain-based', 'On-chain - Smart contract'] subcategories=8
+[hier call3] 10/200 OpenZeppelin/openzeppelin-contracts#3735 subcategories=['Contract access control'] patterns=5
+[hier call1] 11/200 foundry-rs/foundry#8015
+  [early stop] No relevant categories
+[hier call1] 12/200 graphprotocol/graph-node#3373
+[hier call2] 12/200 graphprotocol/graph-node#3373 categories=['On/off-chain interaction', 'Architectural'] subcategories=4
+[hier call3] 12/200 graphprotocol/graph-node#3373 subcategories=['Transactions'] patterns=1
+[hier call1] 13/200 solana-labs/solana-program-library#3165
+[hier call2] 13/200 solana-labs/solana-program-library#3165 categories=['On/off-chain interaction', 'On-chain - Domain-based'] subcategories=8
+[hier call3] 13/200 solana-labs/solana-program-library#3165 subcategories=['Transactions'] patterns=1
+[hier call1] 14/200 AztecProtocol/aztec-packages#2388
+  [early stop] No relevant categories
+[hier call1] 15/200 AztecProtocol/aztec-packages#5038
+  [early stop] No relevant categories
+[hier call1] 16/200 AztecProtocol/aztec-packages#5651
+  [early stop] No relevant categories
+[hier call1] 17/200 AztecProtocol/aztec-packages#11391
+  [early stop] No relevant categories
+[hier call1] 18/200 Consensys/gnark#388
+  [early stop] No relevant categories
+[hier call1] 19/200 Consensys/gnark#1311
+[hier call2] 19/200 Consensys/gnark#1311 categories=['On-chain - Data management'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 20/200 Consensys/quorum#72
+  [early stop] No relevant categories
+[hier call1] 21/200 Consensys/quorum#387
+  [early stop] No relevant categories
+[hier call1] 22/200 Consensys/quorum#1586
+  [early stop] No relevant categories
+[hier call1] 23/200 Consensys/teku#8385
+  [early stop] No relevant categories
+[hier call1] 24/200 FuelLabs/fuel-connectors#349
+  [early stop] No relevant categories
+[hier call1] 25/200 FuelLabs/fuel-core#2528
+  [early stop] No relevant categories
+[hier call1] 26/200 FuelLabs/sway#4516
+  [early stop] No relevant categories
+[hier call1] 27/200 FuelLabs/sway#7228
+  [early stop] No relevant categories
+[hier call1] 28/200 INFURA/infura#81
+  [early stop] No relevant categories
+[hier call1] 29/200 MetaMask/contract-metadata#1125
+  [early stop] No relevant categories
+[hier call1] 30/200 MetaMask/core#309
+  [early stop] No relevant categories
+[hier call1] 31/200 MetaMask/core#691
+  [early stop] No relevant categories
+[hier call1] 32/200 MetaMask/core#1981
+  [early stop] No relevant categories
+[hier call1] 33/200 MetaMask/eth-phishing-detect#6425
+  [early stop] No relevant categories
+[hier call1] 34/200 MetaMask/eth-phishing-detect#8759
+  [early stop] No relevant categories
+[hier call1] 35/200 MetaMask/eth-phishing-detect#13502
+  [early stop] No relevant categories
+[hier call1] 36/200 MetaMask/eth-phishing-detect#159849
+  [early stop] No relevant categories
+[hier call1] 37/200 MetaMask/eth-phishing-detect#184576
+  [early stop] No relevant categories
+[hier call1] 38/200 MetaMask/metamask-extension#1091
+[hier call2] 38/200 MetaMask/metamask-extension#1091 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 38/200 MetaMask/metamask-extension#1091 subcategories=['Transactions'] patterns=1
+[hier call1] 39/200 MetaMask/metamask-extension#6105
+[hier call2] 39/200 MetaMask/metamask-extension#6105 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 39/200 MetaMask/metamask-extension#6105 subcategories=['Data exchange', 'Wallet and keys'] patterns=8
+[hier call1] 40/200 MetaMask/metamask-extension#13525
+  [early stop] No relevant categories
+[hier call1] 41/200 MetaMask/metamask-extension#20424
+  [early stop] No relevant categories
+[hier call1] 42/200 MetaMask/metamask-extension#22537
+  [early stop] No relevant categories
+[hier call1] 43/200 MetaMask/metamask-extension#25739
+  [early stop] No relevant categories
+[hier call1] 44/200 MetaMask/metamask-extension#28962
+  [early stop] No relevant categories
+[hier call1] 45/200 MetaMask/metamask-extension#30553
+  [early stop] No relevant categories
+[hier call1] 46/200 MetaMask/metamask-extension#31382
+  [early stop] No relevant categories
+[hier call1] 47/200 MetaMask/metamask-mobile#4441
+  [early stop] No relevant categories
+[hier call1] 48/200 MetaMask/metamask-mobile#11138
+  [early stop] No relevant categories
+[hier call1] 49/200 MetaMask/metamask-mobile#11455
+  [early stop] No relevant categories
+[hier call1] 50/200 MetaMask/metamask-mobile#12951
+  [early stop] No relevant categories
+[hier call1] 51/200 MetaMask/metamask-mobile#13691
+  [early stop] No relevant categories
+[hier call1] 52/200 MetaMask/metamask-mobile#13713
+  [early stop] No relevant categories
+[hier call1] 53/200 MetaMask/metamask-mobile#16448
+  [early stop] No relevant categories
+[hier call1] 54/200 MetaMask/metamask-mobile#17295
+  [early stop] No relevant categories
+[hier call1] 55/200 MetaMask/snaps#459
+  [early stop] No relevant categories
+[hier call1] 56/200 MoralisWeb3/react-moralis#142
+[hier call2] 56/200 MoralisWeb3/react-moralis#142 categories=['On-chain - Domain-based'] subcategories=4
+[hier call3] 56/200 MoralisWeb3/react-moralis#142 subcategories=['Decentralized identity'] patterns=5
+[hier call1] 57/200 NomicFoundation/hardhat#4652
+  [early stop] No relevant categories
+[hier call1] 58/200 OpenZeppelin/cairo-contracts#328
+  [early stop] No relevant categories
+[hier call1] 59/200 OpenZeppelin/openzeppelin-contracts#722
+  [early stop] No relevant categories
+[hier call1] 60/200 OpenZeppelin/openzeppelin-contracts#4084
+[hier call2] 60/200 OpenZeppelin/openzeppelin-contracts#4084 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 60/200 OpenZeppelin/openzeppelin-contracts#4084 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 61/200 OpenZeppelin/openzeppelin-contracts#5062
+  [early stop] No relevant categories
+[hier call1] 62/200 OpenZeppelin/openzeppelin-sdk#917
+  [early stop] No relevant categories
+[hier call1] 63/200 ProjectOpenSea/opensea-js#236
+  [early stop] No relevant categories
+[hier call1] 64/200 ProjectOpenSea/operator-filter-registry#93
+[hier call2] 64/200 ProjectOpenSea/operator-filter-registry#93 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 64/200 ProjectOpenSea/operator-filter-registry#93 subcategories=['Transactions'] patterns=1
+[hier call1] 65/200 SyncraDAO/psp-tokenlist#44
+  [early stop] No relevant categories
+[hier call1] 66/200 TrueFiEng/Waffle#646
+  [early stop] No relevant categories
+[hier call1] 67/200 Uniswap/interface#2094
+  [early stop] No relevant categories
+[hier call1] 68/200 Uniswap/v4-core#310
+  [early stop] No relevant categories
+[hier call1] 69/200 Uniswap/v4-core#815
+  [early stop] No relevant categories
+[hier call1] 70/200 Uniswap/web3-react#104
+[hier call2] 70/200 Uniswap/web3-react#104 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 70/200 Uniswap/web3-react#104 subcategories=['Wallet and keys', 'Transactions'] patterns=4
+[hier call1] 71/200 algorand/go-algorand#3261
+  [early stop] No relevant categories
+[hier call1] 72/200 algorand/go-algorand#6374
+  [early stop] No relevant categories
+[hier call1] 73/200 blockscout/blockscout#4222
+  [early stop] No relevant categories
+[hier call1] 74/200 blockscout/blockscout#5926
+  [early stop] No relevant categories
+[hier call1] 75/200 blockscout/blockscout#6711
+  [early stop] No relevant categories
+[hier call1] 76/200 coinbase/coinbase-wallet-sdk#526
+  [early stop] No relevant categories
+[hier call1] 77/200 coinbase/onchainkit#1602
+  [early stop] No relevant categories
+[hier call1] 78/200 embarklabs/embark#1361
+  [early stop] No relevant categories
+[hier call1] 79/200 ethereum/aleth#603
+  [early stop] No relevant categories
+[hier call1] 80/200 ethereum/aleth#3639
+  [early stop] No relevant categories
+[hier call1] 81/200 ethereum/aleth#5551
+  [early stop] No relevant categories
+[hier call1] 82/200 ethereum/consensus-specs#4177
+  [early stop] No relevant categories
+[hier call1] 83/200 ethereum/eth-tester#243
+  [early stop] No relevant categories
+[hier call1] 84/200 ethereum/ethereum-org-website#5465
+  [early stop] No relevant categories
+[hier call1] 85/200 ethereum/execution-apis#244
+  [early stop] No relevant categories
+[hier call1] 86/200 ethereum/go-ethereum#85
+  [early stop] No relevant categories
+[hier call1] 87/200 ethereum/go-ethereum#2237
+  [early stop] No relevant categories
+[hier call1] 88/200 ethereum/go-ethereum#23913
+  [early stop] No relevant categories
+[hier call1] 89/200 ethereum/mist#1179
+  [early stop] No relevant categories
+[hier call1] 90/200 ethereum/trin#451
+  [early stop] No relevant categories
+[hier call1] 91/200 ethereum/web3.py#3441
+  [early stop] No relevant categories
+[hier call1] 92/200 ethers-io/ethers.js#970
+  [early stop] No relevant categories
+[hier call1] 93/200 ethersphere/bee#1362
+[hier call2] 93/200 ethersphere/bee#1362 categories=['On/off-chain interaction', 'On-chain - Domain-based', 'On-chain - Smart contract', 'Architectural'] subcategories=12
+[hier call3] 93/200 ethersphere/bee#1362 subcategories=['Contract management'] patterns=8
+[hier call1] 94/200 ethersphere/bee#2972
+  [early stop] No relevant categories
+[hier call1] 95/200 ethersphere/bee#5116
+  [early stop] No relevant categories
+[hier call1] 96/200 foundry-rs/foundry#8804
+  [early stop] No relevant categories
+[hier call1] 97/200 foundry-rs/foundry#10589
+  [early stop] No relevant categories
+[hier call1] 98/200 foundry-rs/foundry#11673
+  [early stop] No relevant categories
+[hier call1] 99/200 foundry-rs/starknet-foundry#231
+  [early stop] No relevant categories
+[hier call1] 100/200 foundry-rs/starknet-foundry#2924
+  [early stop] No relevant categories
+[hier call1] 101/200 graphprotocol/graph-node#1577
+  [early stop] No relevant categories
+[hier call1] 102/200 graphprotocol/graph-node#5156
+[hier call2] 102/200 graphprotocol/graph-node#5156 categories=['On/off-chain interaction', 'Architectural'] subcategories=4
+[hier call3] 102/200 graphprotocol/graph-node#5156 subcategories=['Data exchange', 'Data management'] patterns=12
+[hier call1] 103/200 hyperledger/besu#671
+[hier call2] 103/200 hyperledger/besu#671 categories=['On-chain - Smart contract'] subcategories=4
+[hier call3] 103/200 hyperledger/besu#671 subcategories=['Contract management', 'Contract security'] patterns=13
+[hier call1] 104/200 hyperledger/besu#3888
+  [early stop] No relevant categories
+[hier call1] 105/200 hyperledger/besu#5146
+  [early stop] No relevant categories
+[hier call1] 106/200 hyperledger/besu#6344
+[hier call2] 106/200 hyperledger/besu#6344 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 106/200 hyperledger/besu#6344 subcategories=['Transactions'] patterns=1
+[hier call1] 107/200 hyperledger/fabric-sdk-node#94
+Traceback (most recent call last):
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 55, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_interceptor.py", line 276, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_interceptor.py", line 331, in _with_call
+    return call.result(), call
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_channel.py", line 438, in result
+    raise self
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_interceptor.py", line 314, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_channel.py", line 1173, in with_call
+    return _end_unary_response_blocking(state, call, True, None)
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_channel.py", line 990, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.DEADLINE_EXCEEDED
+	details = "Deadline Exceeded"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Deadline Exceeded", grpc_status:4}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1233, in <module>
+    main()
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1185, in main
+    stage1_results = run_hierarchical_stage1_sync(
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 795, in run_hierarchical_stage1_sync
+    response1 = call_sync(client, call1_params)
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 160, in call_sync
+    response = model.generate_content(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 128, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.DeadlineExceeded: 504 Deadline Exceeded

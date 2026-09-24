@@ -1,0 +1,22 @@
+[
+  {
+    "artifact_sha256": "84049b2f500be0f6df833815ce3b6b9c3170e172a5d6a657e5e20610613cc1da",
+    "custom_id_stage1": "s1_3445392c68cf82a9cc5061b5be3fbfcf",
+    "included_char_count": 2539,
+    "input_truncated": false,
+    "issue_key": "foundry-rs/foundry#8804",
+    "issue_number": "8804",
+    "original_char_count": 2344,
+    "repository": "foundry-rs/foundry"
+  },
+  {
+    "artifact_sha256": "b737df59ea9ab38a31b8d5d63b18a53a48918fe37c4734f15f91cc546d50d4c3",
+    "custom_id_stage1": "s1_bd8c055d2f5a5557ef33461e1e879431",
+    "included_char_count": 819,
+    "input_truncated": false,
+    "issue_key": "AztecProtocol/aztec-packages#5651",
+    "issue_number": "5651",
+    "original_char_count": 614,
+    "repository": "AztecProtocol/aztec-packages"
+  }
+]

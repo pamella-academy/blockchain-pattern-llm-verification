@@ -1,0 +1,12 @@
+[
+  {
+    "artifact_sha256": "84049b2f500be0f6df833815ce3b6b9c3170e172a5d6a657e5e20610613cc1da",
+    "custom_id_stage1": "s1_3445392c68cf82a9cc5061b5be3fbfcf",
+    "included_char_count": 2539,
+    "input_truncated": false,
+    "issue_key": "foundry-rs/foundry#8804",
+    "issue_number": "8804",
+    "original_char_count": 2344,
+    "repository": "foundry-rs/foundry"
+  }
+]

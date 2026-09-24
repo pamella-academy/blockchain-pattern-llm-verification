@@ -1,0 +1,14 @@
+[
+  {
+    "custom_id": "s2_9c3435743d61387113ce258ed08fcee2",
+    "issue_number": "117",
+    "pattern": "Check-Effects-Interactions",
+    "repository": "crytic/slither"
+  },
+  {
+    "custom_id": "s2_a2da9fad7782ddd3f84535056cf7fc12",
+    "issue_number": "2003",
+    "pattern": "Oracle",
+    "repository": "solana-labs/solana-program-library"
+  }
+]

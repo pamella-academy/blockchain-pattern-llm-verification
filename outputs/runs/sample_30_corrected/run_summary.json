@@ -1,0 +1,18 @@
+{
+  "issues": 30,
+  "issues_with_candidates": 6,
+  "relevance_counts": {
+    "no": 25,
+    "yes": 5
+  },
+  "run_dir": "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/outputs/runs/sample_30_corrected",
+  "stage1_errored": 0,
+  "stage1_succeeded": 30,
+  "stage2_errored": 0,
+  "stage2_pairs": 7,
+  "stage2_succeeded": 7,
+  "verdict_counts": {
+    "no": 2,
+    "yes": 5
+  }
+}

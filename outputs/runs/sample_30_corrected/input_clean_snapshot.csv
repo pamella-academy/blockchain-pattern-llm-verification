@@ -1,0 +1,931 @@
+issue_id,repository_full_name,issue_number,issue_title,issue_body,concatenated_comments,data_source,repository,repository_category,type,labels,state,html_url,issue_key
+1897277157,ethereum/pm,867,Execution Layer Meeting 171,"### Meeting Info
+* [Sept 28, 2023, 14:00-15:30 UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/sep-28-2023/2pm)
+* Youtube Stream: https://youtube.com/live/CPt3f3ughFM
+* Zoom: shared on `#allcoredevs` Discord channel shortly before the call 
+* [Ethereum Protocol Calls Calendar subscription](https://calendar.google.com/calendar/u/0?cid=Y191cGFvZm9uZzhtZ3JtcmtlZ243aWM3aGs1c0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
+
+### Agenda
+
+* Dencun Updates
+    * [devnet-9](https://notes.ethereum.org/@ethpandaops/dencun-devnet-9)
+    * 4788 audits review
+        * [Chainsecurity](https://chainsecurity.com/security-audit/eip-4788-contract/)
+        * [Trail of Bits](https://github.com/ethereum/pm/files/12749877/Ethereum.Foundation.EIP-4788.Smart.Contract.Summary.Report.pdf)
+        * Dedaub
+* Holesky launch 
+* [EIP-7503](https://eips.ethereum.org/EIPS/eip-7503) overview 
+* Post-Verkle SELFDESTRUCT behavior","If possible, I would like to discuss [EIP-7503](https://eips.ethereum.org/EIPS/eip-7503) and present the way it can be implemented on Ethereum clients. | Added to the agenda, @keyvank !  | I would like to discuss a small update to 6780: after the verkle fork, the creation+deletion of a contract in the same transaction should leave the tree unchanged (as opposed to the current spec, in which a balance of `0` is written to the tree) | Couter-proposal: ban SELFDESTRUCT post verkle, even within a transaction.  Change it to SWEEP, where all current balance is swept out to the beneficiary.
+
+(either is OK for me, but if we are going to totally ban SELFDESTRUCT I think the verkle trie transition is our best opportunity) | Added @gballet @shemnon :+1:  | The @ChainSecurity audit report for EIP-4788: https://chainsecurity.com/security-audit/eip-4788-contract/ | Devnet 9 spec sheet: https://notes.ethereum.org/@ethpandaops/dencun-devnet-9 | Closed in favor of https://github.com/ethereum/pm/issues/879",provider,ethereum/pm,,,,,,ethereum/pm#867
+934478623,solana-labs/solana-program-library,2003,we added a secondary oracle and functionality to deposit asset + ctoken in same instruction,cc. @jordansexton,"I think the idea with switchboard is for now just to have a backup because we did run in to some issues, but in the future we might want to have the ability for each reserve to specify an oracle if we plan on having some exotic assets, switchboard seemed really onboard with adding basically whatever we wanted so that flexibility seemed nice.",provider,solana-labs/solana-program-library,,,,,,solana-labs/solana-program-library#2003
+384311716,web3swift-team/web3swift,103,Support ST-20,"ST-20 token is an Ethereum-based token implemented on top of the ERC-20 protocol that adds the ability for tokens to control transfers based on specific rules. 
+Its description: https://github.com/PolymathNetwork/polymath-core.
+Look at how there are implemented ERC-20 and ERC-721 in https://github.com/matterinc/web3swift/tree/develop/web3swift/PrecompiledContracts.","I have submitted a WIP PR -> https://github.com/matterinc/web3swift/pull/116. Will be updating it. | Sorry for the delay. I am working on it :+1:  | @BaldyAsh I have submitted a WIP PR https://github.com/matterinc/web3swift/pull/116. How do I test it? | @srisankethu hi! Sorry for so long answer, hard days. Currently I can't find any ST-20 token, will try in next few days. But you can create token that quasi-supports ST-20 on test network and use it for testing. If it will be too hard, I'll find another solution | @BaldyAsh Am I in the right direction #116 ? | @srisankethu yes, looks fine | @BaldyAsh  But how do I test my changes? I think this PR is going nowhere :( | @srisankethu There is only way - create your mocked ST-20 token and use it for tests. Sorry, but I can't find any ST-20 token for testing, sent the message to Polymath but still no answer. | @BaldyAsh Should I leave this task then!? This PR is going nowhere. Wasted my time on this | @srisankethu sure, leave it. Thank you for trying to complete it | @ceresstation please, approve | Made #130 that should close it | @ceresstation thank you, received the tip!",provider,web3swift-team/web3swift,,,,,,web3swift-team/web3swift#103
+1388627487,OpenZeppelin/openzeppelin-contracts,3735,EIP-4907 support,"**🧐 Motivation**
+<!-- Is your feature request related to a specific problem? Is it just a crazy idea? Tell us about it! -->
+
+There is a number of games with gene sequences mechanism like CryptoKitties, DeRace, and Axie. Imagine I have a Kitty with rare genes and I want to breed it with others for profit. There is no easy way of doing so because all games have different interfaces and thus It is difficult for exchanges to implement lend/borrow mechanics. ERC4907 will standardize the way how it is done without implementing a flash-borrower and magic tricks
+
+**📝 Details**
+<!-- Please describe your feature request in detail. -->
+Here is ready to use implementation
+https://thirdweb.com/doubledev.eth/ERC4907
+
+<!-- Make sure that you have reviewed the OpenZeppelin Contracts Contributor Guidelines. -->
+<!-- https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/CONTRIBUTING.md -->","I've left [a comment](https://ethereum-magicians.org/t/eip4907-erc-721-user-and-expires-extension/8572/26?u=frangio) at Ethereum Magicians.
+
+At this point I don't think we should include this feature in OpenZeppelin Contracts due to unaddressed concerns and competing standards without a clear community favorite. | @frangio you are right about that comment. it totally makes sense. Unfortunately, this is what we have now. no better standard for temporary ownership was introduced. 
+
+Let's talk about how this can be done securely and in the proper way.
+here is a Kitties code for breeding
+https://github.com/dapperlabs/cryptokitties-bounty/blob/master/contracts/KittyBreeding.sol#L200
+3rd party platforms can prepare for sign such a set of transactions
+
+- transfer token#1 to from walletA to walletB
+- call breed function(token#1, token#?)
+- transfer token#1 to from walletB to walletA
+- transfer erc20fee to from walletB to walletA
+
+In fact this is what wyvern protocol does
+Instead, I offer to add AccessControl to the token class and assign a new role to exchange (but not owner). Now exchange can assign USER role to anyone to breed as much as he can during subscription time. 
+
+Now as I write this it seems like a bad standard for this purpose to me. It does not restrict usage amount and does not take into account breading limit and cooldown. As well as there is no way to add new exchanges or the owner can discard all usages. I have to think about this more.
+
+Anyways this standard can be added now and replaced later with a better one. | > Anyways this standard can be added now and replaced later with a better one.
+
+Unfortunately it's not so simple. Adding code to the library has real maintenance costs and security risks associated. | > I've left [a comment](https://ethereum-magicians.org/t/eip4907-erc-721-user-and-expires-extension/8572/26?u=frangio) at Ethereum Magicians.
+> 
+> At this point I don't think we should include this feature in OpenZeppelin Contracts due to unaddressed concerns and competing standards without a clear community favorite.
+
+I've left a reply at Ethereum Magicians:  https://ethereum-magicians.org/t/eip4907-erc-721-user-and-expires-extension/8572/29 | @0xanders This looks like a workaround for the EIP's issues with respect to user protection, but the issue itself remains in the EIP... I don't think it's a good candidate for inclusion here. | > @0xanders This looks like a workaround for the EIP's issues with respect to user protection, but the issue itself remains in the EIP... I don't think it's a good candidate for inclusion here.
+
+For ENS, there is a Controller role(who can change the data of ENS but can not transfer the NFT), and the owner of the ENS NFT can change the Controller at any time. 
+
+For Decentraland LAND and ESTATE NFT, there is an Operator role(who can update material to Decentraland but can not transfer the NFT ), the  owner of the LAND or ESTATE NFT can change the Operator at any time. | Those are interesting data points, though I would argue that the Controller and the Operator are not ""users"" of the NFT, in fact they are more like ""service providers"" for the NFT owner.",provider,OpenZeppelin/openzeppelin-contracts,,,,,,OpenZeppelin/openzeppelin-contracts#3735
+2326199186,foundry-rs/foundry,8015,expectCall started counting calls differently (and probably wrongly),"### Component
+
+Forge
+
+### Have you ensured that all of these are up to date?
+
+- [X] Foundry
+- [X] Foundryup
+
+### What version of Foundry are you on?
+
+forge 0.2.0 (5494c33 2024-05-30T00:18:25.357590022Z)
+
+### What command(s) is the bug in?
+
+_No response_
+
+### Operating System
+
+macOS (Apple Silicon)
+
+### Describe the bug
+
+On this commit: 299902e34d32c4ea77bf2c8b9b13c68f45113f13 expectCall changed behaviour and started showing more calls than before in some cases (and less calls than before in other cases).
+
+Here are a couple of cases:
+
+1. Expecting a call to MockContract::initialize - the call is done (see screenshot for trace), but expectCall shows 0 and fails the test:
+```
+        bytes memory data = abi.encodeCall(MockContract.initialize, (address(0xdeadbeef)));
+
+        vm.expectCall(address(hubAsProxy), abi.encodeCall(hubAsProxy.upgradeToAndCall, (hubImplV2, data)));
+        vm.expectCall(address(hubImplV2), data);
+        vm.prank(controllerContract);
+        proxyAdminContract.proxy_upgradeAndCall(hubImplV2, data);
+```
+<img width=""1164"" alt=""image"" src=""https://github.com/foundry-rs/foundry/assets/5636644/27e6fa72-29dd-40e3-b2e4-bef9b392fc3c"">
+
+
+
+
+
+2. Expecting a single call to LensHub::getContentURI - but it goes through the Proxy and then to the PublicationLib library - and counts all these as 3 calls for some reason
+```
+    function testTokenURI() public {
+        vm.expectCall(address(hub), abi.encodeCall(hub.getContentURI, (defaultAccount.profileId, defaultPubId)), 1);
+        collectNFT.tokenURI(firstCollectTokenId);
+    }
+```
+<img width=""1168"" alt=""image"" src=""https://github.com/foundry-rs/foundry/assets/5636644/f95f7340-0e22-4421-aa6f-cb4e9350abc8"">
+
+While (2) is unpleasant, but manageable by removing the count, (1) is a PITA and breaks the test in a way I cannot fix unless I remove the expectCall.","Found the exact commit when this happens and updated the issue with it:
+299902e34d32c4ea77bf2c8b9b13c68f45113f13 | @yash-atreya this could be similar to the access issue, ptal
+
+@vicnaum could you perhaps provide a repro for this? | This is likely because earlier we'd treat a delegatecall as call with `expectCall`.
+
+Repro for this would look like this:
+```solidity
+contract Simple {
+    function initialize() public {}
+}
+
+contract SimpleProxy {
+    function initialize(Simple impl) public {
+        address(impl).delegatecall(abi.encodeWithSignature(""initialize()""));
+    }
+}
+
+contract BugTest is Script {
+    function test() public {
+        SimpleProxy proxy = new SimpleProxy();
+        Simple impl = new Simple();
+
+        vm.expectCall(address(impl), abi.encodeWithSignature(""initialize()""));
+        proxy.initialize(impl);
+    }
+}
+```
+
+works fine before the mentioned commit and fails after | > This is likely because earlier we'd treat a delegatecall as call with `expectCall`.
+> 
+> Repro for this would look like this:
+> 
+> ```solidity
+> contract Simple {
+>     function initialize() public {}
+> }
+> 
+> contract SimpleProxy {
+>     function initialize(Simple impl) public {
+>         address(impl).delegatecall(abi.encodeWithSignature(""initialize()""));
+>     }
+> }
+> 
+> contract BugTest is Script {
+>     function test() public {
+>         SimpleProxy proxy = new SimpleProxy();
+>         Simple impl = new Simple();
+> 
+>         vm.expectCall(address(impl), abi.encodeWithSignature(""initialize()""));
+>         proxy.initialize(impl);
+>     }
+> }
+> ```
+> 
+> works fine before the mentioned commit and fails after
+
+Thanks for this.
+Looking into it. | Here's my repro of the Proxy with a call, followed by the delegate call:
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+import {Test, console} from ""forge-std/Test.sol"";
+
+contract MockContract {
+    function initialize(address initializationAddress) public pure {}
+}
+
+contract Proxy {
+    function upgradeToAndCall(
+        address newImplementation,
+        bytes memory data
+    ) external {
+        address(newImplementation).delegatecall(data);
+    }
+}
+
+contract ProxyController {
+    Proxy immutable PROXY;
+
+    constructor(address proxy) {
+        PROXY = Proxy(proxy);
+    }
+
+    function proxy_upgradeAndCall(
+        address newImplementation,
+        bytes calldata data
+    ) external {
+        PROXY.upgradeToAndCall(newImplementation, data);
+    }
+}
+
+contract ExpectCallTest is Test {
+    function testProxyCallDelegateCall() public {
+        address implementation = address(new MockContract());
+        Proxy proxy = new Proxy();
+        ProxyController proxyController = new ProxyController(
+            address(proxy)
+        );
+
+        bytes memory data = abi.encodeCall(
+            MockContract.initialize,
+            (address(0xdeadbeef))
+        );
+
+        vm.expectCall(
+            address(proxy),
+            abi.encodeCall(proxy.upgradeToAndCall, (implementation, data))
+        );
+        vm.expectCall(address(implementation), data);
+
+        proxyController.proxy_upgradeAndCall(implementation, data);
+    }
+}
+```
+
+Maybe it's the same thing, but just in case adding it here to reflect my exact case | I would like to add here another repro case, that uses a library and a proxy:
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+import {Test, console} from ""forge-std/Test.sol"";
+
+library LibraryContract {
+    function getContentURI(
+        uint256 profileId,
+        uint256 pubId
+    ) external view returns (string memory) {
+        return """";
+    }
+}
+
+contract MainContract {
+    function getContentURI(
+        uint256 profileId,
+        uint256 pubId
+    ) external view returns (string memory) {
+        return LibraryContract.getContentURI(1, 2);
+    }
+}
+
+contract Proxy {
+    MainContract immutable IMPLEMENTATION;
+
+    constructor(address implementation) {
+        IMPLEMENTATION = MainContract(implementation);
+    }
+
+    function getContentURI(uint256 profileId, uint256 pubId) external {
+        address(IMPLEMENTATION).delegatecall(
+            abi.encodeWithSignature(
+                ""getContentURI(uint256,uint256)"",
+                profileId,
+                pubId
+            )
+        );
+    }
+}
+
+contract CollectNFTTest is Test {
+    function testTokenURI() public {
+        MainContract mainContractImpl = new MainContract();
+        Proxy proxy = new Proxy(address(mainContractImpl));
+
+        vm.expectCall(
+            address(proxy),
+            abi.encodeCall(MainContract.getContentURI, (1, 2)),
+            1
+        );
+        proxy.getContentURI(1, 2);
+    }
+}
+```
+
+It says the call was called 3 times. And I'm not sure if this is correct (it was counted as 1 time before that commit)
+
+cc @mattsse",provider,foundry-rs/foundry,,,,,,foundry-rs/foundry#8015
+1173822522,graphprotocol/graph-node,3373,Ethereum Transaction Receipts in Event Handlers,"This PR allows Ethereum event handlers to access the receipt for the transaction which emitted it.
+
+To support this, we introduce:
+- a new type hierarchy to the runtime 
+- a new `specVersion: 0.0.6`
+- a new `apiVersion: 0.0.7`
+
+
+#### 1. Usage in Mappings
+
+An event handler will receive an `Event` containing a receipt whenever it is declared in the subgraph manifest with the new `receipt: true` key, which is optional and defaults to false.
+
+```
+eventHandlers:
+  - event: NewGravatar(uint256,address,string,string)
+    handler: handleNewGravatar
+    receipt: true
+```
+Inside the handler function, the receipt can be accessed in the `Event.receipt` field.
+When the `receipt` key is set to `false` or omitted in the manifest, a `null` value will be returned instead.
+
+#### 2. New runtime data types
+
+_|Type|Description
+--- | --- | ---
+A|`AscEthereumEventWithReceipt`| Contains all data for a `Event` plus a non-nullable `receipt` field, containing **[B]**
+B| `AscEthereumTransactionReceipt`| A receipt for the transaction that emitted this event, which contains a `logs` field with an array of **[C]**, containing all the logs for the associated transaction.
+C| `AscEthereumLog`| A log from an event emitted within the transaction.
+
+Depending on the subgraph manifest configuration, the runtime will receive either an `AscEthereumEvent` or an `AscEthereumEventWithReceipt`.
+
+#### 3. Receipt Ingestion
+
+Transaction receipts will be collected inside the `blocks_with_triggers` function (which is used by `PoolingBlockStream`) only when an `EthereumLogFilter` requires them.
+
+#### 4. Affected Structs and Enums
+
+The following items were updated with optional fields to accommodate data for receipt themselves and their requirement flags :
+ - `MappingEventHandler`got a new `receipt: bool` field which defaults to false when deserializing, to account for omissions in the subgraph manifest.
+ - `EthereumLogFilter`: its inner Graph data structure was updated so its edges represent the requirement of a receipt. The original `HashSet<EventSignature>` of wildcard events was also updated to a `HashMap<EventSignature, bool>` to reflect that same aspect.
+ - `EthereumTrigger::Log` variant got a second `Option<web3::TransactionReceipt>` field
+ - `MappingTrigger::Log` variant got a new `receipt: Option<web3::TransactionReceipt>` field
+
+#### Todo:
+
+- [X] validations for the new `apiVersion`
+- [X] tests for `EthereumLogFilter`
+- [X] add a retry strategy to the `get_transaction_receipts_for_transaction_hashes` function
+- [x] `graph-ts` and `graph-cli` released _(see ""Dependencies"" below)_
+- [ ] docs
+
+Resolves #3218 
+
+---
+#### Dependencies
+
+This PR depends on:
+- https://github.com/graphprotocol/graph-cli/pull/860
+- https://github.com/graphprotocol/graph-ts/pull/260","Another couple of things:
+
+1. Any reason for this PR still being Draft instead of Ready for Review?
+2. This needs a rebase, there are conflicts still. | > Another couple of things:
+> 
+>     1. Any reason for this PR still being Draft instead of Ready for Review?
+
+The Draft status is related to the dependent PRs not being merged, but I can change it now since we already started the review process. | Rebased with latest `main` branch | You are my hero @tilacog  | Add `receipt: true` caused: Failed to deploy to Graph node https://api.thegraph.com/deploy/: ipfs failure::failure parsing subgraph manifest. when run graph deploy since today. Is there any changed? | hi @creaink this is an issue with deployments to the Hosted Service, [we are investigating](https://status.thegraph.com/incidents/rcv2nvk3mxs1) and expect to resolve soon, sorry for the trouble",provider,graphprotocol/graph-node,,,,,,graphprotocol/graph-node#3373
+1234545677,solana-labs/solana-program-library,3165,token-swap: Add Oracle or CLOB curve,"#### Problem
+
+On-chain CLOBs like Serum are great and showcase the power of Solana.  Oracles are also really useful.  People also like to trade with AMMs.
+
+#### Solution
+
+Add a hybrid token-swap curve that uses a CLOB or Oracle as a price guide when trading.  More detailed information at https://github.com/solana-labs/solana-program-library/blob/master/token-swap/proposals/DynamicMarketMaking.md",I'd like to work on this | @zrthxn Go for it -- keep in mind that it's a pretty tricky one!,provider,solana-labs/solana-program-library,,,,,,solana-labs/solana-program-library#3165
+1105405523,MetaMask/eth-phishing-detect,6425,[Legitimate Site Blocked] www.ruckus.studio,"Hey All,
+
+Just installed the MetaMask extension into chrome and it blocked my company site.
+https://www.ruckus.studio/
+
+Can anyone help with this?",HI. this is still not resolved. ruckus.studio is still blocked. | Give it a day or two for the caches to clear out and refresh. In 48 hours feel free to file another issue if it's still blocked.,provider,MetaMask/eth-phishing-detect,,,,,,MetaMask/eth-phishing-detect#6425
+1094252124,MoralisWeb3/react-moralis,142,Add ENS support (useENS hook),"## New Feature Request
+
+### Checklist
+
+- [x] I am not disclosing a [vulnerability](https://github.com/MoralisWeb3/react-moralis/blob/main/SECURITY.md).
+- [x] I have searched through [existing issues](https://github.com/MoralisWeb3/react-moralis/issues?q=is%3Aissue) and the [Moralis Forum](https://forum.moralis.io/).
+
+### Current Limitation
+
+No native ENS support to resolve or reverse resolve `.eth` address to ethereum address, text records (include avatar, email, etc), ipfs/arweave/skynet hash (for websites), user's other cryptocurrency address. There is currently Web3 API to reverse resolve, but I believe with this hook, it will make resolving and reverse resolving ENS address much simpler.
+
+### Feature / Enhancement Description
+
+<!-- What is the concept of the functionality and how should it be implemented? -->
+
+### Example Use Case
+
+1. Resolving `.eth` address to ethereum address, text records, etc. One example of such use case is in Etherscan
+
+![Screenshot from 2022-01-05 18-18-49](https://user-images.githubusercontent.com/48710170/148209434-c91c86eb-0a39-4a6e-8ad4-42e033bc6992.png)
+
+2. Reverse Resolving ethereum address to `.eth` address if there is one to display in dApp
+
+![image](https://user-images.githubusercontent.com/48710170/148209614-768c991a-41cd-4306-b034-4eca3ae8177f.png)
+
+
+### Alternatives / Workarounds
+
+Currently the alternative would be to use third-party library such as [`@ensdomains/ensjs`](https://www.npmjs.com/package/@ensdomains/ensjs) or [`web3.js`](https://www.npmjs.com/package/@ensdomains/ensjs). However, in order to use them, user might need to have deep understanding of how ENS works.
+
+### 3rd Party References
+
+None at the moment.",,provider,MoralisWeb3/react-moralis,,,,,,MoralisWeb3/react-moralis#142
+580374010,sigp/lighthouse,911,Book corrections to allow http api access for docker use,"User's on discord has issues with docker and hitting the http api. 
+
+The docs currently are misleading and will confuse users.
+
+This updates the docs around docker allowing users to hit the http api server externally.","On second thoughts, now your beacon node API is open to the world.
+
+Perhaps we should add a note that this is the case, or alternatively use bind mode? | See fix | Updated, once you change the status I'll merge",provider,sigp/lighthouse,,,,,,sigp/lighthouse#911
+2229872835,ipfs/ipfs-desktop,2788,[gui error report] Error: Initializing daemon...,"👉️ Please describe what you were doing when this error happened.
+
+**Specifications**
+
+- **OS**: darwin 21.6.0
+- **IPFS Desktop Version**: 0.34.0
+- **Electron Version**: 19.1.9
+- **Chrome Version**: 102.0.5005.167
+
+**Error**
+
+```
+Error: Initializing daemon...
+Kubo version: 0.27.0
+Repo version: 15
+System version: amd64/darwin
+Golang version: go1.21.7
+Found outdated fs-repo, migrations need to be run.
+Looking for suitable migration binaries.
+Need 2 migrations, downloading.
+Downloading migration: fs-repo-13-to-14...
+Downloading migration: fs-repo-14-to-15...
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-14-to-15/versions""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-13-to-14/versions""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-14-to-15/v1.0.1/fs-repo-14-to-15_v1.0.1_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-13-to-14/v1.0.0/fs-repo-13-to-14_v1.0.0_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-13-to-14/v1.0.0/fs-repo-13-to-14_v1.0.0_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gateway.link/ipfs/QmZPedUiZNe6Gq9oDvoizuuCMVoeb7shwq9xKhysq7exMo/fs-repo-14-to-15/v1.0.1/fs-repo-14-to-15_v1.0.1_darwin-amd64.tar.gz""
+Fetching with HTTP: ""https://trustless-gatew",Please follow FAQ instructions at https://github.com/ipfs/ipfs-desktop?tab=readme-ov-file#i-got-a-network-error-eg-error-fetching-what-should-i-do,provider,ipfs/ipfs-desktop,,,,,,ipfs/ipfs-desktop#2788
+3325379066,paritytech/polkadot-sdk,9497,Society pallet supports non-consecutive block provider,"Society pallet supports non-consecutive block provider
+
+Society pallet correctly handles situations where `on_initialize` is invoked with block numbers that:
+- increase but are not strictly consecutive (e.g., jump from 5 → 10), or
+- are repeated (e.g., multiple blocks are built at the same Relay Chain parent block, all reporting the same BlockNumberProvider value).
+
+This situation may occur when the BlockNumberProvider is not local - for example, on a parachain using the Relay Chain block number provider.",,provider,paritytech/polkadot-sdk,,,,,,paritytech/polkadot-sdk#9497
+1480609315,MetaMask/contract-metadata,1125,Add Verse Token (ERC20),"Adding the Verse Token:
+
+Token Address: 0x249cA82617eC3DfB2589c4c17ab7EC9765350a18
+Token Name: Verse
+Token Decimals: 18
+Token Symbol: VERSE
+Etherscan: https://etherscan.io/token/0x249ca82617ec3dfb2589c4c17ab7ec9765350a18
+
+Website: https://verse.bitcoin.com/
+Whitepaper: https://www.getverse.com/verse-whitepaper.pdf
+
+Thank you","@MRabenda is there anything we can do to speed up this process? | @dawndarkness @PorlyBe contract has to be in EIP-55 format (0x249cA82617eC3DfB2589c4c17ab7EC9765350a18) | @MRabenda thank you, I have updated the contract id. Really appreciate your help with this. | @MRabenda Is there anything else I'm missing? I am happy to make any changes necessary. Thank you.",provider,MetaMask/contract-metadata,,,,,,MetaMask/contract-metadata#1125
+205758323,MetaMask/metamask-extension,1091,Transaction errors are not shown,"In our `sendTx` UI action, if the RPC throws an error, like an `insufficient implicit gas` error (easily reproduced by setting a low gas limit from the transaction params), the UI transitions to an empty view, and does not seem to show an error.","Can we revisit this issue since our UI has changed so much for our gas params? Can we still reproduce these issues? | Related to #1254. | It seems we don't use sendTx anymore...shall we remove it from the codebase?
+ | That's big if true. And yes, always remove dead code. | Related to #1662 | I investigated this a bit, because I think we should fix this asap. I got re-acquainted with why our architecture isn't friendly to fixing this bug at the moment.
+
+There are really two problems at play, one is simple (and I'm fixing), the other is a bit deeper, and requires some harder work.
+
+Step 1 is that in case of error, we don't do anything, and so we see a spinner forever.
+https://github.com/MetaMask/metamask-extension/blob/master/ui/app/actions.js#L430
+
+To understand the second problem, you should refer to this line of our transaction manager:
+https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/controllers/transactions.js#L252
+
+There you can see that if submitting a transaction fails, we set the tx as failed, and then return an error. The problem is that some errors are actually validation issues, where we actually want to just go back to editing the tx, and warn the user what was wrong.
+
+A couple things I know these errors can be:
+
+- Nonce is too low
+- Gas limit is too high
+
+Gas limits are a good validation, but nonce being too low isn't even something we have UI for, so in that case, we might want to, I don't know, detect it and adjust our nonce logic? Up for some discussion. No doubt there are a variety of possible errors here, different for different clients, which should be handled specifically.
+
+That's a harder problem, so we can leave it for a longer term, may not even be worth doing. Maybe it's fine to fail a tx that fails a server-side validation, and leave the message in the failed tx message field.
+
+Fixed this in a PR coming soon.
+
+Also, confirmed we can remove `sendTx` from actions.",provider,MetaMask/metamask-extension,,,,,,MetaMask/metamask-extension#1091
+2930168882,ethereum/consensus-specs,4177,Prune outdated issues and pull requests,"I believe there are a lot of no-longer-relevant issues & PRs. It would be valuable to review these (in reverse chronological order) and close ones which we don't want.
+
+* https://github.com/ethereum/consensus-specs/issues?q=is%3Aissue%20state%3Aopen%20sort%3Acreated-asc
+* https://github.com/ethereum/consensus-specs/pulls?q=is%3Apr+is%3Aopen+sort%3Acreated-asc",We've done this.,provider,ethereum/consensus-specs,,,,,,ethereum/consensus-specs#4177
+378349936,ipfs/kubo,5749,windows make install failed,"[[33mget [0m] [install]       QmeFPvhFJGXGiXAc9zunNxZjCaWgYQpcsdwip2NWLcccyw GoEndian[1B
+go install -ldflags=""-X ""github.com/ipfs/go-ipfs"".CurrentCommit=e8d1a1f0c"" ./cmd/ipfsan[1B
+# github.com/ipfs/go-ipfs/plugin/loader
+plugin\\loader\\preload.go:13:16: syntax error: unexpected ], expecting expression
+plugin\\loader\\preload.go:14:25: syntax error: unexpected comma, expecting ]
+plugin\\loader\\preload.go:15:1: syntax error: unexpected plugin, expecting comma or }
+make: *** [cmd/ipfs/Rules.mk:37: cmd/ipfs-install] Error 2
+
+C:\\Users\\NBS\\go\\src\\github.com\\ipfs\\go-ipfs>go version
+go version go1.11.2 windows/amd64
+
+C:\\Users\\NBS\\go\\src\\github.com\\ipfs\\go-ipfs>",,provider,ipfs/kubo,,,,,,ipfs/kubo#5749
+326883754,ipfs/ipfs-companion,485,Storing files of a few megabytes to window.ipfs.files.add hangs Firefox for a minute or more,"I'm trying to store MP3 files in IPFS for https://github.com/interfect/ipfstunes by loading them into `Buffer`s and then `ipfs.files.add`-ing them. Everything works fine using in-page `js-ipfs`, but with IPFS Companion's `window.ipfs`, using either the embedded or external node, storing a song-sized file will hang the Firefox UI and make my window manager prompt me to kill it because it is unresponsive.
+
+I don't seem to have this problem with tiny files.","It takes maybe ~30 seconds of hanging to successfully add a 1.6MB file, in my hands. | To test, you can go to https://interfect.github.io/ipfstunes with `window.ipfs` enabled and hit browse under ""Add songs"" and try and add any reasonably sized MP3 file.
+
+The hang occurs *before* the prompt to authorize access to `ipfs.files.add` appears. | Thank you for reporting this. I was able to confirm presence of described delay / high load in Firefox 60.
+Chromium 66 does not manifest problematic behavior, it seems to be limited to Firefox, so its an upstream bug in either Firefox or [`ipfs-postmsg-proxy`](https://github.com/tableflip/ipfs-postmsg-proxy).
+
+
+ | I created demo page that  reliably reproduces the difference between Chrome and Firefox:
+
+- https://ipfs.io/ipfs/bafkreiboq6jbzb64pky652ezr3izgez4qtiwiwiecbdc6onxgkq4z5qpje
+
+### Chromium 67
+
+![screenshot_45](https://user-images.githubusercontent.com/157609/45597339-f8975600-b9ca-11e8-913a-34d21c686326.png)
+
+
+### Firefox (Stable  &  Nightly)
+
+![screenshot_40](https://user-images.githubusercontent.com/157609/45597324-ad7d4300-b9ca-11e8-9b1f-c01ee2960b45.png)
+
+![screenshot_44](https://user-images.githubusercontent.com/157609/45597319-93dbfb80-b9ca-11e8-992d-cd63463848c4.png)
+
+----
+
+The difference is night and day, it really looks like a bug. Initial guess: related to postMessage handling in webextensions (Firefox bug) or some edge case in serialization done by ipfs-postmsg-proxy (bug in our code). Next step is to create a webextension demo that sends the same amount of data without [ipfs-postmsg-proxy](https://github.com/tableflip/ipfs-postmsg-proxy).
+
+Sidenote: UI in Firefox Nightly is a little bit more responsive, probably due to the fact [Firefox 63+ moved extensions to separate process on Linux](https://bugzilla.mozilla.org/show_bug.cgi?id=1357487).
+
+ | Quick [test of raw `port.postMessage`](https://github.com/ipfs-shipyard/ipfs-companion/files/2386800/ipfs-companion-issue-485-port-alone.zip)  (`runtime` webextension API) shows no issue:
+
+![screenshot_55](https://user-images.githubusercontent.com/157609/45598767-5c2c7e00-b9e1-11e8-9ef9-aaa928d780fd.png)
+![screenshot_54](https://user-images.githubusercontent.com/157609/45598768-5c2c7e00-b9e1-11e8-9a05-380264faafbc.png)
+
+Next: look into serialization in ipfs-postmsg-proxy.
+ | @alanshaw just a quick check if this is platform-specific:
+Do you experience similar slowdown on Firefox+Mac? ([test page](https://ipfs.io/ipfs/bafkreiboq6jbzb64pky652ezr3izgez4qtiwiwiecbdc6onxgkq4z5qpje))
+
+Any thoughts on what could be triggering that problem? 
+(If it is a bug in Firefox we want to create a MVP demo that can be attached to a new issue at Bugzilla.) | <img width=""932"" alt=""screen shot 2018-09-17 at 12 32 26"" src=""https://user-images.githubusercontent.com/152863/45620745-cbec4880-ba75-11e8-9660-5f2a005542f8.png"">
+ | @interfect  fyi the fix for this was released in beta [v2.5.0.11550](https://github.com/ipfs-shipyard/ipfs-companion/releases/tag/v2.5.0.11550), will land in stable soon.",provider,ipfs/ipfs-companion,,,,,,ipfs/ipfs-companion#485
+1952516498,ipfs/helia,287,Marketing for `BlockBroker` API changes and retrievability improvements,"* https://discuss.ipfs.tech/t/helia-retrievability-improvements/17088
+* Twitter post
+* blog.ipfs.tech post
+* manually modify changelog with these changes (like from https://discuss.ipfs.tech/t/helia-retrievability-improvements/17088)
+* manually modify github-release notes with info (like from https://discuss.ipfs.tech/t/helia-retrievability-improvements/17088)",,provider,ipfs/helia,,,,,,ipfs/helia#287
+422990118,solana-labs/solana,3377,Clear progress map on squash,"#### Problem
+The progress map in ReplayStage won't clear any dead forks after a squash
+
+#### Summary of Changes
+Clear the progress map of dead forks after we squash
+
+Fixes #",,provider,solana-labs/solana,,,,,,solana-labs/solana#3377
+1372011255,ethereum/eth-tester,243,update deprecated decode calls,"### What was wrong?
+`eth_abi.decode_abi` and `eth_abi.decode_single` are deprecated. 
+
+
+### How was it fixed?
+
+Updated to `eth_abi.decode`.
+
+### To-Do:
+
+- [ ] Add entry to the [release notes](https://github.com/ethereum/eth-tester/blob/master/newsfragments/README.md)
+
+#### Cute Animal Picture
+
+![image](https://user-images.githubusercontent.com/5199899/190009826-179de6bc-8ad1-42d8-b7ef-9bfad818cdc9.png)",handled in pr #244,provider,ethereum/eth-tester,,,,,,ethereum/eth-tester#243
+191914340,ipfs/kubo,3430,"Feature: General cli command for getting ""type"" info about a hash","#### Type: Feature
+
+#### Priority: Impacts Developer Experience
+
+#### Description:
+
+It would be very useful to have a general `ipfs stat <thing>` command or maybe `ipfs info <hash>` or `ipfs object type <hash>` that would tell you, at the very least, what type of object the hash corresponds to (ie. blob, directory, etc.)
+
+## Example
+
+If I do this:
+```bash
+$ ipfs add -w afile.txt
+added <blob-hash> afile.txt
+added <directory-hash> 
+```
+
+I'd like to be able to do something like this:
+```bash
+$ ipfs object type <blob-hash>
+blob
+$ ipfs object type <directory-hash>
+directory
+```
+
+... really I'd be happy with any means of getting ipfs to tell me the object's type. Currently the only way to figure out what type of object a hash represents is to try commands with the hash and inspect the error messages for type mis-matches.
+
+## Can't You use `ipfs object stat`?
+
+It seems like `ipfs object stat` might provide this info but it just returns info like:
+```
+NumLinks: 1
+BlockSize: 66
+LinksSize: 64
+DataSize: 2
+CumulativeSize: 123
+``` 
+
+So you could potentially add type info into the response from this command, but currently `ipfs object stat` isn't returning any type info.
+
+## Why do this?
+
+I'd like to be able to know that `QmQBcXur...` is a blob and `QmWw4vu...` is a directory because different types of objects require different commands to be useful. Given a hash, I need to know its type in order to know what commands to use in order to make sense of it:
+
+I can run
+```bash
+$ ipfs cat <blob-hash> 
+```
+and I can run
+```bash
+ipfs ls <directory-hash>
+```
+but not the other way around - I can't `cat` a directory object nor can I meaningfully `ls` a blob object.
+
+```bash
+$ ipfs cat <directory-hash>
+Error: this dag node is a directory
+```
+and `ipfs ls <blob-hash>` doesn’t return anything at all.","I'm picturing an `ipfs info` command that does a lot of smart magic stuff to print out information on whatever you paste in. Things like being able to deal with raw data, unixfs, non-unixfs, peer IDs, paths, multiaddrs and so on | If that info is available in ipfs, then yeah! Bring it on. | As developer of ipfs-search.com I would *love* this feature. :) | Specifically, as the only way to figure out the type of a hash currently is `file/ls` (over the JSON API), which fails for non-protobuf nodes.
+
+Ref: https://github.com/ipfs-search/ipfs-search/issues/51",provider,ipfs/kubo,,,,,,ipfs/kubo#3430
+294276009,OpenZeppelin/openzeppelin-contracts,722,"Error encountered, bailing. Network state unknown. Review successful transactions manually. Error: VM Exception while processing transaction: revert","## 🎉 Description
+
+<!-- Briefly describe the issue you are experiencing (or the feature you want to see added to OpenZeppelin). Tell us what you were trying to do and what happened instead. **Remember, this is _not_ a place to ask for help debugging code; for that, we welcome you in the [OpenZeppelin Slack Channel](https://slack.openzeppelin.org/).** -->
+
+- [* ] 🐛 This is a bug report.
+- [ ] 📈 This is a feature request.
+
+<!-- Please check one of the above by placing an x in the box. -->
+
+## 💻 Environment
+
+Next, we need to know what your environment looks like.
+
+- Which version of OpenZeppelin are you using? v1.6.0
+- What network are you deploying to? testrpc? Ganache? Ropsten? testrpc
+- How are you deploying your OpenZeppelin-backed contracts? truffle? Remix? Let us know! truffle
+
+## 📝 Details
+
+Describe the problem you have been experiencing in more detail. Include as much information as you think is relevant. Keep in mind that transactions can fail for many reasons; context is key here.
+
+Error after running cmd below:
+truffle migrate --network development
+
+```
+Using network 'development'.
+
+Running migration: 2_deploy_contracts.js
+1520374082 1522102082 1000 '4000000000000000000000' '0x4b7bebc60d1308b3f1bb15de43e373aecff81092'
+  Deploying LUXCoinCrowdsale...
+  ... 0x207f8d7293e801e139d01789fa9d9877335335ddb021adc3859f19d73dc9b904
+Error encountered, bailing. Network state unknown. Review successful transactions manually.
+Error: VM Exception while processing transaction: revert
+    at Object.InvalidResponse (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:41483:16)
+    at /usr/local/lib/node_modules/truffle/build/cli.bundled.js:330353:36
+    at /usr/local/lib/node_modules/truffle/build/cli.bundled.js:176198:11
+    at /usr/local/lib/node_modules/truffle/build/cli.bundled.js:326008:9
+    at XMLHttpRequest.request.onreadystatechange (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:329052:7)
+    at XMLHttpRequestEventTarget.dispatchEvent (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176427:18)
+    at XMLHttpRequest._setReadyState (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176717:12)
+    at XMLHttpRequest._onHttpResponseEnd (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176872:12)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/truffle/build/cli.bundled.js:176832:24)
+    at emitNone (events.js:111:20)
+```
+
+## 🔢 Code To Reproduce Issue [ Good To Have ]
+
+Contract for tokencrowdsale:
+
+https://github.com/tonywangcn/ContractForLUX/blob/master/contracts/LUXCoinCrowdsale.sol
+```
+pragma solidity ^0.4.17;
+
+import './LUXCoin.sol';
+import ""./CappedCrowdsale.sol"";
+
+contract LUXCoinCrowdsale is CappedCrowdsale {
+  function LUXCoinCrowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, uint256 _cap, address _wallet, MintableToken _token) public 
+    CappedCrowdsale(_cap)
+    Crowdsale(_startTime, _endTime, _rate, _wallet, _token)
+  {
+  }
+  function createTokenContract() internal returns (MintableToken) {
+    return new LUXCoin();
+  }
+}
+```
+truffle.js configuration
+
+```
+module.exports = {
+  // See <http://truffleframework.com/docs/advanced/configuration>
+  // to customize your Truffle configuration!
+  networks: {
+    development: {
+      network_id: ""*"",
+      host: ""127.0.0.1"",
+      port: 8545,   // Different than the default below
+      gas: 6712388,
+      gasPrice: 65000000000,
+    }
+  },
+  rpc: {
+    host: ""127.0.0.1"",
+    port: 8545
+  },
+  solc: {
+    optimizer: {
+      enabled: true,
+      runs: 200
+    }
+  }
+
+};
+```
+
+Please remember that with sample code it's easier to reproduce the bug and it's much faster to fix it.
+
+```
+insert short code snippets here
+```
+
+<!-- If your code is larger, consider linking us to a repo illustrating your issue. -->
+
+## 👍 Other Information
+Details for this error:
+Stackoverflow link : https://ethereum.stackexchange.com/questions/38539/error-encountered-bailing-network-state-unknown-review-successful-transaction
+
+<!-- List any other information that is relevant to your issue. Error logs, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc. -->","Hi @tonywangcn! The error messages says ""VM Exception while processing transaction: revert"". This usually means a `require` clause did not succeed. Please check every argument you are providing to the contract constructor to make sure they are valid.
+
+If the problem persists, please include a failing test case in your report.",provider,OpenZeppelin/openzeppelin-contracts,,,,,,OpenZeppelin/openzeppelin-contracts#722
+743174449,MetaMask/core,309,Add default type and timestamps to approval controller,"1. Replace the internal `NO_TYPE` with a user-specified default type.
+2. Allow `ApprovalController.has` lookups by `type` only, not just `origin` and `type`.
+3. Add `Date.now()` timestamps to approvals.
+4. Rename `ApprovalInfo` interface to `Approval`
+5. Fix a bug in `_validateAddParams` (origin type check too loose)
+
+(**1**) The internal `NO_TYPE` added complexity to the implementation and API for virtually no benefit. This PR replaces this internal type with a user-specified default type. All stored approvals will now have a string `type` associated with them. In addition, (**2**) this PR fixes an oversight with the `ApprovalController.has` method, namely that there was no way to look up pending approvals by `type` only. These changes are breaking.
+
+**3** is because it may be useful to know when requests were created, e.g. for sorting. **4** is because why not, **1** and **2** are already breaking. **5** is because, we're already here.","I'm having trouble understanding what this ""default approval type"" is for. Why would we want a default approval type? What should this be set to for the extension Approval controller?
+
+Adding any approval without an explicit type sounds like a disaster. I would prefer that an error be thrown upon any attempt to add an approval without a type.",provider,MetaMask/core,,,,,,MetaMask/core#309
+2416782802,SyncraDAO/psp-tokenlist,44,Test GH new PR Notification,"# ASCAN Token Submission
+
+## Introduction
+Before submitting this PR, ensure you have followed all the requirements below and filled out all necessary details about your token.
+
+## Checklist
+Please review the checklist below and check each item before submitting your token information:
+
+- [ ] I have reviewed the [submission guidelines](https://www.psplist.xyz/why).
+- [ ] The submitted files are in the correct format and fulfill all requirements outlined below.
+
+## Asset Details
+
+### General Information
+- **Token Name**: 
+- **Symbol**: 
+- **Contract Address**: 
+- **Decimals**: 
+
+### Logo
+- [ ] Logo file added to the PR
+- **File Name**: `logo.png`
+- **Size**: 256x256 pixels
+- **File Extension**: png
+
+### Metadata File
+- [ ] Metadata file added to the PR
+- **File Name**: `metadata.json`
+- **File Extension**: json
+
+### Token Information File
+- [ ] Token information file added to the PR
+- **File Name**: `info.json`
+- **File Extension**: json
+
+#### Required Content in `info.json`:
+```json
+{
+  ""name"": """",
+  ""symbol"": """",
+  ""type"": ""PSP22"",
+  ""contractAddress"": """",
+  ""decimals"": 12,
+  ""description"": """",
+  ""website"": """",
+  ""sourceCode"": ""https://github.com/{Github_Username}/{Repository_Name}/path/to/contract"",
+  ""links"": [
+    {
+      ""name"": ""X/Twitter"",
+      ""url"": """"
+    },
+    {
+      ""name"": ""Telegram"",
+      ""url"": """"
+    },
+    {
+      ""name"": ""Discord"",
+      ""url"": """"
+    }
+  ],
+  ""customTags"": [
+    ""burnerWallet"",
+    ""otherTag""
+  ],
+  ""warnings"": [],
+  ""owner"": ""ownerAddress"",
+  ""minter"": ""minterAddress""
+}
+```
+
+#### Note on Custom Tags
+The `customTags` field in the info.json file is optional. This field can be used to include specific tags that describe unique characteristics or features of the token, such as burner wallet. Include custom tags only if they are relevant to the token’s functionality or usage.
+
+#### Note on Owner and Minter
+The owner and minter fields should include the addresses of the accounts that hold these capabilities within the token's smart contract. The owner is typically the account that has administrative rights over the entire contract, while the minter might be an account with the capability to issue new tokens.
+
+### Note on Warnings
+Please do not fill out the warnings field in the info.json file. This field is reserved for use by our auditing team, who will add relevant warnings such as ""Mintable"" or ""Burnable"" after thoroughly reviewing the token's smart contract. This ensures that all warnings are accurate and based on a comprehensive technical assessment.",,community,SyncraDAO/psp-tokenlist,,,,,,SyncraDAO/psp-tokenlist#44
+2553001335,matter-labs/anvil-zksync,351,fix: fixes release pipeline due bump in rust version,"# What :computer: 
+* Suppresses warnings that are treated as errors in cross installation and usage 
+* Bump gcc dependencies for x86 cross container for `aws-lc-sys` crate
+
+# Why :hand:
+* Release pipeline was broken as a result of cross installation failing to be installed. See:  https://github.com/matter-labs/era-test-node/actions/runs/11057024685/job/30719919478
+* Building will fail with `error: failed to run custom build command for aws-lc-sys v0.21.2` using old gcc dep in cross-containers building for x86 target
+
+# Evidence :camera:
+Include screenshots, screen recordings, or `console` output here demonstrating that your changes work as intended
+- Test release on forked repo: https://github.com/dutterbutter/era-test-node/actions/runs/11071741595
+<!-- All sections below are optional. You can uncomment any section applicable to your Pull Request. -->
+
+<!-- # Notes :memo:
+* Any notes/thoughts that the reviewers should know prior to reviewing the code? -->",,provider,matter-labs/anvil-zksync,,,,,,matter-labs/anvil-zksync#351
+1225988417,ipfs/ipfs-desktop,2125,1177 refactor ctx speed improvements,an extension on https://github.com/ipfs/ipfs-desktop/pull/2114 which fixes #1177; this PR is the result of me investigating various problems with the load times and intermingled dependency graphs between src modules,superseded by https://github.com/ipfs/ipfs-desktop/pull/2378,provider,ipfs/ipfs-desktop,,,,,,ipfs/ipfs-desktop#2125
+644391758,Uniswap/web3-react,104,Ledger connector The method eth_sendTransaction does not exist/is not available,"**Bug Description**
+Hello,
+Many of my users using Ledger have this kind of error when they interact with smart contract:
+`The method eth_sendTransaction does not exist/is not available`
+Has anyone ever had this kind of trouble before?
+I specify that with the other connectors it works.
+I use Infura as RPC provider.
+
+**Reproduction**
+```
+// Helper to make write request to smart contract
+// and dispatch success(after 1 confirmation) or error
+export const sendContract = function* (action, method, methodParams, callParams) {
+  try {
+    const receiptResult = yield new Promise((res, rej) => {
+      action.data.contract.methods[method](...methodParams).send(...callParams)
+        .on('confirmation', (confirmationNumber, receipt) => {
+          if (confirmationNumber) res({ confirmationNumber, receipt });
+        }).on('error', rej);
+    });
+    yield put({ data: receiptResult, type: onSuccess(action.type) });
+  } catch (error) {
+    yield put({ data: error, type: onError(action.type) });
+  }
+};
+```
+https://github.com/vanmoortel/lrc-staking-dapp/blob/master/src/utils/simpleContractFetching.js","I’m having an issue with DataCloneError after upgrading to the latest core and walletconnect package. If I remove the await statement on my contract I get this same method error.
+
+@NoahZinsmeister, did something change with the core?  | @vanmoortel are you running 6.1.1 version of the core package?",provider,Uniswap/web3-react,,,,,,Uniswap/web3-react#104
+2740751214,trustwallet/assets,29848,Add logo for Cogito (COG) token,"This PR adds the logo for the Cogito (COG) token, an ERC-20 token on Ethereum. Contract Address: 0x038435F0a2eadE4F6f4e7737BE73f01c12c71979.","As per our policy, brand new tokens are not included, there is a minimum requirement of 10,000 holder addresses and 15,000 transactions, in order to filter out scam tokens.
+See the criteria at : https://developer.trustwallet.com/assets/requirements .",provider,trustwallet/assets,,,,,,trustwallet/assets#29848
+1617717286,ipfs/specs,383,IPIP-0383: Compact Denylist Format,"This IPIP introduces a line-based denylist format for content blocking on IPFS
+focused on simplicity, scalability and ease-of-use.
+
+
+Related:
+- https://github.com/hsanjuan/nopfs - an implementation of this IPIP which add supports for content blocking to the go-ipfs stack and particularly to Kubo.","Just checkpointing, I need to finish it tomorrow probably. | One thing I didnt like about the existing double hash is the concatenation leads to more work (you have to hash each subpath), I think a tuple of hash(CID), [path length, hash(path)] would spare the work
+
+so to see if `/ipfs/bafyWHATEVER/some/long/path/to/a/thing` is blocked you would only have to hash `bafyWHATEVER` and see if it has any paths associated with it, maybe you see a length 3 one so you hash `/some/long/path` too and see if its blocked.
+
+In the end in the denylist automation the path is always `/` and the only URLs were legacy ones 
+
+I wrote something to reprocess historical ones if we need to | @hsanjuan :  thanks for creating.  Can you please also make sure there is visibility to this in https://github.com/ipfs/specs/pull/340 for visibility? | > @hsanjuan : thanks for creating. Can you please also make sure there is visibility to this in #340 for visibility?
+
+Github included a link upon your comment. | > One thing I didnt like about the existing double hash is the concatenation leads to more work (you have to hash each subpath), I think a tuple of hash(CID), [path length, hash(path)] would spare the work
+> 
+> so to see if `/ipfs/bafyWHATEVER/some/long/path/to/a/thing` is blocked you would only have to hash `bafyWHATEVER` and see if it has any paths associated with it, maybe you see a length 3 one so you hash `/some/long/path` too and see if its blocked.
+> 
+> In the end in the denylist automation the path is always `/` and the only URLs were legacy ones
+> 
+> I wrote something to reprocess historical ones if we need to
+
+* Let's agree of talking always of double-hashing the MULTIHASH.
+* Part of this is implementation specific (how to hash the minimum amount of things). However, it would allow more efficient checking to have a hint like path length (not even component-count, but actual length of the path string), so that no double-hashing needs to even occur if lengths don't match. I'm thinking this could be metadata added to the rule via a hint, and implementations could decide whether to use it for their benefit or not. | Note to self: There's a rule type I forgot to ask in the form of : `*/path/to/content`, which blocks paths regardless of mhash. | Note to self: double-hashes could be multibase encoded. Thinking if they could actually be a multibase encoded multihash, or directly a raw CID. Current list format would have to be a special case.
+
+This removes the need for Hints indicating base/hash function. | Note to self: remove ""allow block items"", as desired effect can be mostly achieved with negated rules, and it is more efficient. | I have done one more pass to the spec, explaining a bit better complex things like double-hashing and making a distinction between NameSystem and PathResolver. I think I'm pretty happy with the current form. | Test fixtures are missing... A list of tests will come next.
+
+An implementation of a content blocker with support to this format exists now in https://github.com/hsanjuan/nopfs, and the Badbits list is also available in compact form: https://badbits.dwebops.pub/badbits.deny. | Would it be possible to include metadata tags about categories of why a line has been added? This would be useful for displaying in Brave as an enhancement to the messaging that normally gets displayed with safe browsing which seems like the best way to fit this in. | > Would it be possible to include metadata tags about categories of why a line has been added? This would be useful for displaying in Brave as an enhancement to the messaging that normally gets displayed with safe browsing which seems like the best way to fit this in.
+
+You can add whatever hints per line. It's just not specified whether some labels have special meanings that require certain actions. Implementations can give meaning to labels. | I've just posted a question on r/IPFS and I think it would be better suited here.
+
+---
+
+I just added a file to IPFS that was a .txt file of the output of `printenv` from inside a docker container, when I went to the file’s address I was greeted by this 401 screen, I have been out of the IPFS community for a while and I have not seen this feature before.
+
+The error message strikes me as strange and I have some questions about this feature
+
+- ~~Who controls the list of blocked content? Is this list centralized?~~
+- How/Why was file found and blocked so quickly? [ipns link to a plain text file that is also blocked](https://k51qzi5uqu5dkm74dmmf2emkx5u0doxkmlvwvko9siqhcebdnbeqzi6z0c7m7i.ipns.dweb.link/file.txt)
+- Who decides what qualifies as “legal, abuse, malware or security reasons”? Given the _interplanetary_ nature of IPFS, what nation's laws are being used? For example I could share an image of Jon Venables in the USA but this would be illegal in the UK. If the UK court ruled this was illegal but the server was in the US, what would happen to my content in this case?
+- What safeguards are in place to prevent this feature being abused? For example, say a whistleblower published documents on IPFS, would it be possible for a government to leverage this feature to prevent it from being shared, ""national security reasons""? 
+- ~~How does this feature work technically? If IPFS is a peer-to-peer protocol how is this (presumably) centralized list of banned content shared between nodes?~~
+
+
+On the face of it this feature seems like a hideous idea that undermines the whole point of IPFS. Sure nobody wants to host hateful material, CSAM, [insert buzzword]-phobia, blah, blah, blah, but we all know that this feature will just get abused by governments and the big-tech companies that will end-up being the backbone of IPFS. Like consider a journalist wants to publish WikiLeaks 2.0 on IPFS, how quickly will the admins cave to the FBI and block that content?
+
+<img width=""1237"" alt=""Screen Shot 2024-05-28 at 15 38 03"" src=""https://github.com/ipfs/specs/assets/7443012/13c8677a-a8b2-4c7a-b94a-44c5c1b2d398"">
+ | > I've just posted a question on r/IPFS and I think it would be better suited here.
+
+This is not really the best place. Ask on the [discuss.ipfs.tech forums](https://discuss.ipfs.tech/c/help/13) if you still wondering about these questions.",provider,ipfs/specs,,,,,,ipfs/specs#383
+2118144898,paritytech/polkadot-sdk,3203,"When attempting to connect my external parachain, it fails to receive blocks from the relay chain. How can I address this issue? For instance, the relay chain is hosted on the office WiFi, while the parachain is connected via external internet. In this setup, the parachain struggles to establish peer connections or receive blocks from the relay chain. What steps can be taken to resolve this connectivity issue?""","When attempting to connect my external parachain, it fails to receive blocks from the relay chain. How can I address this issue? For instance, the relay chain is hosted on the office WiFi, while the parachain is connected via external internet. In this setup, the parachain struggles to establish peer connections or receive blocks from the relay chain. What steps can be taken to resolve this connectivity issue?""
+
+_Originally posted by @arunjot12 in https://github.com/paritytech/polkadot-sdk/issues/3030#issuecomment-1926604693_",,provider,paritytech/polkadot-sdk,,,,,,paritytech/polkadot-sdk#3203

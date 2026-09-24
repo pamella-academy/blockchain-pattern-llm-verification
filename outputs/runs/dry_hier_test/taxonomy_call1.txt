@@ -1,0 +1,24 @@
+- On/off-chain interaction [16 patterns]
+  Definition: Design patterns whose components sit both off-chain and on-chain. They bridge off-chain systems with on-chain data or smart contracts. This category is central to dApp design because a blockchain cannot natively request external data.
+  Source: Six et al. 2022, §4.1 and §4.2.1
+  Subcategories: Data exchange; Data management; Wallet and keys; Transactions
+- On-chain - Domain-based [21 patterns]
+  Definition: On-chain patterns that implement domain features (BPM, identity, big data, and features reusable across domains). The SLR treats this as an intermediate category under On-chain pattern, intended to grow as new domain-specific patterns appear.
+  Source: Six et al. 2022, §4.1 and §4.2.2
+  Subcategories: BPM; Decentralized identity; Big data; Multi-domain feature
+- On-chain - Smart contract [24 patterns]
+  Definition: Patterns about implementing and managing smart contracts: how contracts are organized together, secured, made cheaper to execute, and how function access is authorized.
+  Source: Six et al. 2022, §4.1 and §4.2.3
+  Subcategories: Contract management; Contract security; Contract efficiency; Contract access control
+- On-chain - Data management [13 patterns]
+  Definition: Patterns for efficient management of data that already live on-chain, in smart contracts or transactions. Distinct from the On/off-chain 'Data management' subcategory, which keeps the payload off-chain and only uses the chain for integrity or trust.
+  Source: Six et al. 2022, §4.1 and §4.2.4
+  Subcategories: Storage; Encryption; Migration; Tokenization
+- Architectural [3 patterns]
+  Definition: Architectural patterns about who creates and signs blockchain transactions (user, browser wallet confirmation, or a delegated service). The SLR places them outside the design-pattern taxonomy proper because only three were found; this working catalog keeps them as a first-class category.
+  Source: Six et al. 2022, §4.2.5
+  Subcategories: (no subcategory; patterns sit directly under the category)
+- Idiom [5 patterns]
+  Definition: Solidity idioms that reduce execution fees by packing storage, choosing integer/mapping layouts, or freeing unused slots. The SLR found no dedicated idiom papers but classified 14 such items separately from design patterns; this catalog keeps them as a category.
+  Source: Six et al. 2022, §3.4 and §4.2.5
+  Subcategories: (no subcategory; patterns sit directly under the category)

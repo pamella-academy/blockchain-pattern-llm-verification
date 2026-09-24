@@ -1,0 +1,69 @@
+/home/pamella/.local/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py:23: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[load] Carregando catálogo e taxonomia...
+[load] 82 patterns, 6 categories
+[load] Preparando issues...
+[load] 200 issues preparadas
+
+[stage1] Executando pipeline hierárquico...
+[hier call1] 1/200 ethereum/pm#867
+Traceback (most recent call last):
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 55, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_interceptor.py", line 276, in __call__
+    response, ignored_call = self._with_call(
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_interceptor.py", line 331, in _with_call
+    return call.result(), call
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_channel.py", line 438, in result
+    raise self
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_interceptor.py", line 314, in continuation
+    response, call = self._thunk(new_method).with_call(
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_channel.py", line 1173, in with_call
+    return _end_unary_response_blocking(state, call, True, None)
+  File "/home/pamella/.local/lib/python3.10/site-packages/grpc/_channel.py", line 990, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.NOT_FOUND
+	details = "models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."
+	debug_error_string = "UNKNOWN:Error received from peer ipv6:%5B2001:4860:4842:400::%5D:443 {grpc_status:5, grpc_message:"models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods."}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1223, in <module>
+    main()
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1175, in main
+    stage1_results = run_hierarchical_stage1_sync(
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 785, in run_hierarchical_stage1_sync
+    response1 = call_sync(client, call1_params)
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 155, in call_sync
+    response = model.generate_content(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 835, in generate_content
+    response = rpc(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 128, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/home/pamella/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 57, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.NotFound: 404 models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.

@@ -1,0 +1,10 @@
+{
+  "completed_ids": [
+    "s1_3445392c68cf82a9cc5061b5be3fbfcf",
+    "s1_bd8c055d2f5a5557ef33461e1e879431"
+  ],
+  "failed_ids": [],
+  "last_updated": "2026-09-17T23:45:46+00:00",
+  "run_id": "test_hier_real",
+  "stage": "hierarchical_stage1"
+}

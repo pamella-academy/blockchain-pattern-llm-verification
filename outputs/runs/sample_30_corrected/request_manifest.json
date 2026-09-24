@@ -1,0 +1,302 @@
+[
+  {
+    "artifact_sha256": "25d57b0e36efb420ee5a998110539cce5c577bae54a68a6339a9a34d507d987b",
+    "custom_id_stage1": "s1_a147400ba5c97771a5708bd7382cfc58",
+    "included_char_count": 2224,
+    "input_truncated": false,
+    "issue_key": "ethereum/pm#867",
+    "issue_number": "867",
+    "original_char_count": 2037,
+    "repository": "ethereum/pm"
+  },
+  {
+    "artifact_sha256": "422c21f24a4a4c0b2b2d16d315e4fe1559c81f9868680a96b1bc3893257cc881",
+    "custom_id_stage1": "s1_afdfa623dd56e91a0bac4e1cd1635673",
+    "included_char_count": 662,
+    "input_truncated": false,
+    "issue_key": "solana-labs/solana-program-library#2003",
+    "issue_number": "2003",
+    "original_char_count": 451,
+    "repository": "solana-labs/solana-program-library"
+  },
+  {
+    "artifact_sha256": "353637cac4af64d278ba9c8302879e82d7d9d2b5be909623917fc6481dbec495",
+    "custom_id_stage1": "s1_908208bbb4e71cdd6cc71e06e278a9d9",
+    "included_char_count": 1714,
+    "input_truncated": false,
+    "issue_key": "web3swift-team/web3swift#103",
+    "issue_number": "103",
+    "original_char_count": 1514,
+    "repository": "web3swift-team/web3swift"
+  },
+  {
+    "artifact_sha256": "a710ca56ab4da982a6d04fbd2ac39fcc02744ab49ab00b41820cffe2e9cdb768",
+    "custom_id_stage1": "s1_582f6cfd81ac13fca221b318176692ea",
+    "included_char_count": 4280,
+    "input_truncated": false,
+    "issue_key": "OpenZeppelin/openzeppelin-contracts#3735",
+    "issue_number": "3735",
+    "original_char_count": 4068,
+    "repository": "OpenZeppelin/openzeppelin-contracts"
+  },
+  {
+    "artifact_sha256": "d7dea7bc63bc6c460205f90d2ab88657a312fa3201c7b119e96589374fb4a6ff",
+    "custom_id_stage1": "s1_a02e3f74a9321cbe741fb85714caf5fd",
+    "included_char_count": 6213,
+    "input_truncated": true,
+    "issue_key": "foundry-rs/foundry#8015",
+    "issue_number": "8015",
+    "original_char_count": 6674,
+    "repository": "foundry-rs/foundry"
+  },
+  {
+    "artifact_sha256": "69a06dc9d9de8367166907f879ac09b6058f81e4a415dc59c3237d1b7c180405",
+    "custom_id_stage1": "s1_7539c0d531affc9609cebdc5a99acc6d",
+    "included_char_count": 3870,
+    "input_truncated": false,
+    "issue_key": "graphprotocol/graph-node#3373",
+    "issue_number": "3373",
+    "original_char_count": 3669,
+    "repository": "graphprotocol/graph-node"
+  },
+  {
+    "artifact_sha256": "69f0a2eb2c7e54b6d0e4255a4f56a5ae93f3dc3707fee0d233718493b7b7fea9",
+    "custom_id_stage1": "s1_8ba5fa223cdbedccfc0babfaef716ba8",
+    "included_char_count": 736,
+    "input_truncated": false,
+    "issue_key": "solana-labs/solana-program-library#3165",
+    "issue_number": "3165",
+    "original_char_count": 525,
+    "repository": "solana-labs/solana-program-library"
+  },
+  {
+    "artifact_sha256": "49183da0fe249c12606dcf545595c5eedd9bf6753aa559c6952e38da709a67c3",
+    "custom_id_stage1": "s1_f4a391c1a35988a1463894f8f0f7adb5",
+    "included_char_count": 588,
+    "input_truncated": false,
+    "issue_key": "MetaMask/eth-phishing-detect#6425",
+    "issue_number": "6425",
+    "original_char_count": 383,
+    "repository": "MetaMask/eth-phishing-detect"
+  },
+  {
+    "artifact_sha256": "44d458c76de390685a9ef44ebfe64ea5829a8908cc1003dc2d64a0b024b4b32a",
+    "custom_id_stage1": "s1_4aa64c374cbca43e1e7b84077af0e9c3",
+    "included_char_count": 1917,
+    "input_truncated": false,
+    "issue_key": "MoralisWeb3/react-moralis#142",
+    "issue_number": "142",
+    "original_char_count": 1716,
+    "repository": "MoralisWeb3/react-moralis"
+  },
+  {
+    "artifact_sha256": "01f2cf81b676d0a6a779ef639639f34f94995037f813e69dd0c511e51b950191",
+    "custom_id_stage1": "s1_9143ee620f3c6513319c920f4ca2755b",
+    "included_char_count": 674,
+    "input_truncated": false,
+    "issue_key": "sigp/lighthouse#911",
+    "issue_number": "911",
+    "original_char_count": 483,
+    "repository": "sigp/lighthouse"
+  },
+  {
+    "artifact_sha256": "bf415d26fef7e4f8641a19fb2d5f7e2ece84296c52efdb32b13d86352da8e127",
+    "custom_id_stage1": "s1_39cd5f0c7692205cd6a398052403b36d",
+    "included_char_count": 1947,
+    "input_truncated": false,
+    "issue_key": "ipfs/ipfs-desktop#2788",
+    "issue_number": "2788",
+    "original_char_count": 1753,
+    "repository": "ipfs/ipfs-desktop"
+  },
+  {
+    "artifact_sha256": "6f51f8130d79dd1d5fd2cc091a161548b8d428e4fb7a226744231517765cf2a3",
+    "custom_id_stage1": "s1_cc49c4c72d6424e8d30ceca4069484c9",
+    "included_char_count": 764,
+    "input_truncated": false,
+    "issue_key": "paritytech/polkadot-sdk#9497",
+    "issue_number": "9497",
+    "original_char_count": 564,
+    "repository": "paritytech/polkadot-sdk"
+  },
+  {
+    "artifact_sha256": "0e791f9bbdf9a22a984f5abe6548270ee5e33e26b7fc56b7c1a5889de0dd4afd",
+    "custom_id_stage1": "s1_9303ad0696edececf4c55f374a22edd2",
+    "included_char_count": 916,
+    "input_truncated": false,
+    "issue_key": "MetaMask/contract-metadata#1125",
+    "issue_number": "1125",
+    "original_char_count": 713,
+    "repository": "MetaMask/contract-metadata"
+  },
+  {
+    "artifact_sha256": "04d114cc8d62f0c0b1ebba3739c58f09c3e357d5181e05d97094a101277d00cc",
+    "custom_id_stage1": "s1_b7dd821d8876b7d43118868e741395e6",
+    "included_char_count": 2421,
+    "input_truncated": false,
+    "issue_key": "MetaMask/metamask-extension#1091",
+    "issue_number": "1091",
+    "original_char_count": 2217,
+    "repository": "MetaMask/metamask-extension"
+  },
+  {
+    "artifact_sha256": "2c4d121dddbac665e282ac17b0cd15c28888538f7e602b68fc42842af0056a24",
+    "custom_id_stage1": "s1_dd6e6c0a73e93b09095cc6e554122bc2",
+    "included_char_count": 617,
+    "input_truncated": false,
+    "issue_key": "ethereum/consensus-specs#4177",
+    "issue_number": "4177",
+    "original_char_count": 416,
+    "repository": "ethereum/consensus-specs"
+  },
+  {
+    "artifact_sha256": "c03e5b2443d9d4c7a868cb890a17e3331b205fb3f200d2c075e1a9ee7358430c",
+    "custom_id_stage1": "s1_80fa6843e241a2b9a7f9afa664d7886a",
+    "included_char_count": 889,
+    "input_truncated": false,
+    "issue_key": "ipfs/kubo#5749",
+    "issue_number": "5749",
+    "original_char_count": 703,
+    "repository": "ipfs/kubo"
+  },
+  {
+    "artifact_sha256": "b9d27e6f71e1c3e610483298cc12cbd817a05947bcf9f18673702a3ba76facc3",
+    "custom_id_stage1": "s1_f2a881d2fe30c4631c53ad1ab5243868",
+    "included_char_count": 3765,
+    "input_truncated": false,
+    "issue_key": "ipfs/ipfs-companion#485",
+    "issue_number": "485",
+    "original_char_count": 3570,
+    "repository": "ipfs/ipfs-companion"
+  },
+  {
+    "artifact_sha256": "59b8caa59e0a25831fc235eef6124a80dd964add54a9acd49dd2f64e0d8ca6a3",
+    "custom_id_stage1": "s1_3b026ee217a7484737fb4f358453338c",
+    "included_char_count": 619,
+    "input_truncated": false,
+    "issue_key": "ipfs/helia#287",
+    "issue_number": "287",
+    "original_char_count": 433,
+    "repository": "ipfs/helia"
+  },
+  {
+    "artifact_sha256": "c2d1ec006e362c647ed6d2d87185e151b9eb9584cf7441973aac9c6269530e01",
+    "custom_id_stage1": "s1_8e16773135bef56747b7c1b779b1c3e4",
+    "included_char_count": 396,
+    "input_truncated": false,
+    "issue_key": "solana-labs/solana#3377",
+    "issue_number": "3377",
+    "original_char_count": 201,
+    "repository": "solana-labs/solana"
+  },
+  {
+    "artifact_sha256": "fe067a7337ec2a7dc120212d7e971397806c1c1e9f65b852561bff34640b4d19",
+    "custom_id_stage1": "s1_f7e716b78950dd7c98a663f5d4220ed3",
+    "included_char_count": 648,
+    "input_truncated": false,
+    "issue_key": "ethereum/eth-tester#243",
+    "issue_number": "243",
+    "original_char_count": 453,
+    "repository": "ethereum/eth-tester"
+  },
+  {
+    "artifact_sha256": "da4a11954c21848c2af87a30044288c8e2a7e6e11e91ac17f72d86f7dc3d6f89",
+    "custom_id_stage1": "s1_b173732a4cc67bf3fdc9fd5b0e9b4e1a",
+    "included_char_count": 2614,
+    "input_truncated": false,
+    "issue_key": "ipfs/kubo#3430",
+    "issue_number": "3430",
+    "original_char_count": 2428,
+    "repository": "ipfs/kubo"
+  },
+  {
+    "artifact_sha256": "0acf316616a6e22d299522ce53f49de687f431015c83f853ad360a9bc0f47366",
+    "custom_id_stage1": "s1_c5368e428b5b6de368fe5257b57b3563",
+    "included_char_count": 4824,
+    "input_truncated": false,
+    "issue_key": "OpenZeppelin/openzeppelin-contracts#722",
+    "issue_number": "722",
+    "original_char_count": 4613,
+    "repository": "OpenZeppelin/openzeppelin-contracts"
+  },
+  {
+    "artifact_sha256": "5e6cf7c18242729179b3dd9b7ace50a34b82f20f17775db0a3eab8c6c95cc56f",
+    "custom_id_stage1": "s1_a6d5e0cc59efbcfb1a814ce6bf3b6e7c",
+    "included_char_count": 1538,
+    "input_truncated": false,
+    "issue_key": "MetaMask/core#309",
+    "issue_number": "309",
+    "original_char_count": 1349,
+    "repository": "MetaMask/core"
+  },
+  {
+    "artifact_sha256": "0c3b5250169ac8d3461742ad68518d1819a8d311b869348e9cd5acb3010f9518",
+    "custom_id_stage1": "s1_24148150def2a096c619ab18220e4463",
+    "included_char_count": 2758,
+    "input_truncated": false,
+    "issue_key": "SyncraDAO/psp-tokenlist#44",
+    "issue_number": "44",
+    "original_char_count": 2560,
+    "repository": "SyncraDAO/psp-tokenlist"
+  },
+  {
+    "artifact_sha256": "0407373e102396ada205889a6efa1bb5c379a899d34e06e88dfa540885e2078e",
+    "custom_id_stage1": "s1_a0500be1be4ed2d6120189792cb5f59c",
+    "included_char_count": 1221,
+    "input_truncated": false,
+    "issue_key": "matter-labs/anvil-zksync#351",
+    "issue_number": "351",
+    "original_char_count": 1021,
+    "repository": "matter-labs/anvil-zksync"
+  },
+  {
+    "artifact_sha256": "fd684da9c1cd0861c5db9b52304ce4c89cf9e820f3288b2be1181f06b7be9394",
+    "custom_id_stage1": "s1_f08415cfa1a86aa86b0df3cad129a609",
+    "included_char_count": 505,
+    "input_truncated": false,
+    "issue_key": "ipfs/ipfs-desktop#2125",
+    "issue_number": "2125",
+    "original_char_count": 311,
+    "repository": "ipfs/ipfs-desktop"
+  },
+  {
+    "artifact_sha256": "150effd6554b0d137a72f588f459327ca73cd85eef585d0e78d30b38e3a7928a",
+    "custom_id_stage1": "s1_c376ebe4327fba09b1c60136962ae0f5",
+    "included_char_count": 1673,
+    "input_truncated": false,
+    "issue_key": "Uniswap/web3-react#104",
+    "issue_number": "104",
+    "original_char_count": 1479,
+    "repository": "Uniswap/web3-react"
+  },
+  {
+    "artifact_sha256": "b0148bd300b6d02f8a6c3dc6bc8615b618dc15315433728c4de6333ac6ae6ae0",
+    "custom_id_stage1": "s1_c2358adb220a1a8fc9a9fc9be20bcea5",
+    "included_char_count": 617,
+    "input_truncated": false,
+    "issue_key": "trustwallet/assets#29848",
+    "issue_number": "29848",
+    "original_char_count": 421,
+    "repository": "trustwallet/assets"
+  },
+  {
+    "artifact_sha256": "1afc3b0fed4810b0ebd4e6a8225fd030f622ff490b47906a37ac133338d82996",
+    "custom_id_stage1": "s1_bb86716b82819d5541de902bb345aca5",
+    "included_char_count": 4639,
+    "input_truncated": true,
+    "issue_key": "ipfs/specs#383",
+    "issue_number": "383",
+    "original_char_count": 6562,
+    "repository": "ipfs/specs"
+  },
+  {
+    "artifact_sha256": "cef28c81a056485b6b4eac923ca707027a06a764cb8520822982d2a369c7988f",
+    "custom_id_stage1": "s1_ec7a06fe9d72dda74685ff1ca93f42db",
+    "included_char_count": 1145,
+    "input_truncated": false,
+    "issue_key": "paritytech/polkadot-sdk#3203",
+    "issue_number": "3203",
+    "original_char_count": 945,
+    "repository": "paritytech/polkadot-sdk"
+  }
+]

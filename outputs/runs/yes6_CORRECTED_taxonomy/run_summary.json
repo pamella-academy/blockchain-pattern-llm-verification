@@ -1,0 +1,18 @@
+{
+  "issues": 6,
+  "issues_with_candidates": 4,
+  "relevance_counts": {
+    "no": 3,
+    "yes": 3
+  },
+  "run_dir": "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/outputs/runs/yes6_CORRECTED_taxonomy",
+  "stage1_errored": 0,
+  "stage1_succeeded": 6,
+  "stage2_errored": 0,
+  "stage2_pairs": 4,
+  "stage2_succeeded": 4,
+  "verdict_counts": {
+    "no": 1,
+    "yes": 3
+  }
+}

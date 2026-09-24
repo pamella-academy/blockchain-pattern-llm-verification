@@ -1,0 +1,490 @@
+/home/pamella/.local/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py:22: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[load] Carregando catálogo e taxonomia...
+[load] 82 patterns, 6 categories
+[load] Preparando issues...
+[load] 200 issues preparadas
+
+[stage1] Executando pipeline hierárquico...
+[hier call1] 1/200 ethereum/pm#867
+  [early stop] No relevant categories
+[hier call1] 2/200 solana-labs/solana-program-library#2003
+[hier call2] 2/200 solana-labs/solana-program-library#2003 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 2/200 solana-labs/solana-program-library#2003 subcategories=['Transactions'] patterns=1
+[hier call1] 3/200 web3swift-team/web3swift#103
+  [early stop] No relevant categories
+[hier call1] 4/200 crytic/slither#117
+[hier call2] 4/200 crytic/slither#117 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 4/200 crytic/slither#117 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 5/200 Uniswap/v3-sdk#141
+  [early stop] No relevant categories
+[hier call1] 6/200 ethereum/consensus-specs#44
+[hier call2] 6/200 ethereum/consensus-specs#44 categories=['On-chain - Domain-based', 'On-chain - Data management'] subcategories=8
+  [early stop] No relevant subcategories
+[hier call1] 7/200 ipfs/public-gateway-checker#452
+  [early stop] No relevant categories
+[hier call1] 8/200 paritytech/substrate#900
+  [early stop] No relevant categories
+[hier call1] 9/200 trustwallet/assets#17741
+  [early stop] No relevant categories
+[hier call1] 10/200 OpenZeppelin/openzeppelin-contracts#3735
+[hier call2] 10/200 OpenZeppelin/openzeppelin-contracts#3735 categories=['On-chain - Domain-based', 'On-chain - Smart contract'] subcategories=8
+  [early stop] No relevant subcategories
+[hier call1] 11/200 foundry-rs/foundry#8015
+  [early stop] No relevant categories
+[hier call1] 12/200 graphprotocol/graph-node#3373
+[hier call2] 12/200 graphprotocol/graph-node#3373 categories=['On/off-chain interaction', 'Architectural'] subcategories=4
+[hier call3] 12/200 graphprotocol/graph-node#3373 subcategories=['Data management', 'Transactions'] patterns=8
+[hier call1] 13/200 solana-labs/solana-program-library#3165
+[hier call2] 13/200 solana-labs/solana-program-library#3165 categories=['On/off-chain interaction', 'On-chain - Domain-based'] subcategories=8
+[hier call3] 13/200 solana-labs/solana-program-library#3165 subcategories=['Transactions'] patterns=1
+[hier call1] 14/200 AztecProtocol/aztec-packages#2388
+  [early stop] No relevant categories
+[hier call1] 15/200 AztecProtocol/aztec-packages#5038
+[hier call2] 15/200 AztecProtocol/aztec-packages#5038 categories=['On-chain - Smart contract', 'Architectural'] subcategories=4
+[hier call3] 15/200 AztecProtocol/aztec-packages#5038 subcategories=['Contract security'] patterns=5
+[hier call1] 16/200 AztecProtocol/aztec-packages#5651
+  [early stop] No relevant categories
+[hier call1] 17/200 AztecProtocol/aztec-packages#11391
+  [early stop] No relevant categories
+[hier call1] 18/200 Consensys/gnark#388
+  [early stop] No relevant categories
+[hier call1] 19/200 Consensys/gnark#1311
+[hier call2] 19/200 Consensys/gnark#1311 categories=['On-chain - Data management'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 20/200 Consensys/quorum#72
+  [early stop] No relevant categories
+[hier call1] 21/200 Consensys/quorum#387
+  [early stop] No relevant categories
+[hier call1] 22/200 Consensys/quorum#1586
+  [early stop] No relevant categories
+[hier call1] 23/200 Consensys/teku#8385
+  [early stop] No relevant categories
+[hier call1] 24/200 FuelLabs/fuel-connectors#349
+  [early stop] No relevant categories
+[hier call1] 25/200 FuelLabs/fuel-core#2528
+  [early stop] No relevant categories
+[hier call1] 26/200 FuelLabs/sway#4516
+  [early stop] No relevant categories
+[hier call1] 27/200 FuelLabs/sway#7228
+  [early stop] No relevant categories
+[hier call1] 28/200 INFURA/infura#81
+[hier call2] 28/200 INFURA/infura#81 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 28/200 INFURA/infura#81 subcategories=['Data exchange', 'Data management'] patterns=12
+[hier call1] 29/200 MetaMask/contract-metadata#1125
+  [early stop] No relevant categories
+[hier call1] 30/200 MetaMask/core#309
+  [early stop] No relevant categories
+[hier call1] 31/200 MetaMask/core#691
+  [early stop] No relevant categories
+[hier call1] 32/200 MetaMask/core#1981
+  [early stop] No relevant categories
+[hier call1] 33/200 MetaMask/eth-phishing-detect#6425
+  [early stop] No relevant categories
+[hier call1] 34/200 MetaMask/eth-phishing-detect#8759
+  [early stop] No relevant categories
+[hier call1] 35/200 MetaMask/eth-phishing-detect#13502
+  [early stop] No relevant categories
+[hier call1] 36/200 MetaMask/eth-phishing-detect#159849
+  [early stop] No relevant categories
+[hier call1] 37/200 MetaMask/eth-phishing-detect#184576
+  [early stop] No relevant categories
+[hier call1] 38/200 MetaMask/metamask-extension#1091
+[hier call2] 38/200 MetaMask/metamask-extension#1091 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 38/200 MetaMask/metamask-extension#1091 subcategories=['Transactions'] patterns=1
+[hier call1] 39/200 MetaMask/metamask-extension#6105
+[hier call2] 39/200 MetaMask/metamask-extension#6105 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 39/200 MetaMask/metamask-extension#6105 subcategories=['Wallet and keys'] patterns=3
+[hier call1] 40/200 MetaMask/metamask-extension#13525
+  [early stop] No relevant categories
+[hier call1] 41/200 MetaMask/metamask-extension#20424
+  [early stop] No relevant categories
+[hier call1] 42/200 MetaMask/metamask-extension#22537
+  [early stop] No relevant categories
+[hier call1] 43/200 MetaMask/metamask-extension#25739
+  [early stop] No relevant categories
+[hier call1] 44/200 MetaMask/metamask-extension#28962
+  [early stop] No relevant categories
+[hier call1] 45/200 MetaMask/metamask-extension#30553
+  [early stop] No relevant categories
+[hier call1] 46/200 MetaMask/metamask-extension#31382
+  [early stop] No relevant categories
+[hier call1] 47/200 MetaMask/metamask-mobile#4441
+[hier call2] 47/200 MetaMask/metamask-mobile#4441 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 47/200 MetaMask/metamask-mobile#4441 subcategories=['Wallet and keys'] patterns=3
+[hier call1] 48/200 MetaMask/metamask-mobile#11138
+  [early stop] No relevant categories
+[hier call1] 49/200 MetaMask/metamask-mobile#11455
+  [early stop] No relevant categories
+[hier call1] 50/200 MetaMask/metamask-mobile#12951
+  [early stop] No relevant categories
+[hier call1] 51/200 MetaMask/metamask-mobile#13691
+  [early stop] No relevant categories
+[hier call1] 52/200 MetaMask/metamask-mobile#13713
+  [early stop] No relevant categories
+[hier call1] 53/200 MetaMask/metamask-mobile#16448
+  [early stop] No relevant categories
+[hier call1] 54/200 MetaMask/metamask-mobile#17295
+[hier call2] 54/200 MetaMask/metamask-mobile#17295 categories=['On-chain - Domain-based'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 55/200 MetaMask/snaps#459
+  [early stop] No relevant categories
+[hier call1] 56/200 MoralisWeb3/react-moralis#142
+[hier call2] 56/200 MoralisWeb3/react-moralis#142 categories=['On-chain - Domain-based'] subcategories=4
+[hier call3] 56/200 MoralisWeb3/react-moralis#142 subcategories=['Decentralized identity'] patterns=5
+[hier call1] 57/200 NomicFoundation/hardhat#4652
+  [early stop] No relevant categories
+[hier call1] 58/200 OpenZeppelin/cairo-contracts#328
+[hier call2] 58/200 OpenZeppelin/cairo-contracts#328 categories=['On-chain - Domain-based', 'On-chain - Smart contract'] subcategories=8
+  [early stop] No relevant subcategories
+[hier call1] 59/200 OpenZeppelin/openzeppelin-contracts#722
+  [early stop] No relevant categories
+[hier call1] 60/200 OpenZeppelin/openzeppelin-contracts#4084
+  [early stop] No relevant categories
+[hier call1] 61/200 OpenZeppelin/openzeppelin-contracts#5062
+  [early stop] No relevant categories
+[hier call1] 62/200 OpenZeppelin/openzeppelin-sdk#917
+  [early stop] No relevant categories
+[hier call1] 63/200 ProjectOpenSea/opensea-js#236
+[hier call2] 63/200 ProjectOpenSea/opensea-js#236 categories=['On/off-chain interaction', 'On-chain - Domain-based', 'On-chain - Smart contract'] subcategories=12
+[hier call3] 63/200 ProjectOpenSea/opensea-js#236 subcategories=['Transactions'] patterns=1
+[hier call1] 64/200 ProjectOpenSea/operator-filter-registry#93
+  [early stop] No relevant categories
+[hier call1] 65/200 SyncraDAO/psp-tokenlist#44
+  [early stop] No relevant categories
+[hier call1] 66/200 TrueFiEng/Waffle#646
+  [early stop] No relevant categories
+[hier call1] 67/200 Uniswap/interface#2094
+[hier call2] 67/200 Uniswap/interface#2094 categories=['Idiom'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 67/200 Uniswap/interface#2094 categories=['Idiom'] patterns=5 (no subcategories)
+[hier call1] 68/200 Uniswap/v4-core#310
+  [early stop] No relevant categories
+[hier call1] 69/200 Uniswap/v4-core#815
+  [early stop] No relevant categories
+[hier call1] 70/200 Uniswap/web3-react#104
+  [early stop] No relevant categories
+[hier call1] 71/200 algorand/go-algorand#3261
+[hier call2] 71/200 algorand/go-algorand#3261 categories=['On-chain - Domain-based', 'On-chain - Data management'] subcategories=8
+  [early stop] No relevant subcategories
+[hier call1] 72/200 algorand/go-algorand#6374
+[hier call2] 72/200 algorand/go-algorand#6374 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 72/200 algorand/go-algorand#6374 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 73/200 blockscout/blockscout#4222
+  [early stop] No relevant categories
+[hier call1] 74/200 blockscout/blockscout#5926
+  [early stop] No relevant categories
+[hier call1] 75/200 blockscout/blockscout#6711
+  [early stop] No relevant categories
+[hier call1] 76/200 coinbase/coinbase-wallet-sdk#526
+  [early stop] No relevant categories
+[hier call1] 77/200 coinbase/onchainkit#1602
+  [early stop] No relevant categories
+[hier call1] 78/200 embarklabs/embark#1361
+  [early stop] No relevant categories
+[hier call1] 79/200 ethereum/aleth#603
+  [early stop] No relevant categories
+[hier call1] 80/200 ethereum/aleth#3639
+  [early stop] No relevant categories
+[hier call1] 81/200 ethereum/aleth#5551
+  [early stop] No relevant categories
+[hier call1] 82/200 ethereum/consensus-specs#4177
+  [early stop] No relevant categories
+[hier call1] 83/200 ethereum/eth-tester#243
+  [early stop] No relevant categories
+[hier call1] 84/200 ethereum/ethereum-org-website#5465
+  [early stop] No relevant categories
+[hier call1] 85/200 ethereum/execution-apis#244
+  [early stop] No relevant categories
+[hier call1] 86/200 ethereum/go-ethereum#85
+  [early stop] No relevant categories
+[hier call1] 87/200 ethereum/go-ethereum#2237
+  [early stop] No relevant categories
+[hier call1] 88/200 ethereum/go-ethereum#23913
+  [early stop] No relevant categories
+[hier call1] 89/200 ethereum/mist#1179
+  [early stop] No relevant categories
+[hier call1] 90/200 ethereum/trin#451
+  [early stop] No relevant categories
+[hier call1] 91/200 ethereum/web3.py#3441
+  [early stop] No relevant categories
+[hier call1] 92/200 ethers-io/ethers.js#970
+  [early stop] No relevant categories
+[hier call1] 93/200 ethersphere/bee#1362
+[hier call2] 93/200 ethersphere/bee#1362 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 93/200 ethersphere/bee#1362 subcategories=['Transactions'] patterns=1
+[hier call1] 94/200 ethersphere/bee#2972
+  [early stop] No relevant categories
+[hier call1] 95/200 ethersphere/bee#5116
+  [early stop] No relevant categories
+[hier call1] 96/200 foundry-rs/foundry#8804
+  [early stop] No relevant categories
+[hier call1] 97/200 foundry-rs/foundry#10589
+  [early stop] No relevant categories
+[hier call1] 98/200 foundry-rs/foundry#11673
+  [early stop] No relevant categories
+[hier call1] 99/200 foundry-rs/starknet-foundry#231
+  [early stop] No relevant categories
+[hier call1] 100/200 foundry-rs/starknet-foundry#2924
+  [early stop] No relevant categories
+[hier call1] 101/200 graphprotocol/graph-node#1577
+  [early stop] No relevant categories
+[hier call1] 102/200 graphprotocol/graph-node#5156
+[hier call2] 102/200 graphprotocol/graph-node#5156 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 102/200 graphprotocol/graph-node#5156 subcategories=['Data exchange', 'Data management'] patterns=12
+[hier call1] 103/200 hyperledger/besu#671
+[hier call2] 103/200 hyperledger/besu#671 categories=['On-chain - Smart contract'] subcategories=4
+[hier call3] 103/200 hyperledger/besu#671 subcategories=['Contract management', 'Contract security'] patterns=13
+[hier call1] 104/200 hyperledger/besu#3888
+  [early stop] No relevant categories
+[hier call1] 105/200 hyperledger/besu#5146
+[hier call2] 105/200 hyperledger/besu#5146 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 105/200 hyperledger/besu#5146 subcategories=['Data exchange'] patterns=5
+[hier call1] 106/200 hyperledger/besu#6344
+[hier call2] 106/200 hyperledger/besu#6344 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 106/200 hyperledger/besu#6344 subcategories=['Data exchange', 'Transactions'] patterns=6
+[hier call1] 107/200 hyperledger/fabric-sdk-node#94
+  [early stop] No relevant categories
+[hier call1] 108/200 ipfs/awesome-ipfs#485
+  [early stop] No relevant categories
+[hier call1] 109/200 ipfs/helia#287
+  [early stop] No relevant categories
+[hier call1] 110/200 ipfs/ipfs-companion#485
+[hier call2] 110/200 ipfs/ipfs-companion#485 categories=['On/off-chain interaction', 'Architectural'] subcategories=4
+[hier call3] 110/200 ipfs/ipfs-companion#485 subcategories=['Data management'] patterns=7
+[hier call1] 111/200 ipfs/ipfs-desktop#2125
+  [early stop] No relevant categories
+[hier call1] 112/200 ipfs/ipfs-desktop#2788
+  [early stop] No relevant categories
+[hier call1] 113/200 ipfs/ipfs-webui#845
+  [early stop] No relevant categories
+[hier call1] 114/200 ipfs/ipfs-webui#2190
+  [early stop] No relevant categories
+[hier call1] 115/200 ipfs/ipfs-webui#2348
+  [early stop] No relevant categories
+[hier call1] 116/200 ipfs/js-ipfs#12
+  [early stop] No relevant categories
+[hier call1] 117/200 ipfs/js-ipfs#2343
+  [early stop] No relevant categories
+[hier call1] 118/200 ipfs/js-ipfs#2760
+  [early stop] No relevant categories
+[hier call1] 119/200 ipfs/js-ipfs#3504
+  [early stop] No relevant categories
+[hier call1] 120/200 ipfs/js-ipfs#4085
+  [early stop] No relevant categories
+[hier call1] 121/200 ipfs/js-ipfs#4197
+  [early stop] No relevant categories
+[hier call1] 122/200 ipfs/kubo#460
+  [early stop] No relevant categories
+[hier call1] 123/200 ipfs/kubo#1376
+[hier call2] 123/200 ipfs/kubo#1376 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 123/200 ipfs/kubo#1376 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 124/200 ipfs/kubo#1505
+  [early stop] No relevant categories
+[hier call1] 125/200 ipfs/kubo#3430
+  [early stop] No relevant categories
+[hier call1] 126/200 ipfs/kubo#3869
+  [early stop] No relevant categories
+[hier call1] 127/200 ipfs/kubo#4527
+  [early stop] No relevant categories
+[hier call1] 128/200 ipfs/kubo#5206
+  [early stop] No relevant categories
+[hier call1] 129/200 ipfs/kubo#5749
+  [early stop] No relevant categories
+[hier call1] 130/200 ipfs/kubo#5920
+  [early stop] No relevant categories
+[hier call1] 131/200 ipfs/kubo#6458
+  [early stop] No relevant categories
+[hier call1] 132/200 ipfs/kubo#7168
+  [early stop] No relevant categories
+[hier call1] 133/200 ipfs/kubo#8303
+  [early stop] No relevant categories
+[hier call1] 134/200 ipfs/public-gateway-checker#177
+  [early stop] No relevant categories
+[hier call1] 135/200 ipfs/public-gateway-checker#215
+[hier call2] 135/200 ipfs/public-gateway-checker#215 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 135/200 ipfs/public-gateway-checker#215 subcategories=['Data exchange'] patterns=5
+[hier call1] 136/200 ipfs/specs#383
+  [early stop] No relevant categories
+[hier call1] 137/200 ipfs/specs#406
+  [early stop] No relevant categories
+[hier call1] 138/200 junobuild/juno#481
+[hier call2] 138/200 junobuild/juno#481 categories=['On-chain - Data management'] subcategories=4
+[hier call3] 138/200 junobuild/juno#481 subcategories=['Storage', 'Migration'] patterns=9
+[hier call1] 139/200 livepeer/go-livepeer#1786
+  [early stop] No relevant categories
+[hier call1] 140/200 livepeer/go-livepeer#3229
+  [early stop] No relevant categories
+[hier call1] 141/200 matter-labs/anvil-zksync#351
+  [early stop] No relevant categories
+[hier call1] 142/200 matter-labs/foundry-zksync#358
+  [early stop] No relevant categories
+[hier call1] 143/200 near/core-contracts#197
+  [early stop] No relevant categories
+[hier call1] 144/200 near/nearcore#306
+[hier call2] 144/200 near/nearcore#306 categories=['On-chain - Data management'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 145/200 near/nearcore#2483
+  [early stop] No relevant categories
+[hier call1] 146/200 near/nearcore#2846
+[hier call2] 146/200 near/nearcore#2846 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 146/200 near/nearcore#2846 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 147/200 near/nearcore#6512
+  [early stop] No relevant categories
+[hier call1] 148/200 near/nearcore#11333
+  [early stop] No relevant categories
+[hier call1] 149/200 openethereum/parity-ethereum#5747
+  [early stop] No relevant categories
+[hier call1] 150/200 paradigmxyz/reth#2760
+  [early stop] No relevant categories
+[hier call1] 151/200 paradigmxyz/reth#16266
+  [early stop] No relevant categories
+[hier call1] 152/200 paradigmxyz/reth#17374
+  [early stop] No relevant categories
+[hier call1] 153/200 paradigmxyz/solar#329
+[hier call2] 153/200 paradigmxyz/solar#329 categories=['Idiom'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 153/200 paradigmxyz/solar#329 categories=['Idiom'] patterns=5 (no subcategories)
+[hier call1] 154/200 paritytech/polkadot#3714
+  [early stop] No relevant categories
+[hier call1] 155/200 paritytech/polkadot-sdk#317
+  [early stop] No relevant categories
+[hier call1] 156/200 paritytech/polkadot-sdk#1851
+  [early stop] No relevant categories
+[hier call1] 157/200 paritytech/polkadot-sdk#2245
+[hier call2] 157/200 paritytech/polkadot-sdk#2245 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 157/200 paritytech/polkadot-sdk#2245 subcategories=['Data exchange', 'Data management'] patterns=12
+[hier call1] 158/200 paritytech/polkadot-sdk#3203
+  [early stop] No relevant categories
+[hier call1] 159/200 paritytech/polkadot-sdk#4745
+[hier call2] 159/200 paritytech/polkadot-sdk#4745 categories=['On-chain - Domain-based', 'On-chain - Data management'] subcategories=8
+[hier call3] 159/200 paritytech/polkadot-sdk#4745 subcategories=['Migration'] patterns=4
+[hier call1] 160/200 paritytech/polkadot-sdk#9497
+[hier call2] 160/200 paritytech/polkadot-sdk#9497 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 160/200 paritytech/polkadot-sdk#9497 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 161/200 paritytech/substrate#5493
+[hier call2] 161/200 paritytech/substrate#5493 categories=['Idiom'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 161/200 paritytech/substrate#5493 categories=['Idiom'] patterns=5 (no subcategories)
+[hier call1] 162/200 paritytech/substrate#9696
+[hier call2] 162/200 paritytech/substrate#9696 categories=['Architectural'] subcategories=0 (patterns directly in category, skip Call 2)
+[hier call3] 162/200 paritytech/substrate#9696 categories=['Architectural'] patterns=3 (no subcategories)
+[hier call1] 163/200 paritytech/substrate#9738
+[hier call2] 163/200 paritytech/substrate#9738 categories=['On-chain - Data management'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 164/200 paritytech/subxt#1117
+[hier call2] 164/200 paritytech/subxt#1117 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 164/200 paritytech/subxt#1117 subcategories=['Data exchange'] patterns=5
+[hier call1] 165/200 protofire/solhint#197
+  [early stop] No relevant categories
+[hier call1] 166/200 rainbow-me/rainbow#3675
+  [early stop] No relevant categories
+[hier call1] 167/200 scroll-tech/contribute-to-scroll#1966
+  [early stop] No relevant categories
+[hier call1] 168/200 sigp/lighthouse#911
+  [early stop] No relevant categories
+[hier call1] 169/200 sigp/lighthouse#4971
+  [early stop] No relevant categories
+[hier call1] 170/200 smartcontractkit/chainlink#2681
+  [early stop] No relevant categories
+[hier call1] 171/200 smartcontractkit/chainlink#13017
+  [early stop] No relevant categories
+[hier call1] 172/200 smol-dot/smoldot#1806
+  [early stop] No relevant categories
+[hier call1] 173/200 snapshot-labs/sx-monorepo#981
+  [early stop] No relevant categories
+[hier call1] 174/200 solana-labs/solana#3377
+  [early stop] No relevant categories
+[hier call1] 175/200 solana-labs/solana#5681
+[hier call2] 175/200 solana-labs/solana#5681 categories=['On/off-chain interaction'] subcategories=4
+[hier call3] 175/200 solana-labs/solana#5681 subcategories=['Data exchange'] patterns=5
+[hier call1] 176/200 solana-labs/token-list#1165
+  [early stop] No relevant categories
+[hier call1] 177/200 solana-labs/token-list#16854
+  [early stop] No relevant categories
+[hier call1] 178/200 trustwallet/assets#2057
+  [early stop] No relevant categories
+[hier call1] 179/200 trustwallet/assets#4740
+  [early stop] No relevant categories
+[hier call1] 180/200 trustwallet/assets#5452
+  [early stop] No relevant categories
+[hier call1] 181/200 trustwallet/assets#7985
+[hier call2] 181/200 trustwallet/assets#7985 categories=['On-chain - Data management'] subcategories=4
+  [early stop] No relevant subcategories
+[hier call1] 182/200 trustwallet/assets#13141
+[hier call2] 182/200 trustwallet/assets#13141 categories=['On-chain - Smart contract'] subcategories=4
+[hier call3] 182/200 trustwallet/assets#13141 subcategories=['Contract management'] patterns=8
+[hier call1] 183/200 trustwallet/assets#14229
+  [early stop] No relevant categories
+[hier call1] 184/200 trustwallet/assets#15915
+  [early stop] No relevant categories
+[hier call1] 185/200 trustwallet/assets#16096
+  [early stop] No relevant categories
+[hier call1] 186/200 trustwallet/assets#24480
+  [early stop] No relevant categories
+[hier call1] 187/200 trustwallet/assets#26515
+  [early stop] No relevant categories
+[hier call1] 188/200 trustwallet/assets#29848
+  [early stop] No relevant categories
+[hier call1] 189/200 trustwallet/assets#29882
+  [early stop] No relevant categories
+[hier call1] 190/200 trustwallet/assets#30558
+  [early stop] No relevant categories
+[hier call1] 191/200 trustwallet/tokens#104
+  [early stop] No relevant categories
+[hier call1] 192/200 trustwallet/wallet-core#2768
+  [early stop] No relevant categories
+[hier call1] 193/200 web3/web3.js#2299
+  [early stop] No relevant categories
+[hier call1] 194/200 web3/web3.js#6085
+  [early stop] No relevant categories
+[hier call1] 195/200 wevm/wagmi#1412
+  [early stop] No relevant categories
+[hier call1] 196/200 MetaMask/metamask-docs#1505
+  [early stop] No relevant categories
+[hier call1] 197/200 MetaMask/metamask-mobile#14857
+  [early stop] No relevant categories
+[hier call1] 198/200 paritytech/substrate#1310
+  [early stop] No relevant categories
+[hier call1] 199/200 hyperledger/besu#4012
+  [early stop] No relevant categories
+[hier call1] 200/200 matter-labs/zksync#215
+[hier call2] 200/200 matter-labs/zksync#215 categories=['On/off-chain interaction', 'On-chain - Domain-based', 'On-chain - Smart contract'] subcategories=12
+[hier call3] 200/200 matter-labs/zksync#215 subcategories=['Transactions'] patterns=1
+
+[stage1] ✓ Resultados salvos em results/full_200_prod_stage1.csv
+[stage1] 200 issues processadas
+[stage1] 10 com candidatos
+[stage1] 288,340 tokens totais
+
+[stage2] Executando verificação de precisão...
+[stage2] 13 pairs to verify
+[stage2] 1/13 solana-labs/solana-program-library#2003 -> X-confirmation
+[stage2] 2/13 INFURA/infura#81 -> Off-chain data storage
+[stage2] 3/13 MoralisWeb3/react-moralis#142 -> Dual Resolution
+[stage2] 4/13 ProjectOpenSea/opensea-js#236 -> X-confirmation
+[stage2] 5/13 hyperledger/besu#671 -> Mortal
+[stage2] 6/13 ipfs/ipfs-companion#485 -> Off-chain data storage
+[stage2] 7/13 ipfs/kubo#1376 -> Delegated Transactions
+[stage2] 8/13 paritytech/polkadot-sdk#4745 -> State initialization
+[stage2] 9/13 solana-labs/solana#5681 -> Reverse Oracle
+[stage2] 10/13 matter-labs/zksync#215 -> X-confirmation
+[skip] 11/13 stage2_matter-labs_zksync_215_X-confirmation (checkpoint)
+[skip] 12/13 stage2_matter-labs_zksync_215_X-confirmation (checkpoint)
+[skip] 13/13 stage2_matter-labs_zksync_215_X-confirmation (checkpoint)
+Traceback (most recent call last):
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1127, in <module>
+    main()
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1104, in main
+    stage2_results = run_stage2_sync(
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/classify.py", line 1009, in run_stage2_sync
+    return aggregate_stage2_results(stage1_csv, raw_output_path)
+  File "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/utils.py", line 353, in aggregate_stage2_results
+    custom_id = row["custom_id_stage2"]
+KeyError: 'custom_id_stage2'

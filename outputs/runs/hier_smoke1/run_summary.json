@@ -1,0 +1,14 @@
+{
+  "issues": 1,
+  "issues_with_candidates": 0,
+  "relevance_counts": {
+    "no": 1
+  },
+  "run_dir": "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/outputs/runs/hier_smoke1",
+  "stage1_errored": 0,
+  "stage1_succeeded": 1,
+  "stage2_errored": 0,
+  "stage2_pairs": 0,
+  "stage2_succeeded": 0,
+  "verdict_counts": {}
+}

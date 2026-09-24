@@ -1,0 +1,9 @@
+{
+  "completed_ids": [
+    "s1_3445392c68cf82a9cc5061b5be3fbfcf"
+  ],
+  "failed_ids": [],
+  "last_updated": "2026-09-17T22:58:36+00:00",
+  "run_id": "hier_smoke1",
+  "stage": "hierarchical_stage1"
+}

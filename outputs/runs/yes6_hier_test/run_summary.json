@@ -1,0 +1,14 @@
+{
+  "issues": 6,
+  "issues_with_candidates": 0,
+  "relevance_counts": {
+    "pipeline_error": 6
+  },
+  "run_dir": "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/outputs/runs/yes6_hier_test",
+  "stage1_errored": 6,
+  "stage1_succeeded": 0,
+  "stage2_errored": 0,
+  "stage2_pairs": 0,
+  "stage2_succeeded": 0,
+  "verdict_counts": {}
+}

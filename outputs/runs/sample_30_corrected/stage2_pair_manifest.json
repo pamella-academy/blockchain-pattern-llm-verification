@@ -1,0 +1,44 @@
+[
+  {
+    "custom_id": "s2_b7d1400b158a3591e8ac132fd3dc3206",
+    "issue_number": "1091",
+    "pattern": "Self-Confirmed Transactions",
+    "repository": "MetaMask/metamask-extension"
+  },
+  {
+    "custom_id": "s2_998671116ce00728d4e67a939aca835a",
+    "issue_number": "3735",
+    "pattern": "Tokenization",
+    "repository": "OpenZeppelin/openzeppelin-contracts"
+  },
+  {
+    "custom_id": "s2_e6b841ef162de105ec322013d8226e9b",
+    "issue_number": "3735",
+    "pattern": "Role-based control",
+    "repository": "OpenZeppelin/openzeppelin-contracts"
+  },
+  {
+    "custom_id": "s2_a0891194495f20fa357ce8e7da34f549",
+    "issue_number": "3373",
+    "pattern": "Reverse Oracle",
+    "repository": "graphprotocol/graph-node"
+  },
+  {
+    "custom_id": "s2_a2da9fad7782ddd3f84535056cf7fc12",
+    "issue_number": "2003",
+    "pattern": "Oracle",
+    "repository": "solana-labs/solana-program-library"
+  },
+  {
+    "custom_id": "s2_2934d40374a66baa0acc8b61fb88846c",
+    "issue_number": "3165",
+    "pattern": "Oracle",
+    "repository": "solana-labs/solana-program-library"
+  },
+  {
+    "custom_id": "s2_59675d15ff4f51e64bc29fc1a11ddb8b",
+    "issue_number": "103",
+    "pattern": "Tokenization",
+    "repository": "web3swift-team/web3swift"
+  }
+]

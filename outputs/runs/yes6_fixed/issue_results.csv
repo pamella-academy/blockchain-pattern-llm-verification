@@ -1,0 +1,155 @@
+issue_id,repository_full_name,issue_number,created_at,closed_at,labels,repository_category,repository_category_canonical,data_source,issue_title,issue_body,concatenated_comments,comments_count,comments_count_filtered,commits_count,raw_text_sha256,sample_group,selection_trigger,issue_summary,stage1_candidate_count,stage2_pair_count,pipeline_error_count,input_truncated,patterns_present,evidence_text,evidence_location,confidence,insufficient_context,false_friend_detected,overlapping_patterns,issue_activity_type,challenge_categories,adoption_status,relevant_to_pattern_study,annotator_id,human_notes,annotation_date,type,state,repository,issue_key,patterns_confirmed,patterns_uncertain,patterns_insufficient_context,issue_challenge_categories
+1341587813,Uniswap/v3-sdk,141,,,,,,provider,"What is the significance of ""POOL_INIT_CODE_HASH"" ?","In the file ""v3-sdk/src/constants.ts"" and line number 5, what is the importance of ""POOL_INIT_CODE_HASH""?","Hi @debo24 
+
+Uniswap uses [CREATE2](https://docs.openzeppelin.com/cli/2.8/deploying-with-create2) to determine the address of a pool. The advantage is that the address of a pool with two specific tokens and a specific fee tier is deterministic and computable wether the pool is deployed or not.
+The SDK uses it in [computePoolAddress](https://github.com/Uniswap/v3-sdk/blob/08a7c050cba00377843497030f502c05982b1c43/src/utils/computePoolAddress.ts#LL36C5-L36C5).",,,,,,,Explanation of POOL_INIT_CODE_HASH used in computePoolAddress to calculate deterministic pool contract addresses via CREATE2.,0,0,0,no,,,,,no,no,,support_question,implementation_complexity,not_related,no,,,,,,Uniswap/v3-sdk,Uniswap/v3-sdk#141,,,,implementation_complexity
+395566283,crytic/slither,117,,,,,,provider,Refactor reentrancy detector into three variants,"The reentrancy detector is split into three variants to facilitate the triage of results.
+- `reentrancy-eth`: theft of ether and read before writing (high severity)
+- `reentrancy-no-eth`: no theft of ether and read before writing (medium severity)
+- `reentrancy-benign`: no read before writing (low severity)
+
+The read before writing heuristic allows triaging benign reentrancies, where the exploitation would act as a double call.","In some cases, these detectors fail to ouput the line of each issue. For instance:
+
+```
+INFO:Detectors:
+Reentrancy in ApisCrowdSale.buyToken (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol):
+        External calls:
+        - (isLocked,timeLock) = tokenReward.isWalletLocked_Send(this) (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+        State variables written after the call(s):
+        - fundersProperty (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+        - saleStatus (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+        - saleStatus (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+        - fundersProperty (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+        - saleStatus (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+        - saleStatus (exps/contracts/0x4c0fbe1bb46612915e7967d2c3213cd4d87257ad_ApisToken.sol)
+``` | I found an infinite loop analyzing one contract:
+
+```
+$ slither contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol 
+INFO:Slither:Compilation warnings/errors on contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:220:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use ""constructor(...) { ... }"" instead.
+    function EtopayNetwork() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:115:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Transfer(msg.sender, _to, _value);
+        ^-------------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:149:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:165:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Approval(msg.sender, _spender, _value);
+        ^------------------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:187:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+        ^-----------------------------------------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:198:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+        ^-----------------------------------------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:245:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        TokenPurchase(_investor, weiAmount, tokens);
+        ^-----------------------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:253:13: Warning: Invoking events without ""emit"" prefix is deprecated.
+            TokenLimitReached(tokenAllocated, addTokens);
+            ^------------------------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:366:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Transfer(_owner, _to, _amount);
+        ^----------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:377:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        OwnerChanged(owner, _newOwner);
+        ^----------------------------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:399:24: Warning: Using contract member ""balance"" inherited from the address type is deprecated. Convert the contract to ""address"" type to access the member, for example use ""address(contract).balance"" instead.
+        owner.transfer(this.balance);
+                       ^----------^
+contracts/0xdf4703c56d1497a33c3fe75c2ee4ba02515778e9_EtopayNetwork.sol:402:9: Warning: Invoking events without ""emit"" prefix is deprecated.
+        Transfer(this, owner, balance);
+        ^----------------------------^
+
+^CTraceback (most recent call last):
+  File ""/home/gustavo/.local/bin/slither"", line 11, in <module>
+    load_entry_point('slither-analyzer==0.4.0', 'console_scripts', 'slither')()
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/__main__.py"", line 208, in main
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/__main__.py"", line 243, in main_impl
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/__main__.py"", line 35, in process
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/slither.py"", line 41, in __init__
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/slitherSolc.py"", line 192, in _analyze_contracts
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/slitherSolc.py"", line 320, in _convert_to_slithir
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/declarations/contract.py"", line 384, in fix_phi
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/declarations/function.py"", line 875, in get_last_ssa_state_variables_instances
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/declarations/function.py"", line 870, in explore
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/declarations/function.py"", line 870, in explore
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/declarations/function.py"", line 870, in explore
+  [Previous line repeated 73 more times]
+  File ""/home/gustavo/.local/lib/python3.6/site-packages/slither_analyzer-0.4.0-py3.6.egg/slither/solc_parsing/declarations/function.py"", line 859, in explore
+KeyboardInterrupt
+``` | Thanks @ggrieco-tob, they are not related to this PR, but I will fix them asap
+- The first one is related to the source code line computation
+- The second one is a worst-case execution on the taint engine that appears sometimes when exploring a cfg with a lot of nodes, the taint engine will disappear soon in favor to the SSA",,,,,,,"Refactor of Slither static analysis reentrancy detection rules into three categories (eth, no-eth, benign).",1,0,0,yes,,,,,no,no,,refactoring,tooling_or_dependency|security_risk,not_related,no,,,,,,crytic/slither,crytic/slither#117,,,,tooling_or_dependency|security_risk
+366901871,ethereum/consensus-specs,44,,,,,,provider,Fix `recent_block_hashes`,"# Issue
+There has been a known bug in which `ActiveState.recent_block_hashes` would not hold the requisite block hashes to validate all potential attestations when it came time during a state recalc. This was due to the list of hashes always being truncated to fit the `2 * CYCLE_LENGTH` requirement even though an attestation could be from longer than that ago when considering large slot skips.
+
+# Proposed solution
+I propose that we only append to `recent_block_hashes` until the end of a state recalc, during which we remove CYCLE_LENGTH hashes. In the normal case, the length of `recent_block_hashes` will range between `2 * CYCLE_LENGTH` and `3 * CYCLE_LENGTH`. The length of `recent_block_hashes` might exceed `3 * CYCLE_LENGTH` temporarily during block processing/state recalc, but will always be trimmed down to size at the end.
+
+EDIT: this also allows the `get_block_hash` function/`active_state.recent_block_hashes` to be more usable for during reward calculations. The current spec required using extra DB/local support for tracking hashes.",">  * Set `active_state.recent_block_hashes = active_state.recent_block_hashes[CYCLE_LENGTH:]` 
+
+Are you sure you don't want  * Set `active_state.recent_block_hashes = active_state.recent_block_hashes[-CYCLE_LENGTH:]` (see the minus before CYCLE_LENGTH) ? | No, I think I want to trim off a cycle worth of hashes per cycle transition. Note, that this is the a part of the cycle transition, not the dynasty. So if we do two cycle transitions in due to slot skips, we would trim off `2 * CYCLE_LENGTH` (one cycle length at a time).
+
+After all of this is complete, if the block was not exactly on the cycle boundary, we would have `len(recent_block_hashes) > 2 * CYCLE_LENGTH` because over the course of a cycle, we append up to cycle_length hashes.
+ | Note, I just fixed a bug in `append_to_recent_block_hashes`
+https://github.com/ethereum/eth2.0-specs/pull/44/commits/57cbc5434cad66113dd049f0c9ef737272826a59 | > attestation could be from longer than that ago when considering large slot skips
+
+Here, do you mean when `block.slot >= parent_block.slot + CYCLE_LENGTH`?
+1. Please correct me if I'm wrong, was `active_state.recent_block_hashes` designed for easily getting `get_block_hash`? Alternatively, any chance if we can update `active.recent_block_hashes` **after** attestation validation, so that we can use the `active.recent_block_hashes` in the context of parent block?
+
+2. Increasing the size of `active_state.recent_block_hashes` might also increase the serialization time of calculating `active_state_root`, although just a little bit I guess. I wonder if it's necessary to be in-protocol? Or we can just allocate a memory to calculate it? | `recent_block_hashes` is designed to be able to ensure that you have the block hashes required to process the current state transition on hand. The `prev_active_state + prev_crystallized_state + current_block` should be able to compute the state transition for the new active_state and crystallized_State.  The spec as is forgets hashes to quickly from `recent_block_hashes` for this to be the case.
+
+After a state transition in the current proposed spec, the `active_state.recent_block_hashes` is never greater than `3 * CYCLE_LENGTH`
+
+Only sometimes in the middle of a state transition are you holding greater than `3 * CYCLE_LENGTH` recent_block_hashes in memory. The pruning of CYCLE_LENGTH block hashes per state recalc ensures this. | A normal case looks like the following.
+
+- At the beginning of a cycle (slot N), `len(recent_block_hashes) == 2 * CYCLE_LENGTH`
+- when a block comes in at `slot N+1`, we append a new hash to `recent_block_hashes`
+- We continue to do this until `slot N+CYCLE_LENGTH` (so we have `len(recent_block_hashes) == 3 * CYCLE_LENGTH`) at which point we compute the state recalc and prune CYCLE_LENGTH hashes off of `recent_block_hashes` after the transition
+- we are back to where we started and repeat! plus we didn't get rid of any hashes in the active state until we were certain we didn't need them anymore.
+
+Now think of an exceptional case:
+- At the beginning of a cycle (slot N), `len(recent_block_hashes) == 2 * CYCLE_LENGTH`
+- when a block comes in at `slot N+1`, we append a new hash to `recent_block_hashes`
+- The next block that comes in is at `slot N + CYCLE_LENGTH*2 + 1` which causes us to (temporarily during the state transition append an additional `CYCLE_LENGTH*2` hashes to `recent_block_hashes`
+- We now process two cycle transitions (because we passed two cycle boundaries). After the first, we remove `CYCLE_LENGTH` hashes. After the second, we remove an additional `CYCLE_LENGTH` hashes. and we had all the parent hashes we might have needed to process attestations that came in before the big skip
+- Now we are left with `len(recent_block_hashes) == 2 * CYCLE_LENGTH + 1`. Note the `+ 1` is expected because we transitioned the cycle 1 slot past the cycle boundary.
+
+Let me know if this makes sense to you. Happy to provide more clarifying content. Had to write that really quick about to be AFK | 
+> After a state transition in the current proposed spec, the `active_state.recent_block_hashes` is never greater than `3 * CYCLE_LENGTH`
+
+> Only sometimes in the middle of a state transition are you holding greater than `3 * CYCLE_LENGTH` recent_block_hashes in memory. The pruning of CYCLE_LENGTH block hashes per state recalc ensures this.
+
+Yep! But my point was, although it’s in memory, it still larger the source of calculating `active_state_root` per block. But I see your point that it’s probably unavoidable.
+
+The exceptional case looks correct to me. 👍 
+ | You only calculate the new `active_state_root` at the end of a state transition, and the current scheme guarantees to trim the size of `recent_block_hashes` down to `< 3 * CYCLE_LENGTH` by the end of the state transition so I don't think it's really an issue.
+
+Waiting on another look from @vbuterin before merge",,,,,,,"Fix a consensus spec bug where active state recent block hashes were truncated too early, causing missing hashes for attestation verification during large slot skips.",0,0,0,yes,,,,,no,no,,bug_fix,data_consistency|reliability_or_availability,not_related,no,,,,,,ethereum/consensus-specs,ethereum/consensus-specs#44,,,,data_consistency|reliability_or_availability
+1897277157,ethereum/pm,867,,,,,,provider,Execution Layer Meeting 171,"### Meeting Info
+* [Sept 28, 2023, 14:00-15:30 UTC](https://savvytime.com/converter/utc-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/sep-28-2023/2pm)
+* Youtube Stream: https://youtube.com/live/CPt3f3ughFM
+* Zoom: shared on `#allcoredevs` Discord channel shortly before the call 
+* [Ethereum Protocol Calls Calendar subscription](https://calendar.google.com/calendar/u/0?cid=Y191cGFvZm9uZzhtZ3JtcmtlZ243aWM3aGs1c0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
+
+### Agenda
+
+* Dencun Updates
+    * [devnet-9](https://notes.ethereum.org/@ethpandaops/dencun-devnet-9)
+    * 4788 audits review
+        * [Chainsecurity](https://chainsecurity.com/security-audit/eip-4788-contract/)
+        * [Trail of Bits](https://github.com/ethereum/pm/files/12749877/Ethereum.Foundation.EIP-4788.Smart.Contract.Summary.Report.pdf)
+        * Dedaub
+* Holesky launch 
+* [EIP-7503](https://eips.ethereum.org/EIPS/eip-7503) overview 
+* Post-Verkle SELFDESTRUCT behavior","If possible, I would like to discuss [EIP-7503](https://eips.ethereum.org/EIPS/eip-7503) and present the way it can be implemented on Ethereum clients. | Added to the agenda, @keyvank !  | I would like to discuss a small update to 6780: after the verkle fork, the creation+deletion of a contract in the same transaction should leave the tree unchanged (as opposed to the current spec, in which a balance of `0` is written to the tree) | Couter-proposal: ban SELFDESTRUCT post verkle, even within a transaction.  Change it to SWEEP, where all current balance is swept out to the beneficiary.
+
+(either is OK for me, but if we are going to totally ban SELFDESTRUCT I think the verkle trie transition is our best opportunity) | Added @gballet @shemnon :+1:  | The @ChainSecurity audit report for EIP-4788: https://chainsecurity.com/security-audit/eip-4788-contract/ | Devnet 9 spec sheet: https://notes.ethereum.org/@ethpandaops/dencun-devnet-9 | Closed in favor of https://github.com/ethereum/pm/issues/879",,,,,,,"Meeting agenda and discussion notes for Ethereum Execution Layer Meeting 171, covering EIP-4788 audits, devnet updates, EIP-7503, and post-Verkle SELFDESTRUCT behavior.",0,0,0,no,,,,,no,no,,conceptual_discussion,upgradeability|security_risk,not_related,no,,,,,,ethereum/pm,ethereum/pm#867,,,,upgradeability|security_risk
+934478623,solana-labs/solana-program-library,2003,,,,,,provider,we added a secondary oracle and functionality to deposit asset + ctoken in same instruction,cc. @jordansexton,"I think the idea with switchboard is for now just to have a backup because we did run in to some issues, but in the future we might want to have the ability for each reserve to specify an oracle if we plan on having some exotic assets, switchboard seemed really onboard with adding basically whatever we wanted so that flexibility seemed nice.",,,,,,,Discussion regarding adding a secondary oracle (Switchboard) as a backup and potential reserve-specific oracle provider for exotic assets.,1,0,0,no,,,,,no,no,,feature_implementation,reliability_or_availability|interoperability,not_related,no,,,,,,solana-labs/solana-program-library,solana-labs/solana-program-library#2003,,,,reliability_or_availability|interoperability
+384311716,web3swift-team/web3swift,103,,,,,,provider,Support ST-20,"ST-20 token is an Ethereum-based token implemented on top of the ERC-20 protocol that adds the ability for tokens to control transfers based on specific rules. 
+Its description: https://github.com/PolymathNetwork/polymath-core.
+Look at how there are implemented ERC-20 and ERC-721 in https://github.com/matterinc/web3swift/tree/develop/web3swift/PrecompiledContracts.","I have submitted a WIP PR -> https://github.com/matterinc/web3swift/pull/116. Will be updating it. | Sorry for the delay. I am working on it :+1:  | @BaldyAsh I have submitted a WIP PR https://github.com/matterinc/web3swift/pull/116. How do I test it? | @srisankethu hi! Sorry for so long answer, hard days. Currently I can't find any ST-20 token, will try in next few days. But you can create token that quasi-supports ST-20 on test network and use it for testing. If it will be too hard, I'll find another solution | @BaldyAsh Am I in the right direction #116 ? | @srisankethu yes, looks fine | @BaldyAsh  But how do I test my changes? I think this PR is going nowhere :( | @srisankethu There is only way - create your mocked ST-20 token and use it for tests. Sorry, but I can't find any ST-20 token for testing, sent the message to Polymath but still no answer. | @BaldyAsh Should I leave this task then!? This PR is going nowhere. Wasted my time on this | @srisankethu sure, leave it. Thank you for trying to complete it | @ceresstation please, approve | Made #130 that should close it | @ceresstation thank you, received the tip!",,,,,,,Request to add support for ST-20 security tokens (an extension of ERC-20) in web3swift precompiled contracts library.,0,0,0,no,,,,,no,no,,feature_implementation,implementation_complexity|testing_and_verification,not_related,no,,,,,,web3swift-team/web3swift,web3swift-team/web3swift#103,,,,implementation_complexity|testing_and_verification

@@ -1,0 +1,12 @@
+{
+  "completed_ids": [
+    "s2_be14f8a03432065b14cfe60f9c72357c",
+    "s2_9c3435743d61387113ce258ed08fcee2",
+    "s2_a2da9fad7782ddd3f84535056cf7fc12",
+    "s2_59675d15ff4f51e64bc29fc1a11ddb8b"
+  ],
+  "failed_ids": [],
+  "last_updated": "2026-09-18T00:20:33+00:00",
+  "run_id": "yes6_CORRECTED_taxonomy",
+  "stage": "stage2"
+}

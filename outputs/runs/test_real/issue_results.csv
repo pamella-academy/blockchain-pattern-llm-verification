@@ -1,0 +1,57 @@
+issue_id,repository_full_name,issue_number,created_at,closed_at,labels,repository_category,repository_category_canonical,data_source,issue_title,issue_body,concatenated_comments,comments_count,comments_count_filtered,commits_count,raw_text_sha256,sample_group,selection_trigger,issue_summary,stage1_candidate_count,stage2_pair_count,pipeline_error_count,input_truncated,patterns_present,evidence_text,evidence_location,confidence,insufficient_context,false_friend_detected,overlapping_patterns,issue_activity_type,challenge_categories,adoption_status,relevant_to_pattern_study,annotator_id,human_notes,annotation_date,type,state,repository,issue_key,patterns_confirmed,patterns_uncertain,patterns_insufficient_context,issue_challenge_categories
+2235151788,AztecProtocol/aztec-packages,5651,2024-04-10T09:31:47+00:00,2024-04-10T09:42:05+00:00,,Blockchain Core / Privacy Protocol,Blockchain Core / Privacy Protocol,provider,fix: watch less files.,"Some users are running into ""too many watched files"" errors.
+Mainframe has already had its watch limits raised to 1m.
+Think i've identified a few troublesome folders. This PR tells vscode to stop watching so many files.
+You can get an idea of how many files you're watching (on linux) using:
+```
+grep inotify /proc/*/fdinfo/* 2>/dev/null| wc -l 
+```
+
+This took me from 90k to about 10k after restarting vscode server (not sure if i needed to kill the server, but think i did).
+To kill server run in your sysbox (save and quit vscode first):
+```
+pkill -f '.vscode-server'
+```",,0.0,0.0,2.0,eab7e1fb8a36fd049af5b39f4c20bcf36dc14be4c42b2f4cd12b74db303e481b,,,Update VS Code configuration to ignore certain directories to resolve 'too many watched files' errors in the development environment.,0,0,0,no,,,,,no,no,,maintenance,tooling_or_dependency,not_related,no,,,,Pull Request,closed,AztecProtocol/aztec-packages,AztecProtocol/aztec-packages#5651,,,,tooling_or_dependency
+2504958081,foundry-rs/foundry,8804,2024-09-04T10:38:19+00:00,2024-09-04T13:48:53+00:00,,Development Platform / Framework,Development Platform / Framework,provider,feat(cast/selectors): show function state mutability,"## Motivation
+The new version of EVMole can extract function state mutability with [high accuracy](https://github.com/cdump/evmole?tab=readme-ov-file#function-state-mutability). Let's use it in `cast selectors`
+
+## Solution
+Upgrade EVMole to 0.4.1 and show state mutability in the `cast selectors` output
+
+```
+$ cast selectors $(cast code 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
+0x06fdde03                              view
+0x095ea7b3      address,uint256         nonpayable
+0x18160ddd                              view
+0x23b872dd      address,address,uint256 nonpayable
+0x2e1a7d4d      uint256                 nonpayable
+0x313ce567                              view
+0x70a08231      address                 view
+0x95d89b41                              view
+0xa9059cbb      address,uint256         nonpayable
+0xd0e30db0                              payable
+0xdd62ed3e      address,address         view
+
+$ cast selectors $(cast code 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2) --resolve
+0x06fdde03                              view            name()
+0x095ea7b3      address,uint256         nonpayable      approve(address,uint256)
+0x18160ddd                              view            totalSupply()
+0x23b872dd      address,address,uint256 nonpayable      transferFrom(address,address,uint256)
+0x2e1a7d4d      uint256                 nonpayable      withdraw(uint256)|OwnerTransferV7b711143(uint256)
+0x313ce567                              view            decimals()
+0x70a08231      address                 view            balanceOf(address)
+0x95d89b41                              view            symbol()
+0xa9059cbb      address,uint256         nonpayable      transfer(address,uint256)
+0xd0e30db0                              payable         deposit()
+0xdd62ed3e      address,address         view            allowance(address,address)
+```
+
+According to [CONTRIBUTING.md](https://github.com/foundry-rs/foundry/blob/master/CONTRIBUTING.md#resolving-an-issue), I've used Cargo nightly, Cargo fmt added `;` to some existing return statements in `crates/cast/src/lib.rs`
+```
+$ cargo +nightly version
+cargo 1.83.0-nightly (c1fa840a8 2024-08-29)
+
+$ cargo +nightly fmt -- --check && cargo +nightly clippy --all --all-targets --all-features -- -D warnings && echo OK
+...
+OK
+```",,0.0,0.0,1.0,ff67d63a84443f46dc5113e4d7e6f81f52d318239138afad6fb97e16fcb8ceee,,,Update cast selectors tool to display function state mutability by integrating EVMole library.,0,0,0,no,,,,,no,no,,feature_implementation,tooling_or_dependency,not_related,no,,,,Pull Request,closed,foundry-rs/foundry,foundry-rs/foundry#8804,,,,tooling_or_dependency

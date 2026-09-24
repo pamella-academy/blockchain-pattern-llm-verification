@@ -1,0 +1,14 @@
+{
+  "issues": 2,
+  "issues_with_candidates": 0,
+  "relevance_counts": {
+    "no": 2
+  },
+  "run_dir": "/home/pamella/Desktop/phd/blockchain-pattern-llm-verification/outputs/runs/test_hier_real",
+  "stage1_errored": 0,
+  "stage1_succeeded": 2,
+  "stage2_errored": 0,
+  "stage2_pairs": 0,
+  "stage2_succeeded": 0,
+  "verdict_counts": {}
+}
